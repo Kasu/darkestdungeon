@@ -11,7 +11,7 @@ import {EstateFooter} from "./EstateFooter";
 import {ModalState} from "../../state/PopupState";
 import {grid} from "../../config/Grid";
 import {EstateInventory} from "./EstateInventory";
-import {fonts} from "../../../assets/fonts";
+import {fonts} from "../../assets/fonts";
 import {screenFooterHeight} from "../ScreenFooter";
 import {commonStyleFn, Row} from "../../config/styles";
 import {popupOffset} from "../../ui/Popups";
@@ -100,7 +100,7 @@ export class EstateTemplate extends AppStateComponent<{
             {this.mayGoBack && (
               <Icon
                 classStyle={styles.backButton}
-                src={require("../../../assets/dd/images/shared/progression/progression_back.png")}
+                src={require("../../assets/dd/images/shared/progression/progression_back.png")}
                 onClick={() => this.goBack()}
               />
             )}
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: -headerOffset, left: 0,
     paddingTop: headerOffset,
-    background: `url(${require("../../../assets/dd/images/campaign/town/estate_title/estate_nameplate.png")})`,
+    background: `url(${require("../../assets/dd/images/campaign/town/estate_title/estate_nameplate.png")})`,
     backgroundSize: "auto 100%",
     backgroundPosition: "0 50%",
     backgroundRepeat: "no-repeat",

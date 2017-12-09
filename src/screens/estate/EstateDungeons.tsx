@@ -84,12 +84,12 @@ export class EstateDungeons extends AppStateComponent<{path: Path}> {
     const questLookup = this.groupQuestsByDungeon(this.activeProfile.quests);
     return (
       <EstateTemplate
-        background={require("../../../assets/dd/images/campaign/town/quest_select/quest_select.background.png")}
+        background={require("../../assets/dd/images/campaign/town/quest_select/quest_select.background.png")}
         lineupFeaturesInRoster={true}
         path={this.props.path}
         backPath="estateOverview"
         continueCheck={() => this.checkLineupBeforeContinue()}
-        continueSound={{src: require("../../../assets/dd/audio/ui_town_button_provision.ogg"), volume: 0.7}}
+        continueSound={{src: require("../../assets/dd/audio/ui_town_button_provision.ogg"), volume: 0.7}}
         continueLabel="Provision"
         continuePath="estateProvision">
         <div className={css(styles.content)}>

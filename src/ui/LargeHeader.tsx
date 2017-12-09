@@ -5,7 +5,7 @@ import {Avatar} from "./Avatar";
 import {StyleSheet} from "aphrodite";
 import {grid} from "../config/Grid";
 import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 
 export class LargeHeader extends React.Component<{
   label?: string,

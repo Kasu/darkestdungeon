@@ -2,7 +2,7 @@ import * as React from "react";
 import {IconWithSide} from "./IconWithSide";
 import {StyleSheet} from "aphrodite";
 import {grid} from "../config/Grid";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 import {thousands} from "../lib/Helpers";
 import {commonStyleFn, commonStyles} from "../config/styles";
 
@@ -25,8 +25,8 @@ export class GoldIcon extends React.Component<{
     const isLarge = this.props.size === GoldIconSize.Large;
     const amountString = this.props.amount !== undefined ? thousands(this.props.amount) : undefined;
     const src = isLarge ?
-      require("../../assets/dd/images/shared/estate/currency.gold.large_icon.png") :
-      require("../../assets/dd/images/shared/estate/currency.gold.icon.png");
+      require("../assets/dd/images/shared/estate/currency.gold.large_icon.png") :
+      require("../assets/dd/images/shared/estate/currency.gold.icon.png");
 
     const notEnough = this.props.compareWith !== undefined && (this.props.amount > this.props.compareWith);
 

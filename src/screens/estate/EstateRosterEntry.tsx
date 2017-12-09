@@ -19,13 +19,13 @@ import {estateContentPosition} from "./EstateTemplate";
 import {grid} from "../../config/Grid";
 import {Icon} from "../../ui/Icon";
 import {Prompt} from "../../ui/Popups";
-import {fonts} from "../../../assets/fonts";
+import {fonts} from "../../assets/fonts";
 import {BarkTooltipArea} from "../../ui/BarkTooltipArea";
 
-const inLineupIconUrl = require("../../../assets/dd/images/campaign/town/roster/party.icon_roster.png");
+const inLineupIconUrl = require("../../assets/dd/images/campaign/town/roster/party.icon_roster.png");
 
 const sounds = {
-  dismiss: {src: require("../../../assets/dd/audio/ui_town_char_remove.ogg")}
+  dismiss: {src: require("../../assets/dd/audio/ui_town_char_remove.ogg")}
 };
 
 @observer

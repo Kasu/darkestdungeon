@@ -78,9 +78,9 @@ export class Stats {
     return [
       this.health, this.stress,
       ...this.base,
-      ...this.resistances.values(),
-      ...this.statuses.values(),
-      ...this.statusDamageScales.values()
+      ...Array.from(this.resistances.values()),
+      ...Array.from(this.statuses.values()),
+      ...Array.from(this.statusDamageScales.values())
     ];
   }
 

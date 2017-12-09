@@ -3,7 +3,7 @@ import {Column, commonColors, commonStyleFn, Row} from "../config/styles";
 import {questIconSize, QuestIcon} from "./QuestIcon";
 import {Quest, QuestId} from "../state/types/Quest";
 import {css, StyleSheet} from "aphrodite";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 
 export class DungeonBreakdown extends React.Component<{
   name: string,
@@ -50,7 +50,7 @@ export class DungeonBreakdown extends React.Component<{
 
 const styles = StyleSheet.create({
   progress: {
-    backgroundImage: `url(${require("../../assets/dd/images/campaign/town/quest_select/dungeon_progressionbar.png")})`,
+    backgroundImage: `url(${require("../assets/dd/images/campaign/town/quest_select/dungeon_progressionbar.png")})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     height: 84,

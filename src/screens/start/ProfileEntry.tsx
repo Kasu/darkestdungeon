@@ -8,17 +8,17 @@ import {commonColors, commonStyleFn, commonStyles, Row} from "../../config/style
 import {observable} from "mobx";
 import {LineButton} from "../../ui/LineButton";
 import {InputField} from "../../ui/InputField";
-import {fonts} from "../../../assets/fonts";
+import {fonts} from "../../assets/fonts";
 import {AppStateComponent} from "../../AppStateComponent";
 import {Difficulty} from "../../state/types/Difficulty";
 
 const difficultyIcons = {
-  [Difficulty.Radiant]: require("../../../assets/dd/images/modes/radiant/fe_flow/save_icon.png"),
-  [Difficulty.Stygian]: require("../../../assets/dd/images/modes/new_game_plus/fe_flow/save_icon.png"),
-  [Difficulty.Darkest]: require("../../../assets/dd/images/modes/base/fe_flow/save_icon.png")
+  [Difficulty.Radiant]: require("../../assets/dd/images/modes/radiant/fe_flow/save_icon.png"),
+  [Difficulty.Stygian]: require("../../assets/dd/images/modes/new_game_plus/fe_flow/save_icon.png"),
+  [Difficulty.Darkest]: require("../../assets/dd/images/modes/base/fe_flow/save_icon.png")
 };
 
-const deleteIcon = require("../../../assets/dd/images/fe_flow/nukesave_button.png");
+const deleteIcon = require("../../assets/dd/images/fe_flow/nukesave_button.png");
 
 @observer
 export class ProfileEntry extends AppStateComponent<{

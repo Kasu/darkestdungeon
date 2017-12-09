@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   slot: {
     width: rosterEntryAvatarSize,
     height: rosterEntryAvatarSize,
-    backgroundImage: `url(${require("../../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png")})`,
+    backgroundImage: `url(${require("../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png")})`,
     ...commonStyleFn.singleBackground(),
 
     ":not(:last-child)": {

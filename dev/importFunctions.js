@@ -8,7 +8,7 @@ const {split_fsb, extract_fsb, clean_audio_names} = require("darkest_dungeon_too
 // Paths
 
 const folders = {
-  localDDAssets: path.join(__dirname, "../assets/dd"),
+  localDDAssets: path.join(__dirname, "../src/assets/dd"),
   fsbExtractBinaryPath: path.join(__dirname, "../bin/extract_fsb.exe"),
   steam: process.argv[2],
 };

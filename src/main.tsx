@@ -3,7 +3,7 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import * as WebFontLoader from "webfontloader";
 import {css, StyleSheet} from "aphrodite";
-import {fonts} from "../assets/fonts";
+import {fonts} from "./assets/fonts";
 import {AppState} from "./state/AppState";
 import {App} from "./App";
 import {addStaticState} from "./config/general";
@@ -57,15 +57,12 @@ const styles = StyleSheet.create({
   root: {
     width: "100%",
     height: "100%"
-  },
-  stats: {
-    right: 0,
-    bottom: 0
   }
 });
 
 const rootEl = document.createElement("div");
 rootEl.className = css(styles.root);
+document.body.appendChild(rootEl);
 
 @DragDropContext(HTML5Backend)
 class AppContainer extends React.Component {
@@ -89,12 +86,34 @@ function render (Component: any) {
 
 render(App);
 
-document.body.appendChild(rootEl);
+declare const FuseBox: any;
+if (process.env.NODE_ENV !== "production") {
+  // Webpack HMR
+  if (module.hot) {
+    module.hot.accept("./App", () => {
+      const NextApp = require<{ App: typeof App }>("./App").App;
+      render(NextApp);
+    });
+  }
 
-// Set up HMR
-if ((module as any).hot) {
-  (module as any).hot.accept("./App", () => {
-    const NextApp = require<{App: typeof App}>("./App").App;
-    render(NextApp);
-  });
+  // FuseBox HMR
+  if (typeof FuseBox !== "undefined") {
+    const customizedHMRPlugin = {
+      hmrUpdate: ({type, path, content}: any) => {
+        if (type === "js") {
+          FuseBox.flush();
+          FuseBox.dynamic(path, content);
+          if (FuseBox.mainFile) {
+            FuseBox.import(FuseBox.mainFile);
+          }
+          return true;
+        }
+      }
+    };
+
+    if (!process.env.hmrRegistered) {
+      process.env.hmrRegistered = "yes";
+      FuseBox.addPlugin(customizedHMRPlugin);
+    }
+  }
 }

@@ -19,7 +19,6 @@ time, mark, audio, video, input {
     font-size: 100%;
     line-height: 1.2em;
     user-select: none;
-    cursor: url(../assets/dd/images/cursors/arrow.png), default;
 
     /* YOGA standard https://facebook.github.io/yoga */
     box-sizing: border-box;

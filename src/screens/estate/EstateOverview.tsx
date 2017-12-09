@@ -17,8 +17,8 @@ import {Input} from "../../config/Input";
 import {Layer} from "../../ui/Layer";
 
 const sounds = {
-  continueToMap: {src: require("../../../assets/dd/audio/ui_town_button_embark.ogg"), volume: 0.7},
-  showBuilding: {src: require("../../../assets/dd/audio/ui_town_char_rollover_03.ogg"), volume: 1.5}
+  continueToMap: {src: require("../../assets/dd/audio/ui_town_button_embark.ogg"), volume: 0.7},
+  showBuilding: {src: require("../../assets/dd/audio/ui_town_char_rollover_03.ogg"), volume: 1.5}
 };
 
 export class EstateOverview extends AppStateComponent<{
@@ -65,7 +65,7 @@ export class EstateOverview extends AppStateComponent<{
       <EstateTemplate
         path={this.props.path}
         coverBackgroundBottom={true}
-        background={require("../../../assets/dd/images/loading_screen/loading_screen.town_visit.png")}
+        background={require("../../assets/dd/images/loading_screen/loading_screen.town_visit.png")}
         continueSound={sounds.continueToMap}
         continueLabel="Embark"
         continuePath="estateDungeons">

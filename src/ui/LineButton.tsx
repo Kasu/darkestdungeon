@@ -8,8 +8,8 @@ import {commonColors} from "../config/styles";
 import {AppStateComponent} from "../AppStateComponent";
 
 const sounds = {
-  hover: {src: require("../../assets/dd/audio/ui_shr_button_mouse_over.ogg"), volume: 0.7},
-  click: {src: require("../../assets/dd/audio/ui_shr_button_click.ogg"), volume: 0.5}
+  hover: {src: require("../assets/dd/audio/ui_shr_button_mouse_over.ogg"), volume: 0.7},
+  click: {src: require("../assets/dd/audio/ui_shr_button_click.ogg"), volume: 0.5}
 };
 
 @observer

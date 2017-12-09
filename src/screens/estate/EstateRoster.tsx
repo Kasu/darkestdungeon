@@ -14,14 +14,14 @@ import {screenFooterHeight} from "../ScreenFooter";
 import {Layer} from "../../ui/Layer";
 
 const heroCompareIcons = {
-  level: require("../../../assets/dd/images/campaign/town/roster/roster_sort_level.png"),
-  stress: require("../../../assets/dd/images/campaign/town/roster/roster_sort_stress.png"),
-  className: require("../../../assets/dd/images/campaign/town/roster/roster_sort_class.png"),
-  activity: require("../../../assets/dd/images/campaign/town/roster/roster_sort_building.png")
+  level: require("../../assets/dd/images/campaign/town/roster/roster_sort_level.png"),
+  stress: require("../../assets/dd/images/campaign/town/roster/roster_sort_stress.png"),
+  className: require("../../assets/dd/images/campaign/town/roster/roster_sort_class.png"),
+  activity: require("../../assets/dd/images/campaign/town/roster/roster_sort_building.png")
 };
 
 const sounds = {
-  activeHeroChanged: {src: require("../../../assets/dd/audio/ui_town_char_rollover_03.ogg"), volume: 1.5}
+  activeHeroChanged: {src: require("../../assets/dd/audio/ui_town_char_rollover_03.ogg"), volume: 1.5}
 };
 
 @observer
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     paddingRight: grid.paddingRight,
     paddingBottom: grid.gutter * 2 + grid.border,
 
-    backgroundImage: `url(${require("../../../assets/images/stick.png")})`,
+    backgroundImage: `url(${require("../../assets/images/stick.png")})`,
     backgroundSize: "contain",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "100% 100%"

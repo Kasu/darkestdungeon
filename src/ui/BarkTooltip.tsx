@@ -22,8 +22,8 @@ export class BarkTooltip extends AppStateComponent<{
   static finishWaitTimePerWord = 250;
   static finishWaitTimeMin = 3000;
   static letterInterval = 70;
-  static letterSound = {src: [require("../../assets/dd/audio/ui_shr_text_loop.ogg")], volume: 0.4};
-  static popupSound = {src: [require("../../assets/dd/audio/ui_shr_text_popup.ogg")]};
+  static letterSound = {src: [require("../assets/dd/audio/ui_shr_text_loop.ogg")], volume: 0.4};
+  static popupSound = {src: [require("../assets/dd/audio/ui_shr_text_popup.ogg")]};
 
   componentWillMount () {
     this.bark(this.props.text);

@@ -1,7 +1,7 @@
 import * as React from "react";
 import {observable} from "mobx";
 import {observer} from "mobx-react";
-import {SpriteInfo} from "../../assets/SpriteInfo";
+import {SpriteInfo} from "../assets/SpriteInfo";
 import {Bounds, Size} from "../Bounds";
 import {SizeObserver} from "./SizeObserver";
 import {css} from "aphrodite";

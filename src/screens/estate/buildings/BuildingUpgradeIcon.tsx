@@ -13,7 +13,7 @@ import {grid} from "../../../config/Grid";
 import {Icon} from "../../../ui/Icon";
 
 const upgradePurchaseSound: IHowlProperties = {
-  src: require("../../../../assets/dd/audio/town_gen_building_upgrade.ogg"),
+  src: require("../../../assets/dd/audio/town_gen_building_upgrade.ogg"),
   volume: 0.5
 };
 
@@ -83,9 +83,9 @@ export class BuildingUpgradeIcon extends AppStateComponent<{
 }
 
 export const upgradeIconUrls = {
-  owned: require("../../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchased_icon.png"),
-  locked: require("../../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_locked_icon.png"),
-  available: require("../../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchasable_icon.png")
+  owned: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchased_icon.png"),
+  locked: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_locked_icon.png"),
+  available: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchasable_icon.png")
 };
 
 export const stepSize = grid.ySpan(0.75);

@@ -23,7 +23,7 @@ export class SkillIcon extends React.Component<{
 
   render () {
     const lockSymbol = this.props.skill.level === 0 && (
-      <Icon size={grid.ySpan(1)} src={require("../../assets/dd/images/shared/character/lockedskill.png")}/>
+      <Icon size={grid.ySpan(1)} src={require("../assets/dd/images/shared/character/lockedskill.png")}/>
     );
 
     const isSelected = this.props.isSelected !== undefined ?

@@ -78,13 +78,13 @@ export class DungeonControlPanel extends React.Component<{
                 <Icon
                   width={grid.xSpan(0.5)}
                   height={grid.ySpan(2)}
-                  src={require("../../../assets/dd/images/scrolls/use_inventory.png")}
+                  src={require("../../assets/dd/images/scrolls/use_inventory.png")}
                   onClick={() => this.isMapVisible = false}
                 />
                 <Icon
                   width={grid.xSpan(0.5)}
                   height={grid.ySpan(2)}
-                  src={require("../../../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_map.png")}
+                  src={require("../../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_map.png")}
                   onClick={() => this.isMapVisible = true}
                 />
               </div>

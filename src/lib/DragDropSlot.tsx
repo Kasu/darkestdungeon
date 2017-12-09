@@ -6,9 +6,9 @@ import {AppStateComponent} from "../AppStateComponent";
 const {DropTarget, DragSource} = require("react-dnd");
 
 const genericSounds = {
-  drag: {src: require("../../assets/dd/audio/ui_town_button_mouseover_2.ogg"), volume: 1.2},
-  drop: {src: require("../../assets/dd/audio/ui_shr_button_mouse_over_alt.ogg"), volume: 0.5},
-  cancel: {src: require("../../assets/dd/audio/ui_town_infest_mouseover_none.ogg"), volume: 0.2}
+  drag: {src: require("../assets/dd/audio/ui_town_button_mouseover_2.ogg"), volume: 1.2},
+  drop: {src: require("../assets/dd/audio/ui_shr_button_mouse_over_alt.ogg"), volume: 0.5},
+  cancel: {src: require("../assets/dd/audio/ui_town_infest_mouseover_none.ogg"), volume: 0.2}
 };
 
 const SourceSpec = {

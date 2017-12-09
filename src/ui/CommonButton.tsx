@@ -1,6 +1,6 @@
 import * as React from "react";
 import {StyleSheet} from "aphrodite";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 import {grid} from "../config/Grid";
 import {commonColors} from "../config/styles";
 import {LineButton} from "./LineButton";

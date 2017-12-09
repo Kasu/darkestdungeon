@@ -46,13 +46,13 @@ export class EstateProvision extends AppStateComponent<{path: Path}> {
   render () {
     return (
       <EstateTemplate
-        background={require("../../../assets/dd/images/campaign/town/provision/provision.background.png")}
+        background={require("../../assets/dd/images/campaign/town/provision/provision.background.png")}
         path={this.props.path}
         backPath="estateDungeons"
         roster={false}
         inventory={false}
         continueCheck={() => this.checkItemsBeforeContinue()}
-        continueSound={{src: require("../../../assets/dd/audio/ui_town_button_setoff.ogg"), volume: 0.7}}
+        continueSound={{src: require("../../assets/dd/audio/ui_town_button_setoff.ogg"), volume: 0.7}}
         continueLabel="Embark"
         continuePath="dungeonOverview">
         <Popup classStyle={styles.fakePopup} sounds={false}>

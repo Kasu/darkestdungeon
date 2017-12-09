@@ -15,12 +15,12 @@ import {screenFooterHeight} from "../screens/ScreenFooter";
 import {confirmIconUrl, Icon} from "./Icon";
 
 const iconUrls = {
-  up: require("../../assets/dd/images/campaign/town/heirloom_exchange/heirloom_exchange.arrow_up.png"),
-  down: require("../../assets/dd/images/campaign/town/heirloom_exchange/heirloom_exchange.arrow_down.png")
+  up: require("../assets/dd/images/campaign/town/heirloom_exchange/heirloom_exchange.arrow_up.png"),
+  down: require("../assets/dd/images/campaign/town/heirloom_exchange/heirloom_exchange.arrow_down.png")
 };
 
 const sounds = {
-  confirmTrade: {src: require("../../assets/dd/audio/ui_town_heirloomconfirm.ogg"), volume: 0.5}
+  confirmTrade: {src: require("../assets/dd/audio/ui_town_heirloomconfirm.ogg"), volume: 0.5}
 };
 
 @observer

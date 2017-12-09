@@ -13,8 +13,8 @@ import {BarkTooltipArea} from "../../../ui/BarkTooltipArea";
 import {TooltipSide} from "../../../lib/TooltipArea";
 import {randomizeItem} from "../../../lib/Helpers";
 
-const moreInfoIconUrl = require("../../../../assets/dd/images/shared/progression/more_info_icon.png");
-const lessInfoIconUrl = require("../../../../assets/dd/images/shared/progression/less_info_icon.png");
+const moreInfoIconUrl = require("../../../assets/dd/images/shared/progression/more_info_icon.png");
+const lessInfoIconUrl = require("../../../assets/dd/images/shared/progression/less_info_icon.png");
 const npcBarkWaitTime = 1000;
 
 @observer

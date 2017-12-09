@@ -51,7 +51,7 @@ export class DungeonCharacterSummary extends React.Component<{
               <Icon
                 width={grid.xSpan(0.25)}
                 height={grid.ySpan(1)}
-                src={require("../../../assets/dd/images/panels/icons_ability/ability_pass.png")}
+                src={require("../../assets/dd/images/panels/icons_ability/ability_pass.png")}
                 onClick={() => this.props.onSkillClicked(null)}
               />
             </TooltipArea>

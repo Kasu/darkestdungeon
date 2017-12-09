@@ -6,7 +6,7 @@ import {css, StyleSheet} from "aphrodite";
 import {grid} from "../config/Grid";
 import {LightMeter, lightMeterCenterWidth} from "./LightMeter";
 import {Sprite} from "../lib/Sprite";
-import {smoke} from "../../assets/sprites";
+import {smoke} from "../assets/sprites";
 
 @observer
 export class Torch extends React.Component<{

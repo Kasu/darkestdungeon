@@ -48,7 +48,7 @@ export class QuestHeader extends React.Component<{
           <Row>
             <Icon
               classStyle={styles.headerIcon}
-              src={require("../../assets/dd/images/overlays/quest_log.png")}
+              src={require("../assets/dd/images/overlays/quest_log.png")}
             />
             <TooltipArea tip={this.props.quest.objective.description}>
               {this.props.quest.info.type}

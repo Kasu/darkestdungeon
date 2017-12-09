@@ -1,5 +1,7 @@
 .idea
 .vscode
+.fusebox
 dist
 node_modules
 assets/dd
+src/assets/dd

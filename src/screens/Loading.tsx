@@ -3,7 +3,7 @@ import {observable} from "mobx";
 import {Path} from "../state/types/Path";
 import {observer} from "mobx-react";
 import {Sprite} from "../lib/Sprite";
-import {smoke} from "../../assets/sprites";
+import {smoke} from "../assets/sprites";
 import {css, StyleSheet} from "aphrodite";
 import {AppStateComponent} from "../AppStateComponent";
 import {grid} from "../config/Grid";
@@ -18,7 +18,7 @@ export class Loading extends AppStateComponent<{target: Path}> {
   private loadingMessage: string;
 
   @observable private isLoading: boolean;
-  @observable private backgroundUrl: any = require("../../assets/images/loading-bg.jpg");
+  @observable private backgroundUrl: any = require("../assets/images/loading-bg.jpg");
 
   async componentWillMount () {
     this.loadingMessage = randomizeItem(loadingMessages);

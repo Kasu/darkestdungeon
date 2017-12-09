@@ -7,12 +7,12 @@ import {QuestType} from "../state/types/QuestInfo";
 import {Icon} from "./Icon";
 
 const questTypeIcons = {
-  [QuestType.Explore]: require("../../assets/dd/images/campaign/town/quest_select/quest_select_explore_1.png"),
-  [QuestType.Hunt]: require("../../assets/dd/images/campaign/town/quest_select/quest_select_cleanse_5.png"),
-  [QuestType.Free]: require("../../assets/dd/images/campaign/town/quest_select/quest_select_gather_1.png")
+  [QuestType.Explore]: require("../assets/dd/images/campaign/town/quest_select/quest_select_explore_1.png"),
+  [QuestType.Hunt]: require("../assets/dd/images/campaign/town/quest_select/quest_select_cleanse_5.png"),
+  [QuestType.Free]: require("../assets/dd/images/campaign/town/quest_select/quest_select_gather_1.png")
 };
 
-const clickSound = {src: require("../../assets/dd/audio/ui_town_dun_select.ogg"), volume: 0.6};
+const clickSound = {src: require("../assets/dd/audio/ui_town_dun_select.ogg"), volume: 0.6};
 
 export class QuestIcon extends React.Component<{
   quest: Quest,
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
       marginTop: -grid.gutter,
       marginLeft: -grid.gutter,
       content: "' '",
-      backgroundImage: `url(${require("../../assets/images/splash2.png")})`,
+      backgroundImage: `url(${require("../assets/images/splash2.png")})`,
       pointerEvents: "none"
     }
   },

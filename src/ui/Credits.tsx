@@ -2,7 +2,7 @@ import * as React from "react";
 import {css, StyleSheet} from "aphrodite";
 import {commonColors, commonStyleFn, commonStyles} from "../config/styles";
 import {grid} from "../config/Grid";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 import {credits} from "../config/credits";
 import {RainbowText} from "./RainbowText";
 
@@ -98,7 +98,7 @@ function parseEntry (entry: string) {
 const styles = StyleSheet.create({
   credits: {
     flex: 1,
-    background: `url(${require("../../assets/dd/images/shared/credits/credits.background.png")})`,
+    background: `url(${require("../assets/dd/images/shared/credits/credits.background.png")})`,
     ...commonStyleFn.singleBackground(),
     textAlign: "center",
     paddingTop: grid.paddingTop,

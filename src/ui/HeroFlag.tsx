@@ -9,7 +9,7 @@ import {Experienced} from "../state/types/Experienced";
 import {commonColors, commonStyleFn} from "../config/styles";
 import {grid} from "../config/Grid";
 import {CommonHeader} from "./CommonHeader";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 
 @observer
 export class HeroFlag extends React.Component<{

@@ -121,9 +121,9 @@ export class TreatmentSlot extends React.Component<{
 }
 
 const slotIconUrls = {
-  background: require("../../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png"),
-  highlight: require("../../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.backgroundhightlight.png"),
-  rejected: require("../../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.locked_for_hero.png")
+  background: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png"),
+  highlight: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.backgroundhightlight.png"),
+  rejected: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.locked_for_hero.png")
 };
 
 const slotSize = grid.ySpan(2);

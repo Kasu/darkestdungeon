@@ -27,8 +27,8 @@ export type PopupProps = {
 export class Popup extends AppStateComponent<PopupProps> {
   static defaultProps = {
     sounds: true,
-    openSound: {src: require("../../assets/dd/audio/ui_town_button_page_open.ogg"), volume: 0.8},
-    closeSound: {src: require("../../assets/dd/audio/ui_town_button_page_close.ogg"), volume: 0.8}
+    openSound: {src: require("../assets/dd/audio/ui_town_button_page_open.ogg"), volume: 0.8},
+    closeSound: {src: require("../assets/dd/audio/ui_town_button_page_close.ogg"), volume: 0.8}
   };
 
   private stopWaitingForClose: () => void;
@@ -81,7 +81,7 @@ export class Popup extends AppStateComponent<PopupProps> {
     const hasCloseButton = this.props.handle && (this.props.closeable || isDismissable);
     const closeButton = hasCloseButton && (
       <Icon
-        src={require("../../assets/dd/images/shared/progression/progression_close.png")}
+        src={require("../assets/dd/images/shared/progression/progression_close.png")}
         classStyle={styles.closeButton}
         onClick={() => this.props.handle.close()}>
         <InputBinding
@@ -113,7 +113,7 @@ export class Popup extends AppStateComponent<PopupProps> {
   }
 }
 
-const promptIcon = require("../../assets/dd/images/modes/base/fe_flow/mode_select_dialog_icon.png");
+const promptIcon = require("../assets/dd/images/modes/base/fe_flow/mode_select_dialog_icon.png");
 export class Prompt extends React.Component<
   PopupProps & {
   query?: any,
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     ...commonStyleFn.dock("topRight", -splashSize / 2),
     width: splashSize,
     height: splashSize,
-    background: `url(${require("../../assets/images/splash1.png")})`,
+    background: `url(${require("../assets/images/splash1.png")})`,
     backgroundSize: "contain",
     backgroundPosition: "50% 50%",
     backgroundRepeat: "no-repeat",

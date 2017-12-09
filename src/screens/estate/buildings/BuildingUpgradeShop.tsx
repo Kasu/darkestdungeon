@@ -8,7 +8,7 @@ import {BuildingUpgradeCategory} from "./BuildingUpgradeCategory";
 import {css, StyleSheet} from "aphrodite";
 import {grid} from "../../../config/Grid";
 import Color = require("color");
-import {fonts} from "../../../../assets/fonts";
+import {fonts} from "../../../assets/fonts";
 import {HorizontalDivider} from "../../../ui/HorizontalDivider";
 
 export class BuildingUpgradeShop extends AppStateComponent<{

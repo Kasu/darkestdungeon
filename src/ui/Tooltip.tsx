@@ -2,7 +2,7 @@ import * as React from "react";
 import {css, StyleSheet} from "aphrodite";
 import {commonColors, commonStyleFn} from "../config/styles";
 import {grid} from "../config/Grid";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 
 export class Tooltip extends React.Component <{
   classStyle?: any

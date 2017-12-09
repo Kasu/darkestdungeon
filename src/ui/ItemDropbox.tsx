@@ -13,12 +13,12 @@ import {ItemType} from "../state/types/ItemInfo";
 import {ObservableArray} from "mobx/lib/types/observablearray";
 
 const itemSounds: {[key: string]: IHowlProperties} = {
-  [ItemType.Heirloom]: {src: require("../../assets/dd/audio/ui_dun_loot_take_heirloom.ogg"), volume: 0.2},
-  [ItemType.Treasure]: {src: require("../../assets/dd/audio/ui_dun_loot_take_jewelry.ogg"), volume: 0.2},
-  [ItemType.Consumable]: {src: require("../../assets/dd/audio/ui_dun_loot_take_provisions.ogg"), volume: 0.2},
-  [ItemType.Armor]: {src: require("../../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
-  [ItemType.Weapon]: {src: require("../../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
-  [ItemType.Trinket]: {src: require("../../assets/dd/audio/ui_dun_trink_equip.ogg"), volume: 0.4}
+  [ItemType.Heirloom]: {src: require("../assets/dd/audio/ui_dun_loot_take_heirloom.ogg"), volume: 0.2},
+  [ItemType.Treasure]: {src: require("../assets/dd/audio/ui_dun_loot_take_jewelry.ogg"), volume: 0.2},
+  [ItemType.Consumable]: {src: require("../assets/dd/audio/ui_dun_loot_take_provisions.ogg"), volume: 0.2},
+  [ItemType.Armor]: {src: require("../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
+  [ItemType.Weapon]: {src: require("../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
+  [ItemType.Trinket]: {src: require("../assets/dd/audio/ui_dun_trink_equip.ogg"), volume: 0.4}
 };
 
 @observer

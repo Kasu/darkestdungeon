@@ -9,7 +9,7 @@ import {routes} from "./config/routes";
 import {SizeObserver} from "./lib/SizeObserver";
 import {computed, IReactionDisposer, reaction} from "mobx";
 import {appStateContext} from "./AppStateComponent";
-import {fonts} from "../assets/fonts";
+import {fonts} from "./assets/fonts";
 import {grid} from "./config/Grid";
 import {InputRoot} from "./state/InputState";
 import {GridOverlay} from "./GridOverlay";
@@ -22,7 +22,7 @@ import {estateContentPosition} from "./screens/estate/EstateTemplate";
 import {Layer} from "./ui/Layer";
 
 const sounds = {
-  closeRoutePopup: {src: require("../assets/dd/audio/ui_town_building_zoomout.ogg")}
+  closeRoutePopup: {src: require("./assets/dd/audio/ui_town_building_zoomout.ogg")}
 };
 
 @observer
@@ -169,7 +169,8 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     background: "black",
     color: commonColors.lightGray,
-    fontSize: grid.fontSize(0.5)
+    fontSize: grid.fontSize(0.5),
+    cursor: `url(${require("./assets/dd/images/cursors/arrow.png")}), auto`
   },
 
   portal: {

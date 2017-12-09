@@ -4,7 +4,7 @@ import {commonColors, commonStyleFn} from "../config/styles";
 import {VerticalOutlineBox} from "./VerticalOutlineBox";
 import {grid} from "../config/Grid";
 import Color = require("color");
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 
 export class CommonHeader extends React.Component<{
   label?: string,

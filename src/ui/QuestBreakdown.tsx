@@ -20,7 +20,7 @@ export class QuestBreakdown extends React.Component<{
         <LargeHeader
           classStyle={styles.header}
           label="Estate Map"
-          icon={require("../../assets/dd/images/campaign/town/quest_select/quest_select.icon.png")}
+          icon={require("../assets/dd/images/campaign/town/quest_select/quest_select.icon.png")}
         />
 
         <Section label={quest.info.type} color={commonColors.bloodRed}>

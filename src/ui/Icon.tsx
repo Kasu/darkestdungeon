@@ -26,11 +26,11 @@ export type IconProps = {
 };
 
 export const confirmIconUrl = require(
-  "../../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.confirm_button.png"
+  "../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.confirm_button.png"
 );
 
 export const cancelIconUrl = require(
-  "../../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.cancel_button.png"
+  "../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.cancel_button.png"
 );
 
 @observer

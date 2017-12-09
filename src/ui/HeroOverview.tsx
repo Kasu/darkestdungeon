@@ -16,18 +16,18 @@ import {EquipmentDropbox} from "./EquipmentDropbox";
 import {SkillIcon} from "./SkillIcon";
 import {grid} from "../config/Grid";
 import {Icon} from "./Icon";
-import {fonts} from "../../assets/fonts";
+import {fonts} from "../assets/fonts";
 import {TooltipArea} from "../lib/TooltipArea";
 import {BuildingMessage} from "../screens/estate/buildings/BuildingMessage";
 import {InputField} from "./InputField";
 import {AppStateComponent} from "../AppStateComponent";
 
-const dismissIconUrl = require("../../assets/dd/images/shared/character/icon_dismiss.png");
+const dismissIconUrl = require("../assets/dd/images/shared/character/icon_dismiss.png");
 
 const sounds = {
-  equipSkill: {src: require("../../assets/dd/audio/ui_town_char_skill_equip.ogg"), volume: 0.6},
-  unequipSkill: {src: require("../../assets/dd/audio/ui_town_char_skill_unequip.ogg"), volume: 0.6},
-  skillLocked: {src: require("../../assets/dd/audio/ui_town_button_click_locked.ogg"), volume: 0.6}
+  equipSkill: {src: require("../assets/dd/audio/ui_town_char_skill_equip.ogg"), volume: 0.6},
+  unequipSkill: {src: require("../assets/dd/audio/ui_town_char_skill_unequip.ogg"), volume: 0.6},
+  skillLocked: {src: require("../assets/dd/audio/ui_town_button_click_locked.ogg"), volume: 0.6}
 };
 
 @observer
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     padding: `${grid.ySpan(1) + grid.gutter}px ${grid.xSpan(1)}px`,
     paddingBottom: 0,
     paddingLeft: leftWidth,
-    backgroundImage: `url(${require("../../assets/dd/images/dungeons/town/town.room_wall.start.png")})`,
+    backgroundImage: `url(${require("../assets/dd/images/dungeons/town/town.room_wall.start.png")})`,
     ...commonStyleFn.singleBackground()
   },
 

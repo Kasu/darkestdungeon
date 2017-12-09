@@ -5,12 +5,12 @@ import {AppStateComponent} from "../AppStateComponent";
 import {Credits} from "./Credits";
 
 export const pauseIcon = require(
-  "../../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_candle.png"
+  "../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_candle.png"
 );
 
 const sounds = {
-  open: {src: require("../../assets/dd/audio/ui_shr_pause.ogg"), volume: 0.75},
-  close: {src: require("../../assets/dd/audio/ui_shr_unpause.ogg"), volume: 0.75}
+  open: {src: require("../assets/dd/audio/ui_shr_pause.ogg"), volume: 0.75},
+  close: {src: require("../assets/dd/audio/ui_shr_unpause.ogg"), volume: 0.75}
 };
 
 export class PauseMenu extends AppStateComponent<

@@ -15,19 +15,19 @@ import {TooltipArea} from "../../lib/TooltipArea";
 import {Icon} from "../../ui/Icon";
 
 export const inventoryIcon = require(
-  "../../../assets/dd/images/campaign/town/realm_inventory/realm_inventory.icon.png"
+  "../../assets/dd/images/campaign/town/realm_inventory/realm_inventory.icon.png"
 );
 const unequipIcon = require(
-  "../../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_unequip_trinkets.png"
+  "../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_unequip_trinkets.png"
 );
 const itemCompareIcons = {
-  name: require("../../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_alphabetical.png"),
-  type: require("../../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_class.png")
+  name: require("../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_alphabetical.png"),
+  type: require("../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_class.png")
 };
 
 const sounds = {
-  inventoryOpened: {src: require("../../../assets/dd/audio/ui_town_trinket_open.ogg"), volume: 0.7},
-  inventoryClosed: {src: require("../../../assets/dd/audio/ui_town_trinket_close.ogg"), volume: 0.7}
+  inventoryOpened: {src: require("../../assets/dd/audio/ui_town_trinket_open.ogg"), volume: 0.7},
+  inventoryClosed: {src: require("../../assets/dd/audio/ui_town_trinket_close.ogg"), volume: 0.7}
 };
 
 @observer

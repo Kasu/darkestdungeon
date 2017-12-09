@@ -22,11 +22,11 @@ import {Route} from "../state/types/Route";
 import {Profile} from "../state/types/Profile";
 
 export const defaultEstateAmbience = new AmbienceDefinition(
-  {src: require("../../assets/dd/audio/amb_town_gen_base.ogg")},
+  {src: require("../assets/dd/audio/amb_town_gen_base.ogg")},
   [
-    {src: require("../../assets/dd/audio/amb_town_gen_base_os_01.ogg")},
-    {src: require("../../assets/dd/audio/amb_town_gen_base_os_02.ogg")},
-    {src: require("../../assets/dd/audio/amb_town_gen_base_os_03.ogg")}
+    {src: require("../assets/dd/audio/amb_town_gen_base_os_01.ogg")},
+    {src: require("../assets/dd/audio/amb_town_gen_base_os_02.ogg")},
+    {src: require("../assets/dd/audio/amb_town_gen_base_os_03.ogg")}
   ]
 );
 
@@ -63,12 +63,12 @@ export const routes: {[key: string]: Route} = {
 
   estateOverview: new Route({
     title: () => "Hamlet",
-    image: () => require("../../assets/dd/images/loading_screen/loading_screen.town_visit.png"),
+    image: () => require("../assets/dd/images/loading_screen/loading_screen.town_visit.png"),
     rerouter: estateLoadingRerouter,
     component: EstateOverview,
     music: () => {
       return {
-        src: require("../../assets/dd/audio/mus_town_stemmed.ogg"),
+        src: require("../assets/dd/audio/mus_town_stemmed.ogg"),
         volume: 0.25
       };
     },
@@ -78,118 +78,118 @@ export const routes: {[key: string]: Route} = {
       "Graveyard": new Route({
         component: Graveyard,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_graveyard.ogg")},
+          {src: require("../assets/dd/audio/amb_town_graveyard.ogg")},
           [
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_01.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_02.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_03.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_04.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_05.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_06.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_07.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_09.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_10.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_11.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_12.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_13.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_14.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_15.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_16.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_17.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_18.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_19.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_graveyard_os_20.ogg")}
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_01.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_02.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_03.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_04.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_05.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_06.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_07.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_09.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_10.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_11.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_12.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_13.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_14.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_15.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_16.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_17.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_18.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_19.ogg")},
+            {src: require("../assets/dd/audio/amb_town_graveyard_os_20.ogg")}
           ]
         )
       }),
       "Tavern": new Route({
         component: Tavern,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_tavern.ogg")},
+          {src: require("../assets/dd/audio/amb_town_tavern.ogg")},
           [
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_01.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_02.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_03.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_04.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_05.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_06.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_07.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_08.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_09.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_bar_10.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_01.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_02.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_03.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_04.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_05.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_06.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_07.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_08.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_09.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_tavern_os_chair_10.ogg")}
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_01.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_02.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_03.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_04.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_05.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_06.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_07.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_08.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_09.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_bar_10.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_01.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_02.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_03.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_04.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_05.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_06.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_07.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_08.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_09.ogg")},
+            {src: require("../assets/dd/audio/amb_town_tavern_os_chair_10.ogg")}
           ]
         )
       }),
       "Sanitarium": new Route({
         component: Sanitarium,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_sanitarium.ogg")},
+          {src: require("../assets/dd/audio/amb_town_sanitarium.ogg")},
           [
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_01.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_02.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_03.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_04.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_05.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_06.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_07.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_08.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_09.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_10.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_11.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_12.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_13.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_sanitarium_os_gen_14.ogg")}
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_01.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_02.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_03.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_04.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_05.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_06.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_07.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_08.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_09.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_10.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_11.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_12.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_13.ogg")},
+            {src: require("../assets/dd/audio/amb_town_sanitarium_os_gen_14.ogg")}
           ]
         )
       }),
       "Abbey": new Route({
         component: Abbey,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_abbey.ogg")},
+          {src: require("../assets/dd/audio/amb_town_abbey.ogg")},
           [
-            {src: require("../../assets/dd/audio/amb_town_abbey_os_chants.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_abbey_os_whispers.ogg")}
+            {src: require("../assets/dd/audio/amb_town_abbey_os_chants.ogg")},
+            {src: require("../assets/dd/audio/amb_town_abbey_os_whispers.ogg")}
           ]
         )
       }),
       "Guild": new Route({
         component: Guild,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_guild.ogg")}
+          {src: require("../assets/dd/audio/amb_town_guild.ogg")}
         )
       }),
       "Blacksmith": new Route({
         component: Blacksmith,
         ambience: () => new AmbienceDefinition(
-          {src: require("../../assets/dd/audio/amb_town_blacksmith.ogg")},
+          {src: require("../assets/dd/audio/amb_town_blacksmith.ogg")},
           [
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_01.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_02.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_03.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_04.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_05.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_06.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_07.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_08.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_09.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_10.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_11.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_12.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_13.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_14.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_15.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_16.ogg")},
-            {src: require("../../assets/dd/audio/amb_town_blacksmith_os_17.ogg")}
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_01.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_02.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_03.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_04.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_05.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_06.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_07.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_08.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_09.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_10.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_11.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_12.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_13.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_14.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_15.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_16.ogg")},
+            {src: require("../assets/dd/audio/amb_town_blacksmith_os_17.ogg")}
           ]
         )
       })
@@ -203,28 +203,28 @@ export const routes: {[key: string]: Route} = {
     component: EstateDungeons,
     music: () => routes.estateOverview.music.apply(this, arguments),
     ambience: () => new AmbienceDefinition(
-      {src: require("../../assets/dd/audio/amb_town2_gen_base.ogg")},
+      {src: require("../assets/dd/audio/amb_town2_gen_base.ogg")},
       [
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_01.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_02.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_03.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_04.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_05.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_06.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_07.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_08.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_09.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_10.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_11.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_12.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_13.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_14.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_15.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_16.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_17.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_18.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_19.ogg")},
-        {src: require("../../assets/dd/audio/amb_town2_gen_base_os_20.ogg")}
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_01.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_02.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_03.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_04.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_05.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_06.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_07.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_08.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_09.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_10.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_11.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_12.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_13.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_14.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_15.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_16.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_17.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_18.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_19.ogg")},
+        {src: require("../assets/dd/audio/amb_town2_gen_base_os_20.ogg")}
       ]
     )
   }),
@@ -247,10 +247,10 @@ export const routes: {[key: string]: Route} = {
     },
     rerouter: loadingRerouter,
     component: DungeonOverview,
-    ambience: () => require("../../assets/dd/audio/amb_dun_weald_base.ogg"),
+    ambience: () => require("../assets/dd/audio/amb_dun_weald_base.ogg"),
     music: (state: AppState) => {
       if (state.profiles.activeProfile.selectedQuest.inBattle) {
-        return require("../../assets/dd/audio/mus_combat_hallway_part_a.ogg");
+        return require("../assets/dd/audio/mus_combat_hallway_part_a.ogg");
       }
     }
   }),
