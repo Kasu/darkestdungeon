@@ -6,7 +6,7 @@ import {cpus} from "os";
 const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("webpack-html-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const WebpackManifestPlugin = require("webpack-manifest-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HappyPack = require("happypack");
@@ -82,7 +82,7 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
     // Most webpack configs are controlled by our options
     stats: options.stats,
     cache: options.cache,
-    devtool: options.sourceMaps ? "eval-source-map" : undefined,
+    devtool: options.sourceMaps ? "source-map" : undefined,
 
     // Determine which extensions to lazy-load and how to look for sources
     resolve: {
@@ -121,12 +121,12 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
     },
     plugins: compact([
       // Generate html entry point that automatically loads our bundles
-      new HtmlWebpackPlugin({filename: "index.html"}),
+      new HtmlWebpackPlugin({title: "Dankest Dungeon", filename: "index.html"}),
 
-      // Define the environment
       new webpack.DefinePlugin({
         "process.env": {
-          NODE_ENV: JSON.stringify(options.environment)
+          NODE_ENV: JSON.stringify(options.environment),
+          HMR: options.hmr
         }
       }),
 
@@ -139,6 +139,7 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
       }),
       //new webpack.NormalModuleReplacementPlugin(/^react?$/, require.resolve("react")),
       new ForkTsCheckerWebpackPlugin({
+        checkSyntacticErrors: true,
         tsconfig: path.resolve(__dirname, "tsconfig.json"),
         tslint: path.resolve(__dirname, "tslint.json"),
         workers: threadDistributionCount,
@@ -152,7 +153,10 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
           {path: "babel-loader", query: babelOptions},
           {path: "ts-loader", query: {
             happyPackMode: true,
-            transpileOnly: true // Disable type checker (ForksTsChecker is doing it in a separate thread)
+            transpileOnly: true, // Disable type checker (ForksTsChecker is doing it in a separate thread)
+            compilerOptions: {
+              sourceMap: options.sourceMaps
+            }
           }}
         ])
       }),
