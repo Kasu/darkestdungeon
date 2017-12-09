@@ -11,7 +11,6 @@ import {StaticState} from "./state/StaticState";
 import {barks} from "./config/barks";
 const HTML5Backend = require("react-dnd-html5-backend");
 const {DragDropContext} = require("react-dnd");
-const HotLoaderContainer = require("react-hot-loader").AppContainer;
 const TWEEN = require("tween.js");
 const queryString = require("query-string");
 
@@ -36,6 +35,12 @@ if (process.env.NODE_ENV !== "production") {
     if (customStartPath) {
       startPath = customStartPath;
     }
+  }
+  if (process.env.HMR) {
+    module.hot.accept("./App", () => {
+      const NextApp = require<{App: typeof App}>("./App").App;
+      render(NextApp);
+    });
   }
 }
 
@@ -65,55 +70,26 @@ rootEl.className = css(styles.root);
 document.body.appendChild(rootEl);
 
 @DragDropContext(HTML5Backend)
-class AppContainer extends React.Component {
+class AppContainer extends React.Component<{appComponent: typeof App}> {
   render () {
-    return (
-      <HotLoaderContainer>
-        {this.props.children}
-      </HotLoaderContainer>
-    );
+    const AppComponent = this.props.appComponent;
+    let composedApp = <AppComponent state={state} setupRoutes/>;
+
+    if (process.env.HMR) {
+      const HotLoaderContainer = require("react-hot-loader").AppContainer;
+      composedApp = (
+        <HotLoaderContainer>
+          {composedApp}
+        </HotLoaderContainer>
+      );
+    }
+
+    return composedApp;
   }
 }
 
-function render (Component: any) {
-  ReactDOM.render(
-    <AppContainer>
-      <Component state={state} setupRoutes/>
-    </AppContainer>,
-    rootEl
-  );
+function render (appComponent: typeof App) {
+  ReactDOM.render(<AppContainer appComponent={appComponent}/>, rootEl);
 }
 
 render(App);
-
-declare const FuseBox: any;
-if (process.env.NODE_ENV !== "production") {
-  // Webpack HMR
-  if (module.hot) {
-    module.hot.accept("./App", () => {
-      const NextApp = require<{ App: typeof App }>("./App").App;
-      render(NextApp);
-    });
-  }
-
-  // FuseBox HMR
-  if (typeof FuseBox !== "undefined") {
-    const customizedHMRPlugin = {
-      hmrUpdate: ({type, path, content}: any) => {
-        if (type === "js") {
-          FuseBox.flush();
-          FuseBox.dynamic(path, content);
-          if (FuseBox.mainFile) {
-            FuseBox.import(FuseBox.mainFile);
-          }
-          return true;
-        }
-      }
-    };
-
-    if (!process.env.hmrRegistered) {
-      process.env.hmrRegistered = "yes";
-      FuseBox.addPlugin(customizedHMRPlugin);
-    }
-  }
-}
