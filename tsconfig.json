@@ -7,6 +7,7 @@
     "baseUrl": ".",
     "allowJs": false,
     "checkJs": false,
+    "sourceMap": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
