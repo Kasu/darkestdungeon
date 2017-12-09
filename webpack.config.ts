@@ -6,7 +6,7 @@ import {cpus} from "os";
 const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("webpack-html-plugin");
-const MinifyPlugin = require("babel-minify-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
 const WebpackManifestPlugin = require("webpack-manifest-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 const HappyPack = require("happypack");
@@ -56,8 +56,13 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
     ...additionalOptions
   };
 
+  console.log("BuildOptions", JSON.stringify(options, null, 2));
+
   const sourceFolder = path.join(__dirname, "src");
-  const babelOptions = {presets: ["flow", "react", "stage-0"]};
+  const babelOptions = {
+    cacheDirectory: options.cache ? ".babel-cache" : undefined,
+    presets: ["flow", "react", "stage-0"]
+  };
 
   // (numberOfCpus - 1x current cpu) / 3x plugins needing threads
   const threadDistributionCount = Math.max(1, Math.floor((cpus().length - 1) / 3));
@@ -166,7 +171,7 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
       options.hmr && new HotModuleReplacementPlugin(),
       options.debug && new LoaderOptionsPlugin({debug: true}),
       options.analyzeBundles && new BundleAnalyzerPlugin({analyzerMode: "static"}),
-      options.minify && new MinifyPlugin()
+      options.minify && new UglifyJsPlugin({test: /\.js$/})
     ]),
     devServer: {
       hot: options.hmr

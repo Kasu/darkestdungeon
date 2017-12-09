@@ -1,7 +1,7 @@
 .idea
 .vscode
 .fusebox
+.babel-cache
 dist
 node_modules
-assets/dd
 src/assets/dd
