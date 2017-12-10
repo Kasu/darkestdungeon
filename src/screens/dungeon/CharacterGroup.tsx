@@ -1,12 +1,12 @@
-import {observer} from "mobx-react";
-import * as React from "react";
-import {Quest} from "../../state/types/Quest";
-import {Character} from "../../state/types/Character";
-import {DungeonSelections} from "./DungeonSelections";
-import {Hero} from "../../state/types/Hero";
-import {Row} from "../../config/styles";
-import {contains} from "../../lib/Helpers";
-import {CharacterModel} from "../../ui/CharacterModel";
+import {observer} from 'mobx-react';
+import * as React from 'react';
+import {Quest} from '../../state/types/Quest';
+import {Character} from '../../state/types/Character';
+import {DungeonSelections} from './DungeonSelections';
+import {Hero} from '../../state/types/Hero';
+import {Row} from '../../config/styles';
+import {contains} from '../../lib/Helpers';
+import {CharacterModel} from '../../ui/CharacterModel';
 
 @observer
 export class CharacterGroup extends React.Component<{

@@ -1,6 +1,6 @@
-import {randomizeItem, wait} from "../lib/Helpers";
-import {TokenOwner} from "./TokenOwner";
-import {action, observable} from "mobx";
+import {randomizeItem, wait} from '../lib/Helpers';
+import {TokenOwner} from './TokenOwner';
+import {action, observable} from 'mobx';
 
 export type BarkCallback = (bark: string) => Promise<any>;
 

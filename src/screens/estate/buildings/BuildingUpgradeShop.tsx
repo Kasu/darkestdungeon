@@ -1,15 +1,15 @@
-import * as React from "react";
-import {Column, commonColors, commonStyleFn, Row} from "../../../config/styles";
-import {BannerHeader} from "../../../ui/BannerHeader";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {findSubset} from "../../../lib/Helpers";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {BuildingUpgradeCategory} from "./BuildingUpgradeCategory";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../../../config/Grid";
-import Color = require("color");
-import {fonts} from "../../../assets/fonts";
-import {HorizontalDivider} from "../../../ui/HorizontalDivider";
+import * as React from 'react';
+import {Column, commonColors, commonStyleFn, Row} from '../../../config/styles';
+import {BannerHeader} from '../../../ui/BannerHeader';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {findSubset} from '../../../lib/Helpers';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {BuildingUpgradeCategory} from './BuildingUpgradeCategory';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../../../config/Grid';
+import * as Color from 'color';
+import {fonts} from '../../../assets/fonts';
+import {HorizontalDivider} from '../../../ui/HorizontalDivider';
 
 export class BuildingUpgradeShop extends AppStateComponent<{
   upgrades: BuildingInfo
@@ -22,11 +22,12 @@ export class BuildingUpgradeShop extends AppStateComponent<{
       categories.push(
         <BuildingUpgradeCategory key={category.key} category={category}/>
       );
-      if (index++ !== lastIndex) {
+      if (index !== lastIndex) {
         categories.push(
-          <HorizontalDivider key={"divider" + index}/>
+          <HorizontalDivider key={'divider' + index}/>
         );
       }
+      index += 1;
     });
 
     const shopUpgrades = this.props.upgrades.getItemsFlattened();
@@ -59,20 +60,20 @@ const styles = StyleSheet.create({
   upgradeShop: {
     flex: 1,
     padding: grid.gutter * 2,
-    background: "rgba(0, 0, 0, 0.8)",
+    background: 'rgba(0, 0, 0, 0.8)',
     marginRight: grid.gutter,
     paddingRight: grid.gutter * 2 + rightBorderSize,
     paddingLeft: grid.gutter,
 
-    ":after": {
-      ...commonStyleFn.dock("right"),
-      content: "' '",
+    ':after': {
+      ...commonStyleFn.dock('right'),
+      content: '" "',
       width: rightBorderSize,
       borderRadius: grid.border,
-      background: commonStyleFn.gradient("bottom", [
+      background: commonStyleFn.gradient('bottom', [
         [0, commonColors.gold],
         [25, new Color(commonColors.gold).darken(0.5)],
-        [100, "transparent"]
+        [100, 'transparent']
       ])
     }
   },

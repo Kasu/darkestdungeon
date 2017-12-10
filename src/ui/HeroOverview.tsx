@@ -1,33 +1,33 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {Popup, PopupProps} from "./Popups";
-import {css, StyleSheet} from "aphrodite";
-import {Column, commonColors, commonStyleFn, commonStyles, Row} from "../config/styles";
-import {QuirkText} from "./QuirkText";
-import {CommonHeader} from "./CommonHeader";
-import {PositionDots} from "./PositionDots";
-import {HeroFlag} from "./HeroFlag";
-import {CharacterModel} from "./CharacterModel";
-import {Hero} from "../state/types/Hero";
-import {StatsTextList} from "./StatsText";
-import {Skill} from "../state/types/Skill";
-import {heroNameMaxLength, heroNameMinLength, maxSelectedSkills} from "../config/general";
-import {EquipmentDropbox} from "./EquipmentDropbox";
-import {SkillIcon} from "./SkillIcon";
-import {grid} from "../config/Grid";
-import {Icon} from "./Icon";
-import {fonts} from "../assets/fonts";
-import {TooltipArea} from "../lib/TooltipArea";
-import {BuildingMessage} from "../screens/estate/buildings/BuildingMessage";
-import {InputField} from "./InputField";
-import {AppStateComponent} from "../AppStateComponent";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {Popup, PopupProps} from './Popups';
+import {css, StyleSheet} from 'aphrodite';
+import {Column, commonColors, commonStyleFn, commonStyles, Row} from '../config/styles';
+import {QuirkText} from './QuirkText';
+import {CommonHeader} from './CommonHeader';
+import {PositionDots} from './PositionDots';
+import {HeroFlag} from './HeroFlag';
+import {CharacterModel} from './CharacterModel';
+import {Hero} from '../state/types/Hero';
+import {StatsTextList} from './StatsText';
+import {Skill} from '../state/types/Skill';
+import {heroNameMaxLength, heroNameMinLength, maxSelectedSkills} from '../config/general';
+import {EquipmentDropbox} from './EquipmentDropbox';
+import {SkillIcon} from './SkillIcon';
+import {grid} from '../config/Grid';
+import {Icon} from './Icon';
+import {fonts} from '../assets/fonts';
+import {TooltipArea} from '../lib/TooltipArea';
+import {BuildingMessage} from '../screens/estate/buildings/BuildingMessage';
+import {InputField} from './InputField';
+import {AppStateComponent} from '../AppStateComponent';
 
-const dismissIconUrl = require("../assets/dd/images/shared/character/icon_dismiss.png");
+const dismissIconUrl = require('../assets/dd/images/shared/character/icon_dismiss.png');
 
 const sounds = {
-  equipSkill: {src: require("../assets/dd/audio/ui_town_char_skill_equip.ogg"), volume: 0.6},
-  unequipSkill: {src: require("../assets/dd/audio/ui_town_char_skill_unequip.ogg"), volume: 0.6},
-  skillLocked: {src: require("../assets/dd/audio/ui_town_button_click_locked.ogg"), volume: 0.6}
+  equipSkill: {src: require('../assets/dd/audio/ui_town_char_skill_equip.ogg'), volume: 0.6},
+  unequipSkill: {src: require('../assets/dd/audio/ui_town_char_skill_unequip.ogg'), volume: 0.6},
+  skillLocked: {src: require('../assets/dd/audio/ui_town_button_click_locked.ogg'), volume: 0.6}
 };
 
 @observer
@@ -111,7 +111,7 @@ export class HeroOverview extends AppStateComponent<
                     {hero.flaws.map((q) => <QuirkText key={q.id} quirk={q}/>)}
                   </Column>
                 </Row>
-                {!(hero.perks.length || hero.flaws.length) && (
+                {(hero.perks.length === 0 && hero.flaws.length === 0) && (
                   <BuildingMessage style={{margin: grid.ySpan(1)}}>
                     Nothing abnormal
                   </BuildingMessage>
@@ -140,7 +140,7 @@ export class HeroOverview extends AppStateComponent<
                   <Column classStyle={styles.positionContainer}>
                     <strong>Positions</strong>
                     <PositionDots
-                      color="gold"
+                      color={commonColors.gold}
                       classStyle={styles.positionDots}
                       innerValues={PositionDots.getPositionValues(hero.selectedSkills)}
                       outerValues={PositionDots.getSupportValues(hero.selectedSkills)}
@@ -149,7 +149,7 @@ export class HeroOverview extends AppStateComponent<
                   <Column classStyle={styles.positionContainer}>
                     <strong>Targets</strong>
                     <PositionDots
-                      color="red"
+                      color={commonColors.red}
                       classStyle={styles.positionDots}
                       innerValues={PositionDots.getHostileValues(hero.selectedSkills).reverse()}
                     />
@@ -173,7 +173,7 @@ export class HeroOverview extends AppStateComponent<
               </Section>
 
               <Section color={commonColors.brightGreen} label="Diseases" darken>
-                {!hero.diseases.length && (
+                {hero.diseases.length > 0 && (
                   <BuildingMessage style={{margin: grid.ySpan(0.75)}}>
                     Still healthy
                   </BuildingMessage>
@@ -210,18 +210,18 @@ const styles = StyleSheet.create({
     padding: `${grid.ySpan(1) + grid.gutter}px ${grid.xSpan(1)}px`,
     paddingBottom: 0,
     paddingLeft: leftWidth,
-    backgroundImage: `url(${require("../assets/dd/images/dungeons/town/town.room_wall.start.png")})`,
+    backgroundImage: `url(${require('../assets/dd/images/dungeons/town/town.room_wall.start.png')})`,
     ...commonStyleFn.singleBackground()
   },
 
   left: {
-    ...commonStyleFn.dock("left"),
+    ...commonStyleFn.dock('left'),
     width: leftWidth,
-    alignItems: "center"
+    alignItems: 'center'
   },
 
   name: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     fontSize: grid.fontSize(0.7),
     fontFamily: fonts.Darkest,
     color: commonColors.gold,
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
   },
 
   nameOfClass: {
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
     marginTop: grid.gutter,
     marginBottom: grid.gutter * 2
   },
@@ -240,7 +240,7 @@ const styles = StyleSheet.create({
   },
 
   model: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 0
   },
 
@@ -262,19 +262,19 @@ const styles = StyleSheet.create({
   },
 
   darken: {
-    ":before": {
+    ':before': {
       ...commonStyleFn.dock(),
-      content: "' '",
-      background: commonStyleFn.gradient("bottom", [
-        [0, "transparent"],
-        [80, "rgba(0, 0, 0, 0.8)"],
-        [100, "black"]
+      content: '" "',
+      background: commonStyleFn.gradient('bottom', [
+        [0, 'transparent'],
+        [80, 'rgba(0, 0, 0, 0.8)'],
+        [100, 'black']
       ])
     }
   },
 
   flaws: {
-    textAlign: "right"
+    textAlign: 'right'
   },
 
   baseStatsLeft: {
@@ -286,8 +286,8 @@ const styles = StyleSheet.create({
   },
 
   positionContainer: {
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   positionDots: {
@@ -296,13 +296,13 @@ const styles = StyleSheet.create({
 
   skillIcons: {
     flex: 1,
-    justifyContent: "center"
+    justifyContent: 'center'
   },
 
   skillIcon: {
     width: grid.ySpan(1),
     height: grid.ySpan(1),
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginRight: grid.gutter
     }
   }

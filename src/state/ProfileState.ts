@@ -1,12 +1,12 @@
-import {action, computed, observable} from "mobx";
-import {StaticState} from "./StaticState";
-import {Profile, ProfileId} from "./types/Profile";
-import {Dungeon} from "./types/Dungeon";
-import {Path} from "./types/Path";
-import {Item} from "./types/Item";
-import {count} from "../lib/Helpers";
-import {MapSize} from "./types/QuestMap";
-import {Difficulty} from "./types/Difficulty";
+import {action, computed, observable} from 'mobx';
+import {StaticState} from './StaticState';
+import {Profile, ProfileId} from './types/Profile';
+import {Dungeon} from './types/Dungeon';
+import {Path} from './types/Path';
+import {Item} from './types/Item';
+import {count} from '../lib/Helpers';
+import {MapSize} from './types/QuestMap';
+import {Difficulty} from './types/Difficulty';
 
 export class ProfileState {
   @observable private activeProfileId: ProfileId;
@@ -52,7 +52,7 @@ export class ProfileState {
     profile.sendLineupOnQuest(startQuest);
 
     // Put profile on the path to load into the quest dungeon
-    profile.path = new Path("dungeonOverview");
+    profile.path = new Path('dungeonOverview');
 
     this.addProfile(profile);
 

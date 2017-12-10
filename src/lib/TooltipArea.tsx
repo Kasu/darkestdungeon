@@ -1,17 +1,17 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import {action, computed, IReactionDisposer, observable, reaction} from "mobx";
-import {Tooltip} from "../ui/Tooltip";
-import {BoundsObserver} from "./BoundsObserver";
-import {css} from "aphrodite";
-import {AppStateComponent} from "../AppStateComponent";
-import {Bounds, Point, Size} from "../Bounds";
-import {grid} from "../config/Grid";
-import {observer} from "mobx-react";
-import {SizeObserver} from "./SizeObserver";
-import {commonStyles} from "../config/styles";
-import {StyleSheet} from "aphrodite";
-import {Layer} from "../ui/Layer";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import {action, computed, IReactionDisposer, observable, reaction} from 'mobx';
+import {Tooltip} from '../ui/Tooltip';
+import {BoundsObserver} from './BoundsObserver';
+import {css} from 'aphrodite';
+import {AppStateComponent} from '../AppStateComponent';
+import {Bounds, Point, Size} from '../Bounds';
+import {grid} from '../config/Grid';
+import {observer} from 'mobx-react';
+import {SizeObserver} from './SizeObserver';
+import {commonStyles} from '../config/styles';
+import {StyleSheet} from 'aphrodite';
+import {Layer} from '../ui/Layer';
 
 export enum TooltipSide {
   Above,
@@ -143,11 +143,11 @@ class TooltipState {
 
     if (projectedBounds.left < 0) {
       return TooltipSide.Right;
-    } else if (projectedBounds.right > grid.outerWidth) {
+    } if (projectedBounds.right > grid.outerWidth) {
       return TooltipSide.Left;
-    } else if (projectedBounds.top < 0) {
+    } if (projectedBounds.top < 0) {
       return TooltipSide.Below;
-    } else if (projectedBounds.bottom > grid.outerHeight) {
+    } if (projectedBounds.bottom > grid.outerHeight) {
       return TooltipSide.Above;
     }
     return this.desiredSide;
@@ -236,18 +236,18 @@ class PositionedTooltip extends React.Component<{state: TooltipState}> {
   }
 }
 
-function StyledTooltip ({children}: any) {
-  if (typeof children === "string") {
+const StyledTooltip = ({children}: any) => {
+  if (typeof children === 'string') {
     children = <span className={css(commonStyles.nowrap)}>{children}</span>;
   }
 
   return <Tooltip>{children}</Tooltip>;
-}
+};
 
 const styles = StyleSheet.create({
   tooltip: {
-    position: "absolute",
-    pointerEvents: "none",
+    position: 'absolute',
+    pointerEvents: 'none',
     zIndex: Layer.Tooltips
   }
 });

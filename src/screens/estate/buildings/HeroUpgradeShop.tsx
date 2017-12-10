@@ -1,13 +1,13 @@
-import * as React from "react";
-import {Hero} from "../../../state/types/Hero";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {HeroUpgradeGrid} from "./HeroUpgradeGrid";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {EstateRosterEntry} from "../EstateRosterEntry";
-import {DragDropSlot} from "../../../lib/DragDropSlot";
-import {BuildingMessage} from "./BuildingMessage";
-import {grid} from "../../../config/Grid";
+import * as React from 'react';
+import {Hero} from '../../../state/types/Hero';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {HeroUpgradeGrid} from './HeroUpgradeGrid';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {EstateRosterEntry} from '../EstateRosterEntry';
+import {DragDropSlot} from '../../../lib/DragDropSlot';
+import {BuildingMessage} from './BuildingMessage';
+import {grid} from '../../../config/Grid';
 
 export enum HeroUpgradeType {
   Skills,

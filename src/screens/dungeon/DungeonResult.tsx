@@ -1,13 +1,13 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {CommonHeader} from "../../ui/CommonHeader";
-import {DungeonResultHeroes} from "./DungeonResultHeroes";
-import {DungeonResultItems} from "./DungeonResultItems";
-import {action, observable} from "mobx";
-import {observer} from "mobx-react";
-import {AppStateComponent} from "../../AppStateComponent";
-import {CommonButton} from "../../ui/CommonButton";
-import {QuestStatus} from "../../state/types/Quest";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {CommonHeader} from '../../ui/CommonHeader';
+import {DungeonResultHeroes} from './DungeonResultHeroes';
+import {DungeonResultItems} from './DungeonResultItems';
+import {action, observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {AppStateComponent} from '../../AppStateComponent';
+import {CommonButton} from '../../ui/CommonButton';
+import {QuestStatus} from '../../state/types/Quest';
 
 @observer
 export class DungeonResult extends AppStateComponent {
@@ -18,7 +18,7 @@ export class DungeonResult extends AppStateComponent {
       <DungeonResultItems quest={this.selectedQuest}/> :
       <DungeonResultHeroes quest={this.selectedQuest} dungeon={this.selectedDungeon}/>;
 
-    const continueLabel = this.slide === Slide.Items ? "Next" : "Return to Town";
+    const continueLabel = this.slide === Slide.Items ? 'Next' : 'Return to Town';
     const continueFn = this.slide === Slide.Items ?
       () => this.slide = Slide.Heroes :
       () => this.returnToEstate();
@@ -39,7 +39,7 @@ export class DungeonResult extends AppStateComponent {
 
   @action
   async returnToEstate () {
-    await this.appState.router.goto("estateOverview");
+    await this.appState.router.goto('estateOverview');
 
     // Update all state at the very end of the dungeon session
     this.activeProfile.returnPartyFromQuest(this.selectedQuest);
@@ -57,10 +57,10 @@ enum Slide {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: "20%",
-    marginRight: "20%",
+    marginLeft: '20%',
+    marginRight: '20%',
     flex: 1,
-    background: "black",
-    alignItems: "center"
+    background: 'black',
+    alignItems: 'center'
   }
 });

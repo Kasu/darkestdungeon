@@ -1,6 +1,6 @@
-import {Path} from "./Path";
-import {AmbienceDefinition} from "../AmbienceState";
-import {Profile} from "./Profile";
+import {Path} from './Path';
+import {AmbienceDefinition} from '../AmbienceState';
+import {Profile} from './Profile';
 
 const noop: () => null = () => null;
 
@@ -40,7 +40,7 @@ export class Route extends RouteConstructionProps {
         let res;
         if (props.ambience) {
           res = props.ambience.apply(this, arguments);
-          if (typeof res === "string") {
+          if (typeof res === 'string') {
             return new AmbienceDefinition({src: res});
           }
         }
@@ -52,7 +52,7 @@ export class Route extends RouteConstructionProps {
         let res;
         if (props.music) {
           res = props.music.apply(this, arguments);
-          if (typeof res === "string") {
+          if (typeof res === 'string') {
             return {src: res};
           }
         }

@@ -1,8 +1,8 @@
-import {observable} from "mobx";
-import {StatItem} from "./StatItem";
-import {CharacterStatus} from "./CharacterStatus";
-import {map, serializable} from "serializr";
-import {enumMap} from "../../lib/Helpers";
+import {observable} from 'mobx';
+import {StatItem} from './StatItem';
+import {CharacterStatus} from './CharacterStatus';
+import {map, serializable} from 'serializr';
+import {enumMap} from '../../lib/Helpers';
 
 export interface IStatsSource {
   stats: Stats;
@@ -28,43 +28,43 @@ function declareStatuses (shortSuffix: string, longSuffix: string) {
 
 export class Stats {
   @serializable(StatItem.serializr())
-  public health = StatItem.declare("Health", "Health Points");
+  public health = StatItem.declare('Health', 'Health Points');
 
   @serializable(StatItem.serializr())
-  public stress = StatItem.declare("Stress", "Stress Points");
+  public stress = StatItem.declare('Stress', 'Stress Points');
 
   @serializable(StatItem.serializr())
-  public maxHealth = StatItem.declare("Max HP", "Max Health Points");
+  public maxHealth = StatItem.declare('Max HP', 'Max Health Points');
 
   @serializable(StatItem.serializr())
-  public maxStress = StatItem.declare("Max Stress", "Max Stress Points");
+  public maxStress = StatItem.declare('Max Stress', 'Max Stress Points');
 
   @serializable(StatItem.serializr())
-  public dodge = StatItem.declare("Dge", "Dodge");
+  public dodge = StatItem.declare('Dge', 'Dodge');
 
   @serializable(StatItem.serializr())
-  public protect = StatItem.declare("Prt", "Protect");
+  public protect = StatItem.declare('Prt', 'Protect');
 
   @serializable(StatItem.serializr())
-  public speed = StatItem.declare("Spd", "Speed");
+  public speed = StatItem.declare('Spd', 'Speed');
 
   @serializable(StatItem.serializr())
-  public accuracy = StatItem.declare("Acc", "Accuracy");
+  public accuracy = StatItem.declare('Acc', 'Accuracy');
 
   @serializable(StatItem.serializr())
-  public criticalChance = StatItem.declare("Crt", "Critical Hit Chance", true);
+  public criticalChance = StatItem.declare('Crt', 'Critical Hit Chance', true);
 
   @serializable(StatItem.serializr())
-  public damage = StatItem.declare(" Dmg", " Damage");
+  public damage = StatItem.declare(' Dmg', ' Damage');
 
   @serializable(map(StatItem.serializr()))
-  public resistances = declareStatuses(" Res", " Resistance");
+  public resistances = declareStatuses(' Res', ' Resistance');
 
   @serializable(map(StatItem.serializr()))
-  public statuses = declareStatuses("", " Chance");
+  public statuses = declareStatuses('', ' Chance');
 
   @serializable(map(StatItem.serializr()))
-  public statusDamageScales = declareStatuses(" Dmg", " Damage Modifier");
+  public statusDamageScales = declareStatuses(' Dmg', ' Damage Modifier');
 
   get battle () {
     return [this.dodge, this.protect, this.speed, this.accuracy, this.criticalChance, this.damage];

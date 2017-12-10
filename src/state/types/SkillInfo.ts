@@ -1,6 +1,6 @@
-import {identifier, serializable} from "serializr";
-import {IStatsSource, Stats, TurnStats} from "./Stats";
-import {Character} from "./Character";
+import {identifier, serializable} from 'serializr';
+import {IStatsSource, Stats, TurnStats} from './Stats';
+import {Character} from './Character';
 
 export type SkillSpots = [boolean, boolean, boolean, boolean];
 
@@ -23,7 +23,7 @@ export class SkillTarget {
     const selected: Character[] = [];
 
     // Check if there are available targets matching this skill
-    for (let i = 0; i < this.spots.length; i++) {
+    for (let i = 0; i < this.spots.length; i += 1) {
       if (this.spots[i] && targets[i]) {
         selected.push(targets[i]);
       }
@@ -57,7 +57,7 @@ export class SkillInfo implements IStatsSource {
   @serializable(identifier()) id: SkillId;
   name: string;
   iconUrl: string;
-  statsSourceName: string = "Skill";
+  statsSourceName: string = 'Skill';
   stats: Stats = new Stats();
 
   position: [boolean, boolean, boolean, boolean] = [true, true, true, true];
@@ -82,11 +82,11 @@ function forceLength <T> (list: T[], length: number) {
     return list;
   }
   if (list.length > length) {
-    throw new Error("List should not be larger than " + length);
+    throw new Error('List should not be larger than ' + length);
   }
   const forced = list.slice();
   let rest = length - list.length;
-  while (rest-- > 0) {
+  while ((rest -= 1) > 0) {
     forced.unshift(null);
   }
   return forced;

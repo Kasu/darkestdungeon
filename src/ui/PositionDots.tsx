@@ -1,8 +1,8 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {SkillTargetObject} from "../state/types/SkillInfo";
-import {Skill} from "../state/types/Skill";
-import {grid} from "../config/Grid";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {SkillTargetObject} from '../state/types/SkillInfo';
+import {Skill} from '../state/types/Skill';
+import {grid} from '../config/Grid';
 
 export class PositionDots extends React.Component<{
   color: string,
@@ -56,12 +56,15 @@ export class PositionDots extends React.Component<{
   }
 
   private static getSpotValues (spotList: boolean[][]) {
-    return spotList.reduce((sum, spots) => {
-      spots.forEach((spotActive, index) => {
-        sum[index] += spotActive ? 1 : 0;
-      });
-      return sum;
-    }, [0, 0, 0, 0]);
+    return spotList.reduce(
+      (sum, spots) => {
+        spots.forEach((spotActive, index) => {
+          sum[index] += spotActive ? 1 : 0;
+        });
+        return sum;
+      },
+      [0, 0, 0, 0]
+    );
   }
 }
 
@@ -80,11 +83,14 @@ class PositionDot extends React.Component<{
 
     return (
       <li className={className} style={sizeStyle}>
-        <div className={css(styles.dot)} style={{
-          backgroundColor: this.props.color,
-          transform: `scale(${scales[this.props.innerValue]})`,
-          ...sizeStyle
-        }}/>
+        <div
+          className={css(styles.dot)}
+          style={{
+            backgroundColor: this.props.color,
+            transform: `scale(${scales[this.props.innerValue]})`,
+            ...sizeStyle
+          }}
+        />
       </li>
     );
   }
@@ -107,19 +113,19 @@ function getSizeStyle (size: number) {
 
 const styles = StyleSheet.create({
   dots: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
 
   dot: {
-    background: "gray",
-    boxShadow: "0px 0px 5px black",
+    background: 'gray',
+    boxShadow: '0px 0px 5px black',
 
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginRight: grid.gutter / 2
     }
   },
 
   dotOuterHighlight: {
-    boxShadow: "0px 0px 5px #8afb8a"
+    boxShadow: '0px 0px 5px #8afb8a'
   }
 });

@@ -1,4 +1,4 @@
-import {CharacterClassInfo} from "./CharacterClassInfo";
+import {CharacterClassInfo} from './CharacterClassInfo';
 
 export class CharacterTemplate {
   get id () { return this.classInfo.id; }

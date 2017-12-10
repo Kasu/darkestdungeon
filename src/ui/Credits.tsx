@@ -1,10 +1,10 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonColors, commonStyleFn, commonStyles} from "../config/styles";
-import {grid} from "../config/Grid";
-import {fonts} from "../assets/fonts";
-import {credits} from "../config/credits";
-import {RainbowText} from "./RainbowText";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonColors, commonStyleFn, commonStyles} from '../config/styles';
+import {grid} from '../config/Grid';
+import {fonts} from '../assets/fonts';
+import {credits} from '../config/credits';
+import {RainbowText} from './RainbowText';
 
 const sectionTexts = credits.split(/\n\n+/);
 const sections = sectionTexts.map((text) => text.split(/\n/));
@@ -49,7 +49,8 @@ export class Credits extends React.Component {
       <div className={css(styles.credits)}>
         <div
           ref={(node) => this.scrollbarNode = node}
-          className={css(styles.clipper, commonStyles.customScrollbar)}>
+          className={css(styles.clipper, commonStyles.customScrollbar)}
+        >
           {sections.map(([title, ...entries], sectionIndex) => {
             return (
               <div key={sectionIndex} className={css(styles.section)}>
@@ -73,7 +74,7 @@ export class Credits extends React.Component {
 }
 
 function parseTitle (title: string) {
-  const isBigTitle = title[0] === "#";
+  const isBigTitle = title[0] === '#';
   if (isBigTitle) {
     title = title.substr(1);
   }
@@ -85,7 +86,7 @@ function parseTitle (title: string) {
 }
 
 function parseEntry (entry: string) {
-  if (entry[0] === "$") {
+  if (entry[0] === '$') {
     return (
       <RainbowText>
         {entry.substr(1)}
@@ -98,9 +99,9 @@ function parseEntry (entry: string) {
 const styles = StyleSheet.create({
   credits: {
     flex: 1,
-    background: `url(${require("../assets/dd/images/shared/credits/credits.background.png")})`,
+    background: `url(${require('../assets/dd/images/shared/credits/credits.background.png')})`,
     ...commonStyleFn.singleBackground(),
-    textAlign: "center",
+    textAlign: 'center',
     paddingTop: grid.paddingTop,
     paddingRight: grid.paddingRight,
     paddingBottom: grid.paddingBottom,
@@ -109,19 +110,19 @@ const styles = StyleSheet.create({
 
   clipper: {
     flex: 1,
-    overflowY: "scroll"
+    overflowY: 'scroll'
   },
 
   section: {
     marginBottom: grid.ySpan(1),
-    alignItems: "center",
+    alignItems: 'center',
 
-    ":first-child": {
+    ':first-child': {
       marginTop: grid.ySpan(7.5),
       marginBottom: grid.ySpan(7.5)
     },
 
-    ":last-child": {
+    ':last-child': {
       marginTop: grid.ySpan(7.5),
       marginBottom: grid.ySpan(7.5)
     }
@@ -130,16 +131,16 @@ const styles = StyleSheet.create({
   title: {
     fontSize: grid.fontSize(0.75),
     fontFamily: fonts.Darkest,
-    fontWeight: "normal",
+    fontWeight: 'normal',
     color: commonColors.gold
   },
 
   bigTitle: {
     fontSize: grid.fontSize(1.25),
-    alignItems: "center"
+    alignItems: 'center'
   },
 
   entry: {
-    alignItems: "center"
+    alignItems: 'center'
   }
 });

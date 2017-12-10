@@ -1,14 +1,14 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import Color = require("color");
-import {commonColors, commonStyleFn} from "../config/styles";
-import {AppStateComponent} from "../AppStateComponent";
-const {DropTarget, DragSource} = require("react-dnd");
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import * as Color from 'color';
+import {commonColors, commonStyleFn} from '../config/styles';
+import {AppStateComponent} from '../AppStateComponent';
+const {DropTarget, DragSource} = require('react-dnd');
 
 const genericSounds = {
-  drag: {src: require("../assets/dd/audio/ui_town_button_mouseover_2.ogg"), volume: 1.2},
-  drop: {src: require("../assets/dd/audio/ui_shr_button_mouse_over_alt.ogg"), volume: 0.5},
-  cancel: {src: require("../assets/dd/audio/ui_town_infest_mouseover_none.ogg"), volume: 0.2}
+  drag: {src: require('../assets/dd/audio/ui_town_button_mouseover_2.ogg'), volume: 1.2},
+  drop: {src: require('../assets/dd/audio/ui_shr_button_mouse_over_alt.ogg'), volume: 0.5},
+  cancel: {src: require('../assets/dd/audio/ui_town_infest_mouseover_none.ogg'), volume: 0.2}
 };
 
 const SourceSpec = {
@@ -82,13 +82,13 @@ export type DragDropSlotProps<T> = {
   connectDragPreview?: any
 };
 
-@DropTarget("slot", TargetSpec, (connect: any, monitor: any) => ({
+@DropTarget('slot', TargetSpec, (connect: any, monitor: any) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
   dragItem: monitor.getItem()
 }))
-@DragSource("slot", SourceSpec, (connect: any, monitor: any) => ({
+@DragSource('slot', SourceSpec, (connect: any, monitor: any) => ({
   connectDragSource: connect.dragSource(),
   connectDragPreview: connect.dragPreview(),
   canDrag: monitor.canDrag(),
@@ -110,7 +110,7 @@ export class DragDropSlot<T> extends AppStateComponent<DragDropSlotProps<T>> {
     const dragDropStyle = canDrop ? (isOver ? styles.isOver : styles.target) : undefined;
 
     // Normalize this.props.children into always being a ContentFunction
-    const childrenFn = typeof this.props.children === "function" ?
+    const childrenFn = typeof this.props.children === 'function' ?
       this.props.children as ContentFunction<T>  :
       (() => this.props.children) as ContentFunction<T>;
 
@@ -138,9 +138,9 @@ export class DragDropSlot<T> extends AppStateComponent<DragDropSlotProps<T>> {
 
 function overlayStyle (color: string) {
   return {
-    ":after": {
+    ':after': {
       ...commonStyleFn.dock(),
-      content: "' '",
+      content: '" "',
       backgroundColor: new Color(color).alpha(0.5).toString()
     }
   };

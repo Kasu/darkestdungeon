@@ -1,24 +1,24 @@
-import * as React from "react";
-import {EstateTemplate} from "./EstateTemplate";
-import {Path} from "../../state/types/Path";
-import {EstateEvent} from "../../state/types/EstateEvent";
-import {Popup, PopupProps} from "../../ui/Popups";
-import {AppStateComponent} from "../../AppStateComponent";
-import {when} from "mobx";
-import {Route} from "../../state/types/Route";
-import {StaticState} from "../../state/StaticState";
-import {grid} from "../../config/Grid";
-import {css, StyleSheet} from "aphrodite";
-import {Avatar} from "../../ui/Avatar";
-import {TooltipArea, TooltipSide} from "../../lib/TooltipArea";
-import {commonStyles} from "../../config/styles";
-import {InputBinding} from "../../state/InputState";
-import {Input} from "../../config/Input";
-import {Layer} from "../../ui/Layer";
+import * as React from 'react';
+import {EstateTemplate} from './EstateTemplate';
+import {Path} from '../../state/types/Path';
+import {EstateEvent} from '../../state/types/EstateEvent';
+import {Popup, PopupProps} from '../../ui/Popups';
+import {AppStateComponent} from '../../AppStateComponent';
+import {when} from 'mobx';
+import {Route} from '../../state/types/Route';
+import {StaticState} from '../../state/StaticState';
+import {grid} from '../../config/Grid';
+import {css, StyleSheet} from 'aphrodite';
+import {Avatar} from '../../ui/Avatar';
+import {TooltipArea, TooltipSide} from '../../lib/TooltipArea';
+import {commonStyles} from '../../config/styles';
+import {InputBinding} from '../../state/InputState';
+import {Input} from '../../config/Input';
+import {Layer} from '../../ui/Layer';
 
 const sounds = {
-  continueToMap: {src: require("../../assets/dd/audio/ui_town_button_embark.ogg"), volume: 0.7},
-  showBuilding: {src: require("../../assets/dd/audio/ui_town_char_rollover_03.ogg"), volume: 1.5}
+  continueToMap: {src: require('../../assets/dd/audio/ui_town_button_embark.ogg'), volume: 0.7},
+  showBuilding: {src: require('../../assets/dd/audio/ui_town_char_rollover_03.ogg'), volume: 1.5}
 };
 
 export class EstateOverview extends AppStateComponent<{
@@ -65,7 +65,7 @@ export class EstateOverview extends AppStateComponent<{
       <EstateTemplate
         path={this.props.path}
         coverBackgroundBottom={true}
-        background={require("../../assets/dd/images/loading_screen/loading_screen.town_visit.png")}
+        background={require('../../assets/dd/images/loading_screen/loading_screen.town_visit.png')}
         continueSound={sounds.continueToMap}
         continueLabel="Embark"
         continuePath="estateDungeons">
@@ -122,7 +122,7 @@ class EstateEventPopup extends React.Component<
 const buildingIconSize = grid.ySpan(1);
 const styles = StyleSheet.create({
   buildingIcons: {
-    position: "absolute",
+    position: 'absolute',
     top: grid.ySpan(3) + grid.gutter,
     left: -grid.xSpan(1) - grid.gutter,
     zIndex: Layer.Roster
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     width: buildingIconSize,
     height: buildingIconSize,
     marginBottom: grid.gutter,
-    transition: "transform 0.3s ease-out"
+    transition: 'transform 0.3s ease-out'
   },
 
   buildingIconActive: {

@@ -1,22 +1,22 @@
-import {RouterState} from "./RouterState";
-import {AmbienceState} from "./AmbienceState";
-import {MusicState} from "./MusicState";
-import {PopupState} from "./PopupState";
-import {observable, reaction} from "mobx";
-import {ProfileState} from "./ProfileState";
-import {OptionsState} from "./OptionsState";
-import {deserialize, serialize} from "serializr";
-import {AppBounds} from "../AppBounds";
-import {Profile} from "./types/Profile";
-import {Route} from "./types/Route";
-import {Path} from "./types/Path";
-import {SFXPlayer} from "./SFXPlayer";
-import {BarkDistributor} from "./BarkDistributor";
-import {Difficulty} from "./types/Difficulty";
-import {I18nState} from "./I18nState";
+import {RouterState} from './RouterState';
+import {AmbienceState} from './AmbienceState';
+import {MusicState} from './MusicState';
+import {PopupState} from './PopupState';
+import {observable, reaction} from 'mobx';
+import {ProfileState} from './ProfileState';
+import {OptionsState} from './OptionsState';
+import {deserialize, serialize} from 'serializr';
+import {AppBounds} from '../AppBounds';
+import {Profile} from './types/Profile';
+import {Route} from './types/Route';
+import {Path} from './types/Path';
+import {SFXPlayer} from './SFXPlayer';
+import {BarkDistributor} from './BarkDistributor';
+import {Difficulty} from './types/Difficulty';
+import {I18nState} from './I18nState';
 
 export class AppState {
-  private reactionDisposers: Array<() => void>;
+  private reactionDisposers: (() => void)[];
 
   public bounds: AppBounds = new AppBounds();
   public router: RouterState = new RouterState();
@@ -105,7 +105,7 @@ export class AppState {
   ensureProfile () {
     if (this.profiles.map.size === 0) {
       const nullProfile = this.profiles.createProfile(Difficulty.Radiant);
-      nullProfile.name = "Null";
+      nullProfile.name = 'Null';
       nullProfile.isNameFinalized = true;
     }
 
@@ -119,12 +119,12 @@ export class AppState {
       jsProfileList.push(serialize(profile));
     }
 
-    localStorage.setItem("profileList", JSON.stringify(jsProfileList));
-    console.log("Saved");
+    localStorage.setItem('profileList', JSON.stringify(jsProfileList));
+    console.log('Saved');
   }
 
   load () {
-    const rawProfileList = localStorage.getItem("profileList");
+    const rawProfileList = localStorage.getItem('profileList');
     if (rawProfileList) {
       try {
         const jsProfileList = JSON.parse(rawProfileList);
@@ -136,7 +136,7 @@ export class AppState {
           this.profiles.addProfile(profile);
         }
       } catch (e) {
-        console.error("Unable to parse localStorage data: " + e);
+        console.error('Unable to parse localStorage data: ' + e);
       }
     }
   }

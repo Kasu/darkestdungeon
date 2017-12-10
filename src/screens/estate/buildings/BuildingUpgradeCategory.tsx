@@ -1,12 +1,12 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {BuildingUpgradeIcon, stepSize} from "./BuildingUpgradeIcon";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyleFn, commonStyles, Row} from "../../../config/styles";
-import {grid} from "../../../config/Grid";
-import {TooltipArea, TooltipSide} from "../../../lib/TooltipArea";
-import {Icon} from "../../../ui/Icon";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {BuildingUpgradeIcon, stepSize} from './BuildingUpgradeIcon';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyleFn, commonStyles, Row} from '../../../config/styles';
+import {grid} from '../../../config/Grid';
+import {TooltipArea, TooltipSide} from '../../../lib/TooltipArea';
+import {Icon} from '../../../ui/Icon';
 
 @observer
 export class BuildingUpgradeCategory extends React.Component<{
@@ -16,7 +16,7 @@ export class BuildingUpgradeCategory extends React.Component<{
     const steps: any[] = [];
     this.props.category.items.forEach((itemInfo, index) => {
       const prerequisite = this.props.category.items[index - 1];
-      steps.push(<Dash key={"line" + index}/>);
+      steps.push(<Dash key={'line' + index}/>);
       steps.push(
         <BuildingUpgradeIcon
           key={itemInfo.id}
@@ -54,14 +54,14 @@ const styles = StyleSheet.create({
   sequence: {
     marginTop: grid.gutter,
     height: stepSize * 1.5,
-    alignItems: "center"
+    alignItems: 'center'
   },
 
   dash: {
-    justifyContent: "center",
+    justifyContent: 'center',
 
-    ":after": {
-      content: "' '",
+    ':after': {
+      content: '" "',
       width: stepSize / 2,
       height: grid.border,
       background: commonStyleFn.shineGradient()

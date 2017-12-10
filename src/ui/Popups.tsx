@@ -1,16 +1,16 @@
-import * as React from "react";
-import {ModalState, PopupHandle} from "../state/PopupState";
-import {css, StyleSheet} from "aphrodite";
-import {LineButton} from "./LineButton";
-import {grid} from "../config/Grid";
-import {Input} from "../config/Input";
-import {InputBinding} from "../state/InputState";
-import {commonColors, commonStyleFn} from "../config/styles";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import Color = require("color");
-import {Icon} from "./Icon";
-import {AppStateComponent} from "../AppStateComponent";
-import {when} from "mobx";
+import * as React from 'react';
+import {ModalState, PopupHandle} from '../state/PopupState';
+import {css, StyleSheet} from 'aphrodite';
+import {LineButton} from './LineButton';
+import {grid} from '../config/Grid';
+import {Input} from '../config/Input';
+import {InputBinding} from '../state/InputState';
+import {commonColors, commonStyleFn} from '../config/styles';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import * as Color from 'color';
+import {Icon} from './Icon';
+import {AppStateComponent} from '../AppStateComponent';
+import {when} from 'mobx';
 
 export type PopupProps = {
   headerIcon?: string,
@@ -27,8 +27,8 @@ export type PopupProps = {
 export class Popup extends AppStateComponent<PopupProps> {
   static defaultProps = {
     sounds: true,
-    openSound: {src: require("../assets/dd/audio/ui_town_button_page_open.ogg"), volume: 0.8},
-    closeSound: {src: require("../assets/dd/audio/ui_town_button_page_close.ogg"), volume: 0.8}
+    openSound: {src: require('../assets/dd/audio/ui_town_button_page_open.ogg'), volume: 0.8},
+    closeSound: {src: require('../assets/dd/audio/ui_town_button_page_close.ogg'), volume: 0.8}
   };
 
   private stopWaitingForClose: () => void;
@@ -81,9 +81,10 @@ export class Popup extends AppStateComponent<PopupProps> {
     const hasCloseButton = this.props.handle && (this.props.closeable || isDismissable);
     const closeButton = hasCloseButton && (
       <Icon
-        src={require("../assets/dd/images/shared/progression/progression_close.png")}
+        src={require('../assets/dd/images/shared/progression/progression_close.png')}
         classStyle={styles.closeButton}
-        onClick={() => this.props.handle.close()}>
+        onClick={() => this.props.handle.close()}
+      >
         <InputBinding
           match={Input.back}
           callback={() => this.props.handle.close()}
@@ -113,7 +114,7 @@ export class Popup extends AppStateComponent<PopupProps> {
   }
 }
 
-const promptIcon = require("../assets/dd/images/modes/base/fe_flow/mode_select_dialog_icon.png");
+const promptIcon = require('../assets/dd/images/modes/base/fe_flow/mode_select_dialog_icon.png');
 export class Prompt extends React.Component<
   PopupProps & {
   query?: any,
@@ -124,8 +125,8 @@ export class Prompt extends React.Component<
   noSound?: IHowlProperties
 }> {
   static defaultProps = {
-    yesLabel: "Yes",
-    noLabel: "No"
+    yesLabel: 'Yes',
+    noLabel: 'No'
   };
 
   getDefaultResponses () {
@@ -154,7 +155,8 @@ export class Prompt extends React.Component<
             classStyle={styles.promptButton}
             clickSound={response.sound}
             onClick={() => this.props.handle.close(response.value)}
-            label={response.label}/>
+            label={response.label}
+          />
         ))}
       </Popup>
     );
@@ -164,20 +166,22 @@ export class Prompt extends React.Component<
 export class Alert extends React.Component<
   PopupProps & {
   message: any,
-  dismissLabel?: string
+  dismissLabel?: string,
   dismissValue?: any
 }> {
   static defaultProps = {
-    dismissLabel: "Ok",
+    dismissLabel: 'Ok',
     dismissValue: false
   };
 
   render () {
     const {message, dismissLabel, dismissValue, ...rest} = this.props;
     return (
-      <Prompt {...rest}
+      <Prompt
+        {...rest}
         query={message}
-        responses={[{label: dismissLabel, value: dismissValue}]}>
+        responses={[{label: dismissLabel, value: dismissValue}]}
+      >
         {this.props.children}
       </Prompt>
     );
@@ -198,7 +202,7 @@ export const popupContentPadding = grid.gutter;
 export const popupOffset = popupBorder1Size + popupBorder2Size + popupContentPadding;
 const styles = StyleSheet.create({
   popup: {
-    background: "black",
+    background: 'black',
     padding: popupBorder1Size,
     boxShadow: commonStyleFn.outerShadow(),
     minWidth: grid.vw(25),
@@ -212,14 +216,14 @@ const styles = StyleSheet.create({
   },
 
   splash: {
-    ...commonStyleFn.dock("topRight", -splashSize / 2),
+    ...commonStyleFn.dock('topRight', -splashSize / 2),
     width: splashSize,
     height: splashSize,
-    background: `url(${require("../assets/images/splash1.png")})`,
-    backgroundSize: "contain",
-    backgroundPosition: "50% 50%",
-    backgroundRepeat: "no-repeat",
-    pointerEvents: "none"
+    background: `url(${require('../assets/images/splash1.png')})`,
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 50%',
+    backgroundRepeat: 'no-repeat',
+    pointerEvents: 'none'
   },
 
   content: {
@@ -231,32 +235,32 @@ const styles = StyleSheet.create({
 
   header: {
     marginBottom: popupContentPadding,
-    background: commonStyleFn.gradient("bottom", [
+    background: commonStyleFn.gradient('bottom', [
       [0, new Color(commonColors.gold).darken(1)],
       [20, new Color(commonColors.gold).darken(0.85)],
       [50, new Color(commonColors.gold).darken(0.85)],
       [100, new Color(commonColors.gold).darken(1)]
     ]),
 
-    ":before": {
+    ':before': {
       ...commonStyleFn.dock(),
       content: '" "',
-      background: commonStyleFn.gradient("right", [
-        [0, "black"],
-        [50, "transparent"],
-        [100, "black"]
+      background: commonStyleFn.gradient('right', [
+        [0, 'black'],
+        [50, 'transparent'],
+        [100, 'black']
       ])
     }
   },
 
   headerInner: {
-    marginLeft: "25%",
-    marginRight: "25%",
-    alignItems: "center"
+    marginLeft: '25%',
+    marginRight: '25%',
+    alignItems: 'center'
   },
 
   closeButton: {
-    ...commonStyleFn.dock("topRight", popupContentPadding)
+    ...commonStyleFn.dock('topRight', popupContentPadding)
   },
 
   prompt: {
@@ -264,14 +268,14 @@ const styles = StyleSheet.create({
   },
 
   promptQuery: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: grid.gutter * 2,
-    textAlign: "center",
-    whiteSpace: "pre-wrap"
+    textAlign: 'center',
+    whiteSpace: 'pre-wrap'
   },
 
   promptButton: {
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginBottom: grid.gutter
     }
   }

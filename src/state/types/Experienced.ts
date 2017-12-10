@@ -1,6 +1,6 @@
-import {serializable} from "serializr";
-import {computed, observable} from "mobx";
-import {StaticState} from "../StaticState";
+import {serializable} from 'serializr';
+import {computed, observable} from 'mobx';
+import {StaticState} from '../StaticState';
 
 export class Experienced {
   @serializable @observable experience: number = 0;

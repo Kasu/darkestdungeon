@@ -1,7 +1,7 @@
-import {BuildingUpgradeEffects} from "./BuildingUpgradeEffects";
-import {identifier, serializable} from "serializr";
-import {HeirloomType} from "./ItemInfo";
-import {createId} from "./BuildingInfo";
+import {BuildingUpgradeEffects} from './BuildingUpgradeEffects';
+import {identifier, serializable} from 'serializr';
+import {HeirloomType} from './ItemInfo';
+import {createId} from './BuildingInfo';
 
 export class BuildingUpgradeInfo {
   @serializable(identifier()) id: string;
@@ -20,11 +20,11 @@ export class BuildingUpgradeInfo {
     for (const key in this.effects) {
       const val = (this.effects as any)[key];
       if (val !== 0) {
-        const sign = val > 0 ? "+" : "-";
-        effectStrings.push(key + " " + sign + Math.abs(val));
+        const sign = val > 0 ? '+' : '-';
+        effectStrings.push(key + ' ' + sign + Math.abs(val));
       }
     }
-    return effectStrings.join(", ");
+    return effectStrings.join(', ');
   }
 
   isChildOf (keys: string []) {

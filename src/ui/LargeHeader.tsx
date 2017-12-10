@@ -1,11 +1,10 @@
-import * as React from "react";
-import {css} from "aphrodite";
-import {commonColors, commonStyles, Row} from "../config/styles";
-import {Avatar} from "./Avatar";
-import {StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {fonts} from "../assets/fonts";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonColors, commonStyles, Row} from '../config/styles';
+import {Avatar} from './Avatar';
+import {grid} from '../config/Grid';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import {fonts} from '../assets/fonts';
 
 export class LargeHeader extends React.Component<{
   label?: string,
@@ -37,14 +36,14 @@ const styles = StyleSheet.create({
   header: {
     fontSize: grid.fontSize(1),
     fontFamily: fonts.Darkest,
-    fontWeight: "normal"
+    fontWeight: 'normal'
   },
 
   headerIcon: {
     width: grid.ySpan(2),
     height: grid.ySpan(2),
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   headerLabel: {
@@ -52,6 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: grid.gutter,
     padding: grid.gutter * 2,
     paddingRight: grid.gutter * 4,
-    background: "linear-gradient(to right, #000 0%, #100 75%, rgba(0,0,0,0) 100%)"
+    background: 'linear-gradient(to right, #000 0%, #100 75%, rgba(0,0,0,0) 100%)'
   }
 });

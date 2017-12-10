@@ -1,9 +1,9 @@
-import {computed, observable, transaction, when} from "mobx";
-import {Route} from "./types/Route";
-import {ensurePath, Path, PathTypes} from "./types/Path";
+import {computed, observable, transaction, when} from 'mobx';
+import {Route} from './types/Route';
+import {ensurePath, Path, PathTypes} from './types/Path';
 
 export class RouterState  {
-  @observable private history: Path[] = [new Path("")];
+  @observable private history: Path[] = [new Path('')];
   @observable private currentIndex: number = 0;
 
   @observable public routes = new Map<string, Route>();
@@ -83,7 +83,7 @@ export class RouterState  {
 
       // Add new path and move to it
       this.history.push(nextPath as Path);
-      this.currentIndex++;
+      this.currentIndex += 1;
     });
 
     // Return a promise that resolves when we
@@ -111,6 +111,6 @@ export class RouterState  {
 }
 
 const route404 = new Route({
-  component: ({path}: any) => `No route exists for path "${path}"`,
+  component: ({path}: any) => `No route exists for path '${path}'`,
   isMemorable: false
 });

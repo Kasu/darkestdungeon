@@ -1,32 +1,26 @@
-import * as React from "react";
-import {observable} from "mobx";
-import {Path} from "../state/types/Path";
-import {observer} from "mobx-react";
-import {Sprite} from "../lib/Sprite";
-import {smoke} from "../assets/sprites";
-import {css, StyleSheet} from "aphrodite";
-import {AppStateComponent} from "../AppStateComponent";
-import {grid} from "../config/Grid";
-import {commonColors, commonStyles} from "../config/styles";
-import {CommonHeader} from "../ui/CommonHeader";
-import {randomizeItem} from "../lib/Helpers";
-import {loadingMessages} from "../config/loadingMessages";
+import * as React from 'react';
+import {Path} from '../state/types/Path';
+import {observer} from 'mobx-react';
+import {Sprite} from '../lib/Sprite';
+import {smoke} from '../assets/sprites';
+import {css, StyleSheet} from 'aphrodite';
+import {AppStateComponent} from '../AppStateComponent';
+import {grid} from '../config/Grid';
+import {commonColors, commonStyles} from '../config/styles';
+import {CommonHeader} from '../ui/CommonHeader';
+import {randomizeItem} from '../lib/Helpers';
+import {loadingMessages} from '../config/loadingMessages';
 
 @observer
 export class Loading extends AppStateComponent<{target: Path}> {
   private allowNavigation: boolean;
   private loadingMessage: string;
 
-  @observable private isLoading: boolean;
-  @observable private backgroundUrl: any = require("../assets/images/loading-bg.jpg");
-
   async componentWillMount () {
     this.loadingMessage = randomizeItem(loadingMessages);
     this.allowNavigation = true;
 
-    this.isLoading = true;
     await preloadAssetsForTarget(this.props.target);
-    this.isLoading = false;
 
     if (this.allowNavigation && this.props.target) {
       this.appState.router.goto(this.props.target);
@@ -49,7 +43,7 @@ export class Loading extends AppStateComponent<{target: Path}> {
     return (
       <div className={css(styles.container)} style={dynamicStyle}>
         <CommonHeader classStyle={[styles.line, styles.header]} color={commonColors.gray}>
-          {targetTitle || "Loading"}
+          {targetTitle || 'Loading'}
         </CommonHeader>
 
         <div className={css(commonStyles.fill)}/>
@@ -71,9 +65,9 @@ function preloadAssetsForTarget (target: Path) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundSize: "cover",
-    backgroundPosition: "50% 50%",
-    alignItems: "center",
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%',
+    alignItems: 'center',
 
     paddingTop: grid.paddingTop + grid.ySpan(1.5),
     paddingRight: grid.paddingRight,
@@ -82,9 +76,9 @@ const styles = StyleSheet.create({
   },
 
   line: {
-    textAlign: "center",
-    alignItems: "center",
-    justifyContent: "center",
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
     padding: grid.gutter * 2
   },
 
@@ -94,7 +88,7 @@ const styles = StyleSheet.create({
 
   footer: {
     width: grid.xSpan(6),
-    whiteSpace: "pre-wrap"
+    whiteSpace: 'pre-wrap'
   },
 
   smoke: {

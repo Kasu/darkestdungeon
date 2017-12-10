@@ -1,11 +1,11 @@
-import {observable} from "mobx";
-import * as React from "react";
-import {observer} from "mobx-react";
-import {StyleSheet} from "aphrodite";
-import {AppStateComponent} from "../AppStateComponent";
-import {grid} from "../config/Grid";
-import {Tooltip} from "./Tooltip";
-import {removeItem, wait} from "../lib/Helpers";
+import {observable} from 'mobx';
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {StyleSheet} from 'aphrodite';
+import {AppStateComponent} from '../AppStateComponent';
+import {grid} from '../config/Grid';
+import {Tooltip} from './Tooltip';
+import {removeItem, wait} from '../lib/Helpers';
 
 // We can track these globally since the audio player is a global system anyway
 const tooltipsPlayingLetterSounds: BarkTooltip[] = [];
@@ -15,15 +15,15 @@ export class BarkTooltip extends AppStateComponent<{
   text: string,
   onFinished?: () => void
 }> {
-  @observable displayedText: string = "";
+  @observable displayedText: string = '';
   originalText: string;
   isBarking: boolean;
 
   static finishWaitTimePerWord = 250;
   static finishWaitTimeMin = 3000;
   static letterInterval = 70;
-  static letterSound = {src: [require("../assets/dd/audio/ui_shr_text_loop.ogg")], volume: 0.4};
-  static popupSound = {src: [require("../assets/dd/audio/ui_shr_text_popup.ogg")]};
+  static letterSound = {src: [require('../assets/dd/audio/ui_shr_text_loop.ogg')], volume: 0.4};
+  static popupSound = {src: [require('../assets/dd/audio/ui_shr_text_popup.ogg')]};
 
   componentWillMount () {
     this.bark(this.props.text);
@@ -46,7 +46,7 @@ export class BarkTooltip extends AppStateComponent<{
     }
 
     this.originalText = text;
-    this.displayedText = "";
+    this.displayedText = '';
     this.isBarking = true;
 
     const wordCount = text.split(/[\s:,.;]+/).length;
@@ -62,8 +62,8 @@ export class BarkTooltip extends AppStateComponent<{
     await wait(readTime);
 
     this.isBarking = false;
-    this.displayedText = "";
-    this.originalText = "";
+    this.displayedText = '';
+    this.originalText = '';
 
     if (this.props.onFinished) {
       this.props.onFinished();
@@ -104,8 +104,8 @@ const styles = StyleSheet.create({
     minWidth: grid.xSpan(2),
     maxWidth: grid.xSpan(3.5),
     padding: grid.ySpan(0.5),
-    textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center"
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

@@ -1,12 +1,12 @@
-import * as React from "react";
-import {SkillTargetObject} from "../state/types/SkillInfo";
-import {commonStyles, Row} from "../config/styles";
-import {css, StyleSheet} from "aphrodite";
-import {StatsTextList} from "./StatsText";
-import {CharacterStatus} from "../state/types/CharacterStatus";
-import {PositionDots} from "./PositionDots";
-import {Skill} from "../state/types/Skill";
-import {removeItem} from "../lib/Helpers";
+import * as React from 'react';
+import {SkillTargetObject} from '../state/types/SkillInfo';
+import {commonStyles, Row} from '../config/styles';
+import {css, StyleSheet} from 'aphrodite';
+import {StatsTextList} from './StatsText';
+import {CharacterStatus} from '../state/types/CharacterStatus';
+import {PositionDots} from './PositionDots';
+import {Skill} from '../state/types/Skill';
+import {removeItem} from '../lib/Helpers';
 
 export class SkillBreakdown extends React.Component<{
   skill: Skill
@@ -26,7 +26,7 @@ export class SkillBreakdown extends React.Component<{
       PositionDots.getSupportValues([skill]) :
       PositionDots.getHostileValues([skill]);
 
-    const dotColor = isSupport ? "green" : "red";
+    const dotColor = isSupport ? 'green' : 'red';
     const dotInnerValues = values.map((value) => value * 3).reverse();
 
     return (
@@ -42,7 +42,8 @@ export class SkillBreakdown extends React.Component<{
     const buffStat = skill.stats.statuses.get(CharacterStatus.Buff);
 
     // Remove buff from displayed stats since we're showing a specific section for skill buffs
-    removeItem(displayedStats,
+    removeItem(
+      displayedStats,
       displayedStats.find((stat) => stat.info.id === buffStat.info.id)
     );
 
@@ -68,7 +69,7 @@ export class SkillBreakdown extends React.Component<{
               }
               {!buffStat.isNeutral && `(${buffStat.toString()})`}
             </Row>
-            <StatsTextList stats={skill.buff.nonNeutral} long/>
+            <StatsTextList stats={skill.buff.nonNeutral}/>
           </div>
         )}
       </div>
@@ -79,6 +80,6 @@ export class SkillBreakdown extends React.Component<{
 const styles = StyleSheet.create({
   targets: {
     flex: 1,
-    alignItems: "flex-end"
+    alignItems: 'flex-end'
   }
 });

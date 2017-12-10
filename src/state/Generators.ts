@@ -1,19 +1,19 @@
-import {StaticState} from "./StaticState";
-import {Hero} from "./types/Hero";
-import {Item} from "./types/Item";
-import {Dungeon} from "./types/Dungeon";
-import {Quest} from "./types/Quest";
-import {MapSize, QuestMap} from "./types/QuestMap";
-import {QuestObjective} from "./types/QuestObjective";
-import {Character} from "./types/Character";
-import {CharacterTemplate} from "./types/CharacterTemplate";
-import {randomizeItem, randomizeItems, without} from "../lib/Helpers";
-import {maxSelectedSkills} from "../config/general";
-import {ItemType} from "./types/ItemInfo";
-import {Curio} from "./types/Curio";
-import {TurnStats} from "./types/Stats";
-import {getBestSkillSet} from "./types/Skill";
-import {Difficulty} from "./types/Difficulty";
+import {StaticState} from './StaticState';
+import {Hero} from './types/Hero';
+import {Item} from './types/Item';
+import {Dungeon} from './types/Dungeon';
+import {Quest} from './types/Quest';
+import {MapSize, QuestMap} from './types/QuestMap';
+import {QuestObjective} from './types/QuestObjective';
+import {Character} from './types/Character';
+import {CharacterTemplate} from './types/CharacterTemplate';
+import {randomizeItem, randomizeItems, without} from '../lib/Helpers';
+import {maxSelectedSkills} from '../config/general';
+import {ItemType} from './types/ItemInfo';
+import {Curio} from './types/Curio';
+import {TurnStats} from './types/Stats';
+import {getBestSkillSet} from './types/Skill';
+import {Difficulty} from './types/Difficulty';
 
 export function generateMonster (dungeon: Dungeon, activeMonsters: Character[]): Character {
   const template = randomizeTemplate(dungeon.info.monsters, activeMonsters);
@@ -53,7 +53,7 @@ export function decorateCharacter<T extends Character> (
 
   const selectedSkills = getBestSkillSet(c.skills, maxSelectedSkills);
   selectedSkills.forEach((skill) => {
-    skill.level++;
+    skill.level += 1;
     skill.isSelected = true;
   });
 
@@ -135,7 +135,7 @@ export function randomizeTemplate (allTemplates: CharacterTemplate[], activeChar
   });
 
   if (templatePool.length === 0) {
-    console.warn("All templates taken, can't produce a fulfilling template. Falling back to any template.");
+    console.warn(`All templates taken, can't produce a fulfilling template. Falling back to any template.`);
     templatePool = allTemplates;
   }
 

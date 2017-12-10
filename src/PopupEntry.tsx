@@ -1,13 +1,13 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {ModalState, PopupAlign, PopupHandle} from "./state/PopupState";
-import {ReactElement} from "react";
-import {computed, observable, transaction} from "mobx";
-import {observer} from "mobx-react";
-import {SizeObserver} from "./lib/SizeObserver";
-import {Size} from "./Bounds";
-import {grid} from "./config/Grid";
-import {InputLayer} from "./state/InputState";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {ModalState, PopupAlign, PopupHandle} from './state/PopupState';
+import {ReactElement} from 'react';
+import {computed, observable, transaction} from 'mobx';
+import {observer} from 'mobx-react';
+import {SizeObserver} from './lib/SizeObserver';
+import {Size} from './Bounds';
+import {grid} from './config/Grid';
+import {InputLayer} from './state/InputState';
 
 @observer
 export class PopupEntry extends React.Component<{
@@ -65,7 +65,7 @@ export class PopupEntry extends React.Component<{
 
     // Pass on handle to popup content
     let content = handle.content;
-    if (typeof content !== "string") {
+    if (typeof content !== 'string') {
       content = React.cloneElement(
         content as ReactElement<{handle: PopupHandle}>,
         {handle}
@@ -121,10 +121,10 @@ export class PopupEntry extends React.Component<{
 }
 
 const transformStyles: {[key: string]: any} = {
-  entering: {transform: "scale(0)"},
-  entered: {transform: "scale(1)"},
-  exiting: {transform: "scale(0)"},
-  exited: {transform: "scale(0)"}
+  entering: {transform: 'scale(0)'},
+  entered: {transform: 'scale(1)'},
+  exiting: {transform: 'scale(0)'},
+  exited: {transform: 'scale(0)'}
 };
 
 const opacityStyles: {[key: string]: any} = {
@@ -135,28 +135,28 @@ const opacityStyles: {[key: string]: any} = {
 };
 
 const filterStyles: {[key: string]: any} = {
-  entering: {backdropFilter: "blur(0)"},
-  entered: {backdropFilter: "blur(5px)"},
-  exiting: {backdropFilter: "blur(0)"},
-  exited: {backdropFilter: "blur(0)"}
+  entering: {backdropFilter: 'blur(0)'},
+  entered: {backdropFilter: 'blur(5px)'},
+  exiting: {backdropFilter: 'blur(0)'},
+  exited: {backdropFilter: 'blur(0)'}
 };
 
 const styles = StyleSheet.create({
   modalContainer: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0
   },
 
   modalBackground: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
-    background: "rgba(0, 0, 0, 0.5)",
-    pointerEvents: "all"
+    background: 'rgba(0, 0, 0, 0.5)',
+    pointerEvents: 'all'
   },
 
   popup: {
-    position: "absolute",
-    pointerEvents: "all"
+    position: 'absolute',
+    pointerEvents: 'all'
   },
 
   animator: {
@@ -164,6 +164,6 @@ const styles = StyleSheet.create({
       `backdrop-filter ${PopupEntry.animateDuration}ms ease-out`,
       `transform ${PopupEntry.animateDuration}ms ease-out`,
       `opacity ${PopupEntry.animateDuration}ms ease-out`
-    ].join(",")
+    ].join(',')
   }
 });

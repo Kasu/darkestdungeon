@@ -52,7 +52,7 @@ class Fader {
   }
 
   play () {
-    this.howl.off("fade"); // Cancels any pending stop calls
+    this.howl.off('fade'); // Cancels any pending stop calls
     this.howl.play();
     this.howl.fade(0, this.initialVolume, Fader.fadeTime);
   }
@@ -64,7 +64,7 @@ class Fader {
 
   stop () {
     this.howl.fade(this.initialVolume, 0, Fader.fadeTime);
-    this.howl.on("fade", () => {
+    this.howl.on('fade', () => {
       this.howl.stop();
       this.howl.unload();
     });

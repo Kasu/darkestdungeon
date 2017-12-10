@@ -1,7 +1,7 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyleFn} from "../config/styles";
-import {grid} from "../config/Grid";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyleFn} from '../config/styles';
+import {grid} from '../config/Grid';
 
 export class StressMeter extends React.Component<{
   percentage: number,
@@ -11,7 +11,8 @@ export class StressMeter extends React.Component<{
     const levels = [];
     const boxCount = 10;
     const scaledPercentage = this.props.percentage * 2;
-    for (let i = 0; i < boxCount; i++) {
+
+    for (let i = 0; i < boxCount; i += 1) {
       const minValueFor1 = i / boxCount;
       const minValueFor2 = 1 + minValueFor1;
       if (scaledPercentage > minValueFor2) {
@@ -44,32 +45,32 @@ const StressBox = ({level}: {level: number}) => {
 
 const styles = StyleSheet.create({
   stressMeter: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
 
   stressBox: {
     borderRadius: grid.border,
     width: grid.gutter - grid.border * 2,
     height: grid.gutter - grid.border,
-    backgroundColor: "black",
-    border: commonStyleFn.border("transparent"),
+    backgroundColor: 'black',
+    border: commonStyleFn.border('transparent'),
     
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginRight: grid.border
     }
   },
 
   stressBox0: {
-    borderColor: "gray"
+    borderColor: 'gray'
   },
 
   stressBox1: {
-    borderColor: "white"
+    borderColor: 'white'
   },
 
   stressBox2: {
-    borderColor: "white",
-    backgroundColor: "white"
+    borderColor: 'white',
+    backgroundColor: 'white'
   }
 });
 

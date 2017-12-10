@@ -1,23 +1,23 @@
-import * as React from "react";
-import {TitleHeader} from "../../ui/TitleHeader";
-import {profileEntrySpacing, ProfileList, visibleProfileEntries} from "./ProfileList";
-import {css, StyleSheet} from "aphrodite";
-import {pauseIcon, PauseMenu} from "../../ui/PauseMenu";
-import {AppStateComponent} from "../../AppStateComponent";
-import {Profile} from "../../state/types/Profile";
-import {Icon, IconHighlightType} from "../../ui/Icon";
-import {commonColors, commonStyleFn} from "../../config/styles";
-import {grid} from "../../config/Grid";
-import {InputBinding} from "../../state/InputState";
-import {Input} from "../../config/Input";
-import {observer} from "mobx-react";
-import {observable} from "mobx";
-import {CommonButton} from "../../ui/CommonButton";
-import {profileEntryHeight} from "./ProfileEntry";
+import * as React from 'react';
+import {TitleHeader} from '../../ui/TitleHeader';
+import {profileEntrySpacing, ProfileList, visibleProfileEntries} from './ProfileList';
+import {css, StyleSheet} from 'aphrodite';
+import {pauseIcon, PauseMenu} from '../../ui/PauseMenu';
+import {AppStateComponent} from '../../AppStateComponent';
+import {Profile} from '../../state/types/Profile';
+import {Icon, IconHighlightType} from '../../ui/Icon';
+import {commonColors, commonStyleFn} from '../../config/styles';
+import {grid} from '../../config/Grid';
+import {InputBinding} from '../../state/InputState';
+import {Input} from '../../config/Input';
+import {observer} from 'mobx-react';
+import {observable} from 'mobx';
+import {CommonButton} from '../../ui/CommonButton';
+import {profileEntryHeight} from './ProfileEntry';
 
 const sounds = {
-  profileSelected: {src: require("../../assets/dd/audio/gen_title_startgame.ogg")},
-  campaignClicked: {src: require("../../assets/dd/audio/gen_title_campaignbutton.ogg")}
+  profileSelected: {src: require('../../assets/dd/audio/gen_title_startgame.ogg')},
+  campaignClicked: {src: require('../../assets/dd/audio/gen_title_campaignbutton.ogg')}
 };
 
 @observer
@@ -44,7 +44,7 @@ export class Start extends AppStateComponent {
 
   pause () {
     this.appState.popups.show({
-      id: "pause",
+      id: 'pause',
       content: <PauseMenu mainMenu={false}/>
     });
   }
@@ -108,7 +108,7 @@ const transitionableStyle = {
   transition: [
     `transform ${contentTransitionTime}ms ease-in-out`,
     `opacity ${contentTransitionTime}ms ease-in-out`
-  ].join(",")
+  ].join(',')
 };
 
 const styles = StyleSheet.create({
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
   },
 
   pauseMenuIcon: {
-    position: "absolute",
+    position: 'absolute',
     bottom: grid.paddingBottom,
     right: grid.paddingRight,
     ...transitionableStyle
@@ -138,26 +138,26 @@ const styles = StyleSheet.create({
   },
 
   skybox: {
-    backgroundImage: `url(${require("../../assets/dd/images/fe_flow/title_bg.png")})`,
-    backgroundSize: "cover",
-    backgroundPosition: "51% 100%",
-    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${require('../../assets/dd/images/fe_flow/title_bg.png')})`,
+    backgroundSize: 'cover',
+    backgroundPosition: '51% 100%',
+    backgroundRepeat: 'no-repeat',
     width: grid.outerWidth,
     height: grid.outerHeight,
-    justifyContent: "flex-end"
+    justifyContent: 'flex-end'
   },
 
   estate: {
-    backgroundImage: `url(${require("../../assets/dd/images/fe_flow/title_house.png")})`,
-    backgroundSize: "100% auto",
-    backgroundPosition: "50% 0%",
-    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${require('../../assets/dd/images/fe_flow/title_house.png')})`,
+    backgroundSize: '100% auto',
+    backgroundPosition: '50% 0%',
+    backgroundRepeat: 'no-repeat',
     height: grid.ySpan(10)
   },
 
   contentBelow: {
-    backgroundColor: "black",
-    alignItems: "center",
+    backgroundColor: 'black',
+    alignItems: 'center',
 
     height: contentBelowHeight,
     padding: contentBelowPadding,
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
   },
 
   campaignButton: {
-    position: "absolute",
+    position: 'absolute',
     top: -contentBelowPadding - grid.ySpan(1)
   },
 

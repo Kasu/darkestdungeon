@@ -1,13 +1,13 @@
-import {Vector} from "./Vector";
-import {identifier, list, object, serializable} from "serializr";
-import uuid = require("uuid");
-import {Character} from "./Character";
-import {generateCurio, generateMonster} from "../Generators";
-import {observable} from "mobx";
-import {count} from "../../lib/Helpers";
-import {Curio} from "./Curio";
-import {Dungeon} from "./Dungeon";
-import {Difficulty} from "./Difficulty";
+import {Vector} from './Vector';
+import {identifier, list, object, serializable} from 'serializr';
+import uuid = require('uuid');
+import {Character} from './Character';
+import {generateCurio, generateMonster} from '../Generators';
+import {observable} from 'mobx';
+import {count} from '../../lib/Helpers';
+import {Curio} from './Curio';
+import {Dungeon} from './Dungeon';
+import {Difficulty} from './Difficulty';
 
 export type MapLocationId = string;
 

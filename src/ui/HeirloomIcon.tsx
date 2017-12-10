@@ -1,8 +1,8 @@
-import * as React from "react";
-import {ItemInfo} from "../state/types/ItemInfo";
-import {IconWithSide} from "./IconWithSide";
-import {grid} from "../config/Grid";
-import {TooltipArea} from "../lib/TooltipArea";
+import * as React from 'react';
+import {ItemInfo} from '../state/types/ItemInfo';
+import {IconWithSide} from './IconWithSide';
+import {grid} from '../config/Grid';
+import {TooltipArea} from '../lib/TooltipArea';
 
 export class HeirloomIcon extends React.Component<{
   info: ItemInfo,
@@ -10,7 +10,7 @@ export class HeirloomIcon extends React.Component<{
   classStyle?: any
 }> {
   render () {
-    const amountString = this.props.amount !== undefined && (": " + this.props.amount) + " ";
+    const amountString = this.props.amount !== undefined && (': ' + this.props.amount) + ' ';
     return (
       <TooltipArea
         classStyle={this.props.classStyle}

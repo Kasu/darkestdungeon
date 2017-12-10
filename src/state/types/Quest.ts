@@ -1,15 +1,15 @@
-import {identifier, list, object, serializable} from "serializr";
-import uuid = require("uuid");
-import {QuestMap} from "./QuestMap";
-import {QuestObjective} from "./QuestObjective";
-import {Item} from "./Item";
-import {autorun, computed, intercept, observable, reaction, when} from "mobx";
-import {QuestInfo} from "./QuestInfo";
-import {DungeonId} from "./Dungeon";
-import {MapLocationId} from "./QuestRoom";
-import {cap, moveItem, removeItem} from "../../lib/Helpers";
-import {Hero} from "./Hero";
-import {Battler} from "./Battler";
+import {identifier, list, object, serializable} from 'serializr';
+import uuid = require('uuid');
+import {QuestMap} from './QuestMap';
+import {QuestObjective} from './QuestObjective';
+import {Item} from './Item';
+import {autorun, computed, intercept, observable, reaction, when} from 'mobx';
+import {QuestInfo} from './QuestInfo';
+import {DungeonId} from './Dungeon';
+import {MapLocationId} from './QuestRoom';
+import {cap, moveItem, removeItem} from '../../lib/Helpers';
+import {Hero} from './Hero';
+import {Battler} from './Battler';
 
 export type QuestId = string;
 
@@ -61,10 +61,13 @@ export class Quest extends Battler<Hero> {
   }
 
   @computed get monsterPercentage () {
-    const allMonsters = this.map.rooms.reduce((reduction, room) => {
-      reduction.push(...room.monsters);
-      return reduction;
-    }, [...this.enemies, ...this.deceasedEnemies]);
+    const allMonsters = this.map.rooms.reduce(
+      (reduction, room) => {
+        reduction.push(...room.monsters);
+        return reduction;
+      },
+      [...this.enemies, ...this.deceasedEnemies]
+    );
 
     const deadMonsters = allMonsters.filter((monster) => monster.isDead);
     return deadMonsters.length / allMonsters.length;
@@ -78,7 +81,8 @@ export class Quest extends Battler<Hero> {
   get info (): QuestInfo {
     if (this.objective.monsterPercentage) {
       return QuestInfo.hunt;
-    } else if (this.objective.explorePercentage) {
+    }
+    if (this.objective.explorePercentage) {
       return QuestInfo.explore;
     }
     return QuestInfo.free;
@@ -123,7 +127,7 @@ export class Quest extends Battler<Hero> {
       // Leaving a room
       intercept(
         this,
-        "currentRoomId",
+        'currentRoomId',
         (change) => {
           if (this.inBattle) {
             this.endBattle();
@@ -158,9 +162,9 @@ export class Quest extends Battler<Hero> {
 }
 
 export enum QuestStatus {
-  Idle = "Idle",
-  Started = "Started",
-  Defeat = "Defeat",
-  Escape = "Escape",
-  Victory = "Victory"
+  Idle = 'Idle',
+  Started = 'Started',
+  Defeat = 'Defeat',
+  Escape = 'Escape',
+  Victory = 'Victory'
 }

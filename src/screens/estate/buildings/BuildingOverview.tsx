@@ -1,20 +1,20 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {Column, commonStyleFn, Row} from "../../../config/styles";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {BuildingUpgradeShop} from "./BuildingUpgradeShop";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {grid} from "../../../config/Grid";
-import {LargeHeader} from "../../../ui/LargeHeader";
-import {Icon} from "../../../ui/Icon";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {BarkTooltipArea} from "../../../ui/BarkTooltipArea";
-import {TooltipSide} from "../../../lib/TooltipArea";
-import {randomizeItem} from "../../../lib/Helpers";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {Column, commonStyleFn, Row} from '../../../config/styles';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {BuildingUpgradeShop} from './BuildingUpgradeShop';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {grid} from '../../../config/Grid';
+import {LargeHeader} from '../../../ui/LargeHeader';
+import {Icon} from '../../../ui/Icon';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {BarkTooltipArea} from '../../../ui/BarkTooltipArea';
+import {TooltipSide} from '../../../lib/TooltipArea';
+import {randomizeItem} from '../../../lib/Helpers';
 
-const moreInfoIconUrl = require("../../../assets/dd/images/shared/progression/more_info_icon.png");
-const lessInfoIconUrl = require("../../../assets/dd/images/shared/progression/less_info_icon.png");
+const moreInfoIconUrl = require('../../../assets/dd/images/shared/progression/more_info_icon.png');
+const lessInfoIconUrl = require('../../../assets/dd/images/shared/progression/less_info_icon.png');
 const npcBarkWaitTime = 1000;
 
 @observer
@@ -103,48 +103,48 @@ export class BuildingOverview extends AppStateComponent<{
 
 const styles = StyleSheet.create({
   container: {
-    backgroundSize: "cover",
-    backgroundPosition: "50% 50%",
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%',
     width: grid.xSpan(12),
     height: grid.ySpan(13)
   },
 
   coverupRight: {
     ...commonStyleFn.dock(),
-    background: commonStyleFn.gradient("right", [
-      [0, "transparent"],
-      [30, "transparent"],
-      [45, "black"],
-      [100, "black"]
+    background: commonStyleFn.gradient('right', [
+      [0, 'transparent'],
+      [30, 'transparent'],
+      [45, 'black'],
+      [100, 'black']
     ])
   },
 
   coverupRightSmall: {
     ...commonStyleFn.dock(),
-    background: commonStyleFn.gradient("right", [
-      [85, "transparent"],
-      [100, "black"]
+    background: commonStyleFn.gradient('right', [
+      [85, 'transparent'],
+      [100, 'black']
     ])
   },
 
   coverupTop: {
     ...commonStyleFn.dock(),
-    background: commonStyleFn.gradient("bottom", [
-      [0, "black"],
-      [20, "black"],
-      [30, "transparent"]
+    background: commonStyleFn.gradient('bottom', [
+      [0, 'black'],
+      [20, 'black'],
+      [30, 'transparent']
     ])
   },
 
   npc: {
     ...commonStyleFn.dock(),
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "contain",
-    backgroundPosition: "50% 100%",
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 100%',
     marginRight: -grid.xSpan(1),
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   npcBarker: {
@@ -158,11 +158,11 @@ const styles = StyleSheet.create({
   },
 
   upgradeSignClose: {
-    backgroundColor: "red"
+    backgroundColor: 'red'
   },
 
   upgradeSignShow: {
-    backgroundColor: "green"
+    backgroundColor: 'green'
   },
 
   content: {

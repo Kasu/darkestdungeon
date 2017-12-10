@@ -1,10 +1,10 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonColors, commonStyleFn} from "../config/styles";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {grid} from "../config/Grid";
-import Color = require("color");
-import {fonts} from "../assets/fonts";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonColors, commonStyleFn} from '../config/styles';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import {grid} from '../config/Grid';
+import * as Color from 'color';
+import {fonts} from '../assets/fonts';
 
 export class CommonHeader extends React.Component<{
   label?: string,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   commonHeader: {
     padding: grid.gutter,
     paddingLeft: grid.gutter * 2,
-    whiteSpace: "nowrap",
+    whiteSpace: 'nowrap',
     fontFamily: fonts.Darkest,
     color: commonColors.gold
   }

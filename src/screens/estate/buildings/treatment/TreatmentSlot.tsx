@@ -1,14 +1,14 @@
-import * as React from "react";
-import {TooltipArea} from "../../../../lib/TooltipArea";
-import {Avatar} from "../../../../ui/Avatar";
-import {commonStyleFn, commonStyles} from "../../../../config/styles";
-import {css, StyleSheet} from "aphrodite";
-import {Hero} from "../../../../state/types/Hero";
-import {DragDropSlot} from "../../../../lib/DragDropSlot";
-import {grid} from "../../../../config/Grid";
-import {GoldIcon} from "../../../../ui/GoldIcon";
-import {BuildingInfo} from "../../../../state/types/BuildingInfo";
-import {cancelIconUrl, confirmIconUrl, Icon} from "../../../../ui/Icon";
+import * as React from 'react';
+import {TooltipArea} from '../../../../lib/TooltipArea';
+import {Avatar} from '../../../../ui/Avatar';
+import {commonStyleFn, commonStyles} from '../../../../config/styles';
+import {css, StyleSheet} from 'aphrodite';
+import {Hero} from '../../../../state/types/Hero';
+import {DragDropSlot} from '../../../../lib/DragDropSlot';
+import {grid} from '../../../../config/Grid';
+import {GoldIcon} from '../../../../ui/GoldIcon';
+import {BuildingInfo} from '../../../../state/types/BuildingInfo';
+import {cancelIconUrl, confirmIconUrl, Icon} from '../../../../ui/Icon';
 
 export class TreatmentSlot extends React.Component<{
   buildingInfo: BuildingInfo,
@@ -29,8 +29,8 @@ export class TreatmentSlot extends React.Component<{
     if (!this.props.isAvailable) {
       Object.assign(style, {
         backgroundImage: `url(${this.props.buildingInfo.parent.slotImageUrl})`,
-        backgroundSize: "150%",
-        backgroundPosition: "50% 80%"
+        backgroundSize: '150%',
+        backgroundPosition: '50% 80%'
       });
     } else if (!this.props.canHelp(residentCandidate)) {
       styleList.push(styles.rejected);
@@ -41,7 +41,7 @@ export class TreatmentSlot extends React.Component<{
       );
     }
 
-    return {className: css(styleList), style};
+    return {style, className: css(styleList)};
   }
 
   render () {
@@ -71,10 +71,10 @@ export class TreatmentSlot extends React.Component<{
           if (this.props.resident) {
             const info = this.props.resident.residentInfo;
             let actionFn = info.isLockedIn ? this.props.onRelease : this.props.onLockIn;
-            let actionTip = info.isLockedIn ? "Stop Treatment" : "Start Treatment";
+            let actionTip = info.isLockedIn ? 'Stop Treatment' : 'Start Treatment';
             const actionIconUrl = info.isLockedIn ? cancelIconUrl : confirmIconUrl;
             if (!canAfford && !info.isLockedIn) {
-              actionTip = "Not enough gold";
+              actionTip = 'Not enough gold';
               actionFn = undefined;
             }
 
@@ -121,9 +121,9 @@ export class TreatmentSlot extends React.Component<{
 }
 
 const slotIconUrls = {
-  background: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png"),
-  highlight: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.backgroundhightlight.png"),
-  rejected: require("../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.locked_for_hero.png")
+  background: require('../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.background.png'),
+  highlight: require('../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.backgroundhightlight.png'),
+  rejected: require('../../../../assets/dd/images/campaign/town/hero_slot/hero_slot.locked_for_hero.png')
 };
 
 const slotSize = grid.ySpan(2);
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     width: slotSize,
     height: slotSize,
 
-    ":not(last-child)": {
+    ':not(last-child)': {
       marginRight: grid.gutter / 2
     }
   },
@@ -148,8 +148,8 @@ const styles = StyleSheet.create({
   },
 
   highlighted: {
-    ":before": {
-      content: "' '",
+    ':before': {
+      content: '" "',
       ...commonStyleFn.dock(),
       ...commonStyleFn.singleBackground(),
       backgroundImage: `url(${slotIconUrls.highlight})`,
@@ -158,8 +158,8 @@ const styles = StyleSheet.create({
   },
 
   hovered: {
-    ":before": {
-      content: "' '",
+    ':before': {
+      content: '" "',
       ...commonStyleFn.dock(),
       ...commonStyleFn.singleBackground(),
       backgroundImage: `url(${slotIconUrls.highlight})`,
@@ -168,12 +168,12 @@ const styles = StyleSheet.create({
   },
 
   cost: {
-    ...commonStyleFn.dock("top"),
+    ...commonStyleFn.dock('top'),
     padding: grid.border * 2,
-    background: commonStyleFn.gradient("bottom", [
-      [0, "rgba(0, 0, 0, 0.7)"],
-      [50, "rgba(0, 0, 0, 0.7)"],
-      [100, "transparent"]
+    background: commonStyleFn.gradient('bottom', [
+      [0, 'rgba(0, 0, 0, 0.7)'],
+      [50, 'rgba(0, 0, 0, 0.7)'],
+      [100, 'transparent']
     ])
   },
 
@@ -181,11 +181,11 @@ const styles = StyleSheet.create({
     ...commonStyleFn.dock(),
     width: slotSize,
     height: slotSize,
-    backgroundColor: "rgba(0, 0, 0, 0.6)"
+    backgroundColor: 'rgba(0, 0, 0, 0.6)'
   },
 
   actionButton: {
-    position: "absolute",
+    position: 'absolute',
     width: grid.ySpan(1),
     height: grid.ySpan(0.5),
     bottom: -grid.ySpan(0.5),

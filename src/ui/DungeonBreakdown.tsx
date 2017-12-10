@@ -1,9 +1,9 @@
-import * as React from "react";
-import {Column, commonColors, commonStyleFn, Row} from "../config/styles";
-import {questIconSize, QuestIcon} from "./QuestIcon";
-import {Quest, QuestId} from "../state/types/Quest";
-import {css, StyleSheet} from "aphrodite";
-import {fonts} from "../assets/fonts";
+import * as React from 'react';
+import {Column, commonColors, commonStyleFn, Row} from '../config/styles';
+import {questIconSize, QuestIcon} from './QuestIcon';
+import {Quest, QuestId} from '../state/types/Quest';
+import {css, StyleSheet} from 'aphrodite';
+import {fonts} from '../assets/fonts';
 
 export class DungeonBreakdown extends React.Component<{
   name: string,
@@ -27,7 +27,7 @@ export class DungeonBreakdown extends React.Component<{
             <span className={css(styles.progressBar)}>
               <span
                 className={css(styles.progressFill)}
-                style={{width: (this.props.progress) * 100 + "%"}}
+                style={{width: (this.props.progress) * 100 + '%'}}
               />
             </span>
           </Column>
@@ -50,9 +50,9 @@ export class DungeonBreakdown extends React.Component<{
 
 const styles = StyleSheet.create({
   progress: {
-    backgroundImage: `url(${require("../assets/dd/images/campaign/town/quest_select/dungeon_progressionbar.png")})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
+    backgroundImage: `url(${require('../assets/dd/images/campaign/town/quest_select/dungeon_progressionbar.png')})`,
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     height: 84,
     width: 282
   },
@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
     color: commonColors.gold,
     paddingRight: 15,
     paddingBottom: 5,
-    alignItems: "flex-end",
-    justifyContent: "flex-end"
+    alignItems: 'flex-end',
+    justifyContent: 'flex-end'
   },
 
   progressBar: {

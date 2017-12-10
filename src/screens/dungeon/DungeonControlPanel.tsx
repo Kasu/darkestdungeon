@@ -1,16 +1,16 @@
-import * as React from "react";
-import {Column, commonStyleFn, commonStyles, Row} from "../../config/styles";
-import {DungeonCharacterSummary} from "./DungeonCharacterSummary";
-import {css, StyleSheet} from "aphrodite";
-import {Inventory} from "../../ui/Inventory";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {DungeonMap} from "./DungeonMap";
-import {ItemType} from "../../state/types/ItemInfo";
-import {Quest} from "../../state/types/Quest";
-import {DungeonSelections} from "./DungeonSelections";
-import {grid} from "../../config/Grid";
-import {Icon} from "../../ui/Icon";
+import * as React from 'react';
+import {Column, commonStyleFn, commonStyles, Row} from '../../config/styles';
+import {DungeonCharacterSummary} from './DungeonCharacterSummary';
+import {css, StyleSheet} from 'aphrodite';
+import {Inventory} from '../../ui/Inventory';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {DungeonMap} from './DungeonMap';
+import {ItemType} from '../../state/types/ItemInfo';
+import {Quest} from '../../state/types/Quest';
+import {DungeonSelections} from './DungeonSelections';
+import {grid} from '../../config/Grid';
+import {Icon} from '../../ui/Icon';
 
 @observer
 export class DungeonControlPanel extends React.Component<{
@@ -78,13 +78,13 @@ export class DungeonControlPanel extends React.Component<{
                 <Icon
                   width={grid.xSpan(0.5)}
                   height={grid.ySpan(2)}
-                  src={require("../../assets/dd/images/scrolls/use_inventory.png")}
+                  src={require('../../assets/dd/images/scrolls/use_inventory.png')}
                   onClick={() => this.isMapVisible = false}
                 />
                 <Icon
                   width={grid.xSpan(0.5)}
                   height={grid.ySpan(2)}
-                  src={require("../../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_map.png")}
+                  src={require('../../assets/dd/images/panels/icons_equip/trinket/inv_trinket+ancestors_map.png')}
                   onClick={() => this.isMapVisible = true}
                 />
               </div>
@@ -98,7 +98,7 @@ export class DungeonControlPanel extends React.Component<{
 
 const styles = StyleSheet.create({
   controlPanel: {
-    background: "black"
+    background: 'black'
   },
 
   controlPanelBox: {
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   },
 
   sideMenu: {
-    borderLeft: "2px solid gray",
+    borderLeft: '2px solid gray',
     paddingLeft: 2,
     width: 50
   }

@@ -1,8 +1,8 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyles} from "../config/styles";
-import {observer} from "mobx-react";
-import {Experienced} from "../state/types/Experienced";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyles} from '../config/styles';
+import {observer} from 'mobx-react';
+import {Experienced} from '../state/types/Experienced';
 
 @observer
 export class LevelIcon extends React.Component<{
@@ -15,7 +15,7 @@ export class LevelIcon extends React.Component<{
         <div className={css(styles.progressContainer, commonStyles.boxBorder)}>
           <div
             className={css(styles.progressFill)}
-            style={{height: (this.props.exp.levelProgress * 100) + "%"}}
+            style={{height: (this.props.exp.levelProgress * 100) + '%'}}
           />
         </div>
       </div>
@@ -30,21 +30,21 @@ const styles = StyleSheet.create({
 
   level: {
     height: 20,
-    backgroundColor: "gray",
+    backgroundColor: 'gray',
     borderRadius: 10,
-    color: "black",
-    justifyContent: "center",
-    alignItems: "center"
+    color: 'black',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   progressContainer: {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     height: 40,
-    justifyContent: "flex-end"
+    justifyContent: 'flex-end'
   },
 
   progressFill: {
-    backgroundColor: "white",
-    width: "100%"
+    backgroundColor: 'white',
+    width: '100%'
   }
 });

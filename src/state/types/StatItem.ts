@@ -1,6 +1,6 @@
-import {StatInfo} from "./StatInfo";
-import {StatMod} from "./Stats";
-import {custom} from "serializr";
+import {StatInfo} from './StatInfo';
+import {StatMod} from './Stats';
+import {custom} from 'serializr';
 
 export class StatItem {
   public value: number = 0;
@@ -38,9 +38,9 @@ export class StatItem {
 
   toString () {
     if (this.info.isPercentage) {
-      return (this.value * 100).toFixed(1) + "%";
+      return (this.value * 100).toFixed(1) + '%';
     }
-    return this.value + "";
+    return this.value + '';
   }
 
   static declare (shortName: string, longName: string, isPercentage?: boolean) {

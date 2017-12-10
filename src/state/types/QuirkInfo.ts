@@ -1,6 +1,6 @@
-import {identifier, serializable} from "serializr";
-import {IStatsSource, Stats} from "./Stats";
-import {BuildingInfoId} from "./BuildingInfo";
+import {identifier, serializable} from 'serializr';
+import {IStatsSource, Stats} from './Stats';
+import {BuildingInfoId} from './BuildingInfo';
 
 export type QuirkId = string;
 
@@ -13,10 +13,10 @@ export class QuirkInfo implements IStatsSource {
   public bannedTreatmentIds: BuildingInfoId[] = [];
   public isDisease: boolean;
   public isAffliction: boolean;
-  statsSourceName: string = "Quirk";
+  statsSourceName: string = 'Quirk';
 
   get isForcedOrBanned () {
-    return this.forcedTreatmentIds.length || this.bannedTreatmentIds.length;
+    return this.forcedTreatmentIds.length > 0 || this.bannedTreatmentIds.length > 0;
   }
 
   get isPositive () {

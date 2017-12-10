@@ -1,13 +1,13 @@
-import {DungeonInfo} from "./types/DungeonInfo";
-import {LevelInfo} from "./types/LevelInfo";
-import {CharacterClassInfo} from "./types/CharacterClassInfo";
-import {ItemInfo, ItemType} from "./types/ItemInfo";
-import {QuirkInfo} from "./types/QuirkInfo";
-import {SkillInfo} from "./types/SkillInfo";
-import {CharacterTemplate} from "./types/CharacterTemplate";
-import {BuildingUpgradeInfo} from "./types/BuildingUpgradeInfo";
-import {BuildingInfo} from "./types/BuildingInfo";
-import {BuildingUpgradeEffects} from "./types/BuildingUpgradeEffects";
+import {DungeonInfo} from './types/DungeonInfo';
+import {LevelInfo} from './types/LevelInfo';
+import {CharacterClassInfo} from './types/CharacterClassInfo';
+import {ItemInfo, ItemType} from './types/ItemInfo';
+import {QuirkInfo} from './types/QuirkInfo';
+import {SkillInfo} from './types/SkillInfo';
+import {CharacterTemplate} from './types/CharacterTemplate';
+import {BuildingUpgradeInfo} from './types/BuildingUpgradeInfo';
+import {BuildingInfo} from './types/BuildingInfo';
+import {BuildingUpgradeEffects} from './types/BuildingUpgradeEffects';
 
 export type StaticItem = {
   id: string | number
@@ -57,7 +57,7 @@ export class StaticState  {
     const list = selectList(this);
     const existingItem = list.find((otherItem) => otherItem.id === item.id);
     if (existingItem) {
-      throw new Error("Static item already exists: " + item.id);
+      throw new Error('Static item already exists: ' + item.id);
     }
     list.push(item);
   }

@@ -51,7 +51,7 @@ export function count (n: number) {
 
 export function range (start: number, end: number) {
   const list = [];
-  for (let i = start; i < end; i++) {
+  for (let i = start; i < end; i += 1) {
     list.push(i);
   }
   return list;
@@ -85,7 +85,7 @@ export function enumMap<T> (e: any): Map<string, T> {
 export function cap (value: number, min: number, max: number) {
   if (value < min) {
     return min;
-  } else if (value > max) {
+  } if (value > max) {
     return max;
   }
   return value;
@@ -103,7 +103,7 @@ export function cmp <T> (a: T, b: T) {
 }
 
 export function thousands (n: number) {
-  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
 export function randomizeItem<T> (items: T[]): T {
@@ -122,9 +122,10 @@ export function randomizeItems<T> (items: T[], min: number = 1, max: number = it
   let amount = min + Math.floor(Math.random() * (max - min));
   const itemsLeft = items.slice();
   const selectedItems: T[] = [];
-  while (amount-- > 0) {
+  while (amount > 0) {
     const index = Math.floor(itemsLeft.length * Math.random());
     selectedItems.push(itemsLeft.splice(index, 1)[0]);
+    amount -= 1;
   }
   return selectedItems;
 }
@@ -135,7 +136,7 @@ export function wait (time: number) {
 
 export function addArrays (a: Array<number | boolean>, b: Array<number | boolean>) {
   const sum: number[] = [];
-  for (let i = 0; i < a.length; i++) {
+  for (let i = 0; i < a.length; i += 1) {
     sum.push(a[i] as any + b[i]);
   }
   return sum;
@@ -143,7 +144,7 @@ export function addArrays (a: Array<number | boolean>, b: Array<number | boolean
 
 export function permutations <T> (a: T[], min: number, max: number = min): T[][] {
   const all: T[][] = [];
-  for (let i = min; i <= max; i++) {
+  for (let i = min; i <= max; i += 1) {
     permutationFn(i, a, [], all);
   }
   if (a.length >= min && a.length <= max) {
@@ -159,7 +160,7 @@ function permutationFn <T> (n: number, src: T[], got: T[], all: T[][]) {
     }
     return;
   }
-  for (let j = 0; j < src.length; j++) {
+  for (let j = 0; j < src.length; j += 1) {
     permutationFn(n - 1, src.slice(j + 1), got.concat([src[j]]), all);
   }
   return;

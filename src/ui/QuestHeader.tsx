@@ -1,12 +1,12 @@
-import * as React from "react";
-import {Quest, QuestStatus} from "../state/types/Quest";
-import {observer} from "mobx-react";
-import {TooltipArea} from "../lib/TooltipArea";
-import {LargeHeader} from "./LargeHeader";
-import {Icon} from "./Icon";
-import {Row} from "../config/styles";
-import {grid} from "../config/Grid";
-import {css, StyleSheet} from "aphrodite";
+import * as React from 'react';
+import {Quest, QuestStatus} from '../state/types/Quest';
+import {observer} from 'mobx-react';
+import {TooltipArea} from '../lib/TooltipArea';
+import {LargeHeader} from './LargeHeader';
+import {Icon} from './Icon';
+import {Row} from '../config/styles';
+import {grid} from '../config/Grid';
+import {css, StyleSheet} from 'aphrodite';
 
 @observer
 export class QuestHeader extends React.Component<{
@@ -48,7 +48,7 @@ export class QuestHeader extends React.Component<{
           <Row>
             <Icon
               classStyle={styles.headerIcon}
-              src={require("../assets/dd/images/overlays/quest_log.png")}
+              src={require('../assets/dd/images/overlays/quest_log.png')}
             />
             <TooltipArea tip={this.props.quest.objective.description}>
               {this.props.quest.info.type}

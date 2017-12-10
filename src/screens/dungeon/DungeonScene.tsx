@@ -1,15 +1,15 @@
-import * as React from "react";
-import {commonStyleFn, Row} from "../../config/styles";
-import {CurioModel} from "../../ui/CurioModel";
-import {Hero} from "../../state/types/Hero";
-import {observer} from "mobx-react";
-import {Quest} from "../../state/types/Quest";
-import {DungeonSelections} from "./DungeonSelections";
-import {CharacterGroup} from "./CharacterGroup";
-import {Dungeon} from "../../state/types/Dungeon";
-import {computed} from "mobx";
-import {StyleSheet} from "aphrodite";
-import {grid} from "../../config/Grid";
+import * as React from 'react';
+import {commonStyleFn, Row} from '../../config/styles';
+import {CurioModel} from '../../ui/CurioModel';
+import {Hero} from '../../state/types/Hero';
+import {observer} from 'mobx-react';
+import {Quest} from '../../state/types/Quest';
+import {DungeonSelections} from './DungeonSelections';
+import {CharacterGroup} from './CharacterGroup';
+import {Dungeon} from '../../state/types/Dungeon';
+import {computed} from 'mobx';
+import {StyleSheet} from 'aphrodite';
+import {grid} from '../../config/Grid';
 
 @observer
 export class DungeonScene extends React.Component<{
@@ -64,10 +64,10 @@ export class DungeonScene extends React.Component<{
 const styles = StyleSheet.create({
   questRoom: {
     ...commonStyleFn.singleBackground(),
-    backgroundSize: "cover",
-    backgroundPosition: "0 100%",
-    alignItems: "flex-end",
-    justifyContent: "center",
+    backgroundSize: 'cover',
+    backgroundPosition: '0 100%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
     paddingBottom: grid.ySpan(1)
   }
 });

@@ -1,13 +1,13 @@
-import * as React from "react";
-import {BannerHeader} from "../../ui/BannerHeader";
-import {Row} from "../../config/styles";
-import {ItemIcon} from "../../ui/ItemIcon";
-import {CommonHeader} from "../../ui/CommonHeader";
-import {Quest} from "../../state/types/Quest";
-import {observer} from "mobx-react";
-import {computed} from "mobx";
-import {Heirlooms} from "../../ui/Heirlooms";
-import {countHeirlooms} from "../../state/types/Item";
+import * as React from 'react';
+import {BannerHeader} from '../../ui/BannerHeader';
+import {Row} from '../../config/styles';
+import {ItemIcon} from '../../ui/ItemIcon';
+import {CommonHeader} from '../../ui/CommonHeader';
+import {Quest} from '../../state/types/Quest';
+import {observer} from 'mobx-react';
+import {computed} from 'mobx';
+import {Heirlooms} from '../../ui/Heirlooms';
+import {countHeirlooms} from '../../state/types/Item';
 
 @observer
 export class DungeonResultItems extends React.Component<{

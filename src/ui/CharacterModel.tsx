@@ -1,14 +1,14 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {StressMeter} from "./StressMeter";
-import {HealthMeter} from "./HealthMeter";
-import {TooltipArea} from "../lib/TooltipArea";
-import {Character} from "../state/types/Character";
-import {QuirkText} from "./QuirkText";
-import {StatsTextList} from "./StatsText";
-import {commonStyleFn, commonStyles} from "../config/styles";
-import {observer} from "mobx-react";
-import {TurnStats} from "../state/types/Stats";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {StressMeter} from './StressMeter';
+import {HealthMeter} from './HealthMeter';
+import {TooltipArea} from '../lib/TooltipArea';
+import {Character} from '../state/types/Character';
+import {QuirkText} from './QuirkText';
+import {StatsTextList} from './StatsText';
+import {commonStyleFn, commonStyles} from '../config/styles';
+import {observer} from 'mobx-react';
+import {TurnStats} from '../state/types/Stats';
 
 @observer
 export class CharacterModel extends React.Component<{
@@ -63,7 +63,7 @@ export class CharacterModel extends React.Component<{
           <StressMeter percentage={c.stats.stressPercentage}/>
         </TooltipArea>
         
-        {c.buff && <TurnBreakdown turnStats={c.buff} name={c.buff.isPositive ? "Buff" : "Debuff"}/>}
+        {c.buff && <TurnBreakdown turnStats={c.buff} name={c.buff.isPositive ? 'Buff' : 'Debuff'}/>}
 
         {dotBreakdowns}
 
@@ -133,20 +133,20 @@ const targetSpacing = 2;
 const modelBorder = 2;
 const styles = StyleSheet.create({
   model: {
-    background: "green",
+    background: 'green',
     padding: 3,
     margin: 3,
     border: commonStyleFn.border(undefined, modelBorder)
   },
 
   highlight: {
-    borderColor: "gold"
+    borderColor: 'gold'
   },
 
   targetIndicator: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -(targetHeight + targetSpacing + modelBorder), left: -modelBorder, right: -modelBorder,
     height: targetHeight,
-    backgroundColor: "red"
+    backgroundColor: 'red'
   }
 });

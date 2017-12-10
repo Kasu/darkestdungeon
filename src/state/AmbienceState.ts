@@ -1,6 +1,6 @@
-import {autorun, IReactionDisposer, observable} from "mobx";
-import {defaultAmbienceOSVolume} from "../config/general";
-import {Howl} from "howler";
+import {autorun, IReactionDisposer, observable} from 'mobx';
+import {defaultAmbienceOSVolume} from '../config/general';
+import {Howl} from 'howler';
 
 export class AmbienceState {
   private player?: AmbiencePlayer;
@@ -108,7 +108,7 @@ export class AmbiencePlayer {
     const index = Math.floor(Math.random() * this.osSounds.length);
     const os = this.osSounds[index];
     return new Promise((resolve) => {
-      os.once("end", () => {
+      os.once('end', () => {
         this.queueOSCooldownReset();
         resolve();
       });
@@ -147,7 +147,7 @@ export class AmbiencePlayer {
       return new Promise((resolve) => {
         const volume = targetVolume === undefined ? initialVolumes[index] : targetVolume;
         sound.fade(sound.volume(), volume, AmbiencePlayer.fadeTime);
-        sound.once("fade", resolve);
+        sound.once('fade', resolve);
       });
     });
 

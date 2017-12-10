@@ -1,13 +1,13 @@
-import * as React from "react";
-import {Column, commonStyles, Row} from "../../config/styles";
-import {Avatar} from "../../ui/Avatar";
-import {css} from "aphrodite";
-import {HeroFlag} from "../../ui/HeroFlag";
-import {QuirkFaces} from "../../ui/QuirkFaces";
-import {Hero} from "../../state/types/Hero";
-import {Quest, QuestStatus} from "../../state/types/Quest";
-import {Experienced} from "../../state/types/Experienced";
-import {Dungeon} from "../../state/types/Dungeon";
+import * as React from 'react';
+import {Column, commonStyles, Row} from '../../config/styles';
+import {Avatar} from '../../ui/Avatar';
+import {css} from 'aphrodite';
+import {HeroFlag} from '../../ui/HeroFlag';
+import {QuirkFaces} from '../../ui/QuirkFaces';
+import {Hero} from '../../state/types/Hero';
+import {Quest, QuestStatus} from '../../state/types/Quest';
+import {Experienced} from '../../state/types/Experienced';
+import {Dungeon} from '../../state/types/Dungeon';
 
 export class DungeonResultHeroes extends React.Component<{
   quest: Quest,
@@ -53,7 +53,7 @@ class HeroResult extends React.Component<{
             <QuirkFaces/>
           </Row>
         </Column>
-        {this.props.hero.isAlive ? <HeroFlag hero={this.props.hero} exp={this.props.exp} /> : "Dead"}
+        {this.props.hero.isAlive ? <HeroFlag hero={this.props.hero} exp={this.props.exp} /> : 'Dead'}
       </Row>
     );
   }

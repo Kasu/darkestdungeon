@@ -1,7 +1,7 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {commonColors, commonStyleFn} from "../config/styles";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {commonColors, commonStyleFn} from '../config/styles';
 
 export class VerticalOutlineBox extends React.Component<{
   color?: string,
@@ -34,7 +34,7 @@ export class VerticalOutlineBox extends React.Component<{
 const styles = StyleSheet.create({
   box: {
     ...commonStyleFn.dock(),
-    pointerEvents: "none"
+    pointerEvents: 'none'
   },
 
   bar: {
@@ -43,6 +43,6 @@ const styles = StyleSheet.create({
     boxShadow: commonStyleFn.boxShadow()
   },
 
-  above: commonStyleFn.dock("top"),
-  below: commonStyleFn.dock("bottom")
+  above: commonStyleFn.dock('top'),
+  below: commonStyleFn.dock('bottom')
 });

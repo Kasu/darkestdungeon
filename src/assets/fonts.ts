@@ -1,4 +1,4 @@
 export const fonts = {
-  Default: "Ubuntu",
-  Darkest: "New Rocker"
+  Default: 'Ubuntu',
+  Darkest: 'New Rocker'
 };

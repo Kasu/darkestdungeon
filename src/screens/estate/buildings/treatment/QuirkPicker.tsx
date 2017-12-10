@@ -1,13 +1,13 @@
-import * as React from "react";
-import {computed} from "mobx";
-import {observer} from "mobx-react";
-import {QuirkText} from "../../../../ui/QuirkText";
-import {commonStyleFn, Row} from "../../../../config/styles";
-import {CommonHeader} from "../../../../ui/CommonHeader";
-import {Profile} from "../../../../state/types/Profile";
-import {StyleSheet} from "aphrodite";
-import {cancelIconUrl, Icon} from "../../../../ui/Icon";
-import {grid} from "../../../../config/Grid";
+import * as React from 'react';
+import {computed} from 'mobx';
+import {observer} from 'mobx-react';
+import {QuirkText} from '../../../../ui/QuirkText';
+import {commonStyleFn, Row} from '../../../../config/styles';
+import {CommonHeader} from '../../../../ui/CommonHeader';
+import {Profile} from '../../../../state/types/Profile';
+import {StyleSheet} from 'aphrodite';
+import {cancelIconUrl, Icon} from '../../../../ui/Icon';
+import {grid} from '../../../../config/Grid';
 
 @observer
 export class QuirkPicker extends React.Component<{
@@ -65,7 +65,7 @@ export class QuirkPicker extends React.Component<{
 
 const styles = StyleSheet.create({
   selectedQuirk: {
-    background: commonStyleFn.shineGradient("#480405")
+    background: commonStyleFn.shineGradient('#480405')
   },
 
   cancelButton: {

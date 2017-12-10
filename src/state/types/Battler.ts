@@ -1,11 +1,11 @@
-import {action, computed, observable, reaction} from "mobx";
-import {Stats} from "./Stats";
-import {Character} from "./Character";
-import {Skill} from "./Skill";
-import {list, object, serializable} from "serializr";
-import {cmp, contains, moveItem} from "../../lib/Helpers";
-import {randomizeItem} from "../../lib/Helpers";
-import {CharacterStatus} from "./CharacterStatus";
+import {action, computed, observable, reaction} from 'mobx';
+import {Stats} from './Stats';
+import {Character} from './Character';
+import {Skill} from './Skill';
+import {list, object, serializable} from 'serializr';
+import {cmp, contains, moveItem} from '../../lib/Helpers';
+import {randomizeItem} from '../../lib/Helpers';
+import {CharacterStatus} from './CharacterStatus';
 
 type AllyOrEnemy = Character;
 
@@ -47,7 +47,7 @@ export class Battler<
   @action
   startBattle (enemySource: TEnemy []) {
     if (this.inBattle) {
-      console.warn("Should not initiate a new battle while already in one");
+      console.warn('Should not initiate a new battle while already in one');
       this.endBattle();
     }
 
@@ -59,25 +59,25 @@ export class Battler<
 
     this.inBattle = this.enemies.length > 0;
     if (this.inBattle) {
-      console.log("Starting battle", this.allies, "vs", this.enemies);
+      console.log('Starting battle', this.allies, 'vs', this.enemies);
     }
   }
 
   @action
   endBattle () {
     if (!this.inBattle) {
-      console.warn("Attempting to end a battle when not in one");
+      console.warn('Attempting to end a battle when not in one');
       return;
     }
 
-    console.log("Ending battle");
+    console.log('Ending battle');
     const killedAllEnemies = this.enemies.length === 0;
 
     // Heal/Revive and return enemies to their source
     while (this.enemies.length) {
       const enemy = this.enemies.pop();
       enemy.resetMutableStats();
-      console.log("Healing undefeated enemy", enemy);
+      console.log('Healing undefeated enemy', enemy);
       this.enemySource.push(enemy);
     }
 
@@ -85,7 +85,7 @@ export class Battler<
       const enemy = this.deceasedEnemies.pop();
       if (!killedAllEnemies) {
         enemy.resetMutableStats();
-        console.log("Reviving defeated enemy", enemy);
+        console.log('Reviving defeated enemy', enemy);
       }
       this.enemySource.push(enemy);
     }
@@ -98,28 +98,28 @@ export class Battler<
 
   performTurnAction (skill?: Skill, targets: AllyOrEnemy[] = []) {
     if (skill) {
-      console.log(this.turnActor.name, "used", skill.info.name, "on", targets.map((t) => t.name).join(", "));
+      console.log(this.turnActor.name, 'used', skill.info.name, 'on', targets.map((t) => t.name).join(', '));
       targets.map((target) =>
         this.emitMemento(target, this.turnActor.useSkill(skill, target))
       );
     }
 
-    this.turnActorIndex++;
+    this.turnActorIndex += 1;
   }
 
-  passTurnAction (reason = "") {
-    const reasonSuffix = reason ? " (" + reason + ")" : undefined;
-    console.log(this.turnActor.name, "passed", reasonSuffix);
-    this.turnActorIndex++;
+  passTurnAction (reason = '') {
+    const reasonSuffix = reason ? ' (' + reason + ')' : undefined;
+    console.log(this.turnActor.name, 'passed', reasonSuffix);
+    this.turnActorIndex += 1;
   }
 
   gotoNextTurn () {
     this.turnActorIndex = 0;
-    this.turn++;
+    this.turn += 1;
   }
 
   processTurn () {
-    console.log("Finishing turn", this.turn);
+    console.log('Finishing turn', this.turn);
     [...this.allies, ...this.enemies].forEach((c) =>
       this.emitMemento(c, c.processTurn())
     );
@@ -127,15 +127,15 @@ export class Battler<
 
   emitMemento (target: Character, memento: Stats) {
     const mementoString = memento.nonNeutral
-      .map((stat) => stat.info.shortName + " " + stat.toString())
-      .join(", ");
+      .map((stat) => stat.info.shortName + ' ' + stat.toString())
+      .join(', ');
 
     if (mementoString) {
-      console.info(target.name, "processed", mementoString);
+      console.info(target.name, 'processed', mementoString);
     }
   }
 
-  initialize (allies: TAlly[]): Array<() => void> {
+  initialize (allies: TAlly[]): (() => void)[] {
     this.allies = allies;
 
     return [
@@ -175,7 +175,7 @@ export class Battler<
           }
 
           if (this.turnActor.dots.get(CharacterStatus.Stun)) {
-            this.passTurnAction("stunned");
+            this.passTurnAction('stunned');
             return;
           }
 
@@ -194,7 +194,7 @@ export class Battler<
             this.performTurnAction(skill, targets);
           } else {
             // TODO move towards closest applicable position
-            this.passTurnAction("no usable skills");
+            this.passTurnAction('no usable skills');
           }
         },
         true

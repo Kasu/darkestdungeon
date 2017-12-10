@@ -1,15 +1,15 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {css, StyleSheet} from "aphrodite";
-import {LevelIcon} from "./LevelIcon";
-import {StressMeter} from "./StressMeter";
-import {Hero} from "../state/types/Hero";
-import {QuirkText} from "./QuirkText";
-import {Experienced} from "../state/types/Experienced";
-import {commonColors, commonStyleFn} from "../config/styles";
-import {grid} from "../config/Grid";
-import {CommonHeader} from "./CommonHeader";
-import {fonts} from "../assets/fonts";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {css, StyleSheet} from 'aphrodite';
+import {LevelIcon} from './LevelIcon';
+import {StressMeter} from './StressMeter';
+import {Hero} from '../state/types/Hero';
+import {QuirkText} from './QuirkText';
+import {Experienced} from '../state/types/Experienced';
+import {commonColors, commonStyleFn} from '../config/styles';
+import {grid} from '../config/Grid';
+import {CommonHeader} from './CommonHeader';
+import {fonts} from '../assets/fonts';
 
 @observer
 export class HeroFlag extends React.Component<{
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   container: {
     width: grid.xSpan(1),
 
-    background: "black",
+    background: 'black',
     border: commonStyleFn.border(),
     borderTop: 0,
     padding: grid.border,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 
   levelBox: {
-    alignItems: "center",
+    alignItems: 'center',
     border: commonStyleFn.border(commonColors.darkGray, 1),
     borderTop: 0,
     margin: grid.border,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
 
   stress: {
-    alignSelf: "center",
+    alignSelf: 'center',
     marginTop: grid.border,
     marginBottom: grid.border
   },
@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
   },
 
   stripeText: {
-    textAlign: "center",
+    textAlign: 'center',
     fontFamily: fonts.Default,
-    fontWeight: "normal",
+    fontWeight: 'normal',
     color: commonColors.lightGray
   }
 });

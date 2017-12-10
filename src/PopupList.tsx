@@ -1,10 +1,10 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {PopupState} from "./state/PopupState";
-import {observer} from "mobx-react";
-import {PopupEntry} from "./PopupEntry";
-import * as TransitionGroup from "react-transition-group/TransitionGroup";
-import Transition from "react-transition-group/Transition";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {PopupState} from './state/PopupState';
+import {observer} from 'mobx-react';
+import {PopupEntry} from './PopupEntry';
+import * as TransitionGroup from 'react-transition-group/TransitionGroup';
+import Transition from 'react-transition-group/Transition';
 
 @observer
 export class PopupList extends React.Component<{
@@ -50,8 +50,8 @@ export class PopupList extends React.Component<{
  */
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
-    pointerEvents: "none"
+    pointerEvents: 'none'
   }
 });

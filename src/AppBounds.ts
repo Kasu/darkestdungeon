@@ -1,6 +1,6 @@
-import {computed, observable} from "mobx";
-import {Bounds, Size} from "./Bounds";
-import {grid} from "./config/Grid";
+import {computed, observable} from 'mobx';
+import {Bounds, Size} from './Bounds';
+import {grid} from './config/Grid';
 
 export class AppBounds {
   @observable realSize: Size = {width: 1, height: 1};

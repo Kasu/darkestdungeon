@@ -1,4 +1,4 @@
-const me = "Kasper Sandin";
+const me = 'Kasper Sandin';
 
 export const gorillas = `
 BTM_pl
@@ -91,10 +91,10 @@ ${me}
 #Special Thanks
 
 Twitch Gorillas
-${gorillas.join("\n")}
+${gorillas.join('\n')}
 
 Twitch Monkeys
-${monkeys.join("\n")}
+${monkeys.join('\n')}
 
 Original Concept & Design
 Red Hook Studios (please don't sue me <3)

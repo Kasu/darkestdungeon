@@ -1,7 +1,7 @@
-import * as React from "react";
-import {Size} from "../Bounds";
-import {ResizeObserver} from "./ResizeObserver";
-import {css, StyleSheet} from "aphrodite";
+import * as React from 'react';
+import {Size} from '../Bounds';
+import {ResizeObserver} from './ResizeObserver';
+import {css, StyleSheet} from 'aphrodite';
 
 export class SizeObserver extends React.Component<{
   onSizeChanged: (size: Size) => void
@@ -40,8 +40,8 @@ export class SizeObserver extends React.Component<{
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
-    pointerEvents: "none"
+    pointerEvents: 'none'
   }
 });

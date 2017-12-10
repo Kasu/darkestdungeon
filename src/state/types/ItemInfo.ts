@@ -1,14 +1,14 @@
-import {identifier, serializable} from "serializr";
-import {Stats, TurnStats} from "./Stats";
-import {Quest} from "./Quest";
+import {identifier, serializable} from 'serializr';
+import {Stats, TurnStats} from './Stats';
+import {Quest} from './Quest';
 
 export enum ItemType {
-  Weapon = "W",
-  Armor = "A",
-  Trinket = "T",
-  Treasure = "TR",
-  Consumable = "C",
-  Heirloom = "H"
+  Weapon = 'W',
+  Armor = 'A',
+  Trinket = 'T',
+  Treasure = 'TR',
+  Consumable = 'C',
+  Heirloom = 'H'
 }
 
 export enum HeirloomType {
@@ -21,11 +21,11 @@ export enum HeirloomType {
 export class ItemInfo {
   @serializable(identifier()) id: string;
 
-  name: string = "[single name]";
-  pluralName: string = "[plural name]";
+  name: string = '[single name]';
+  pluralName: string = '[plural name]';
   iconUrl?: string;
   itemUrl?: string;
-  description: string = "";
+  description: string = '';
   type: ItemType = ItemType.Consumable;
   heirloomType?: HeirloomType;
   value: number = 0;

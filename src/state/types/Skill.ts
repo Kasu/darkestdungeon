@@ -1,8 +1,8 @@
-import {SkillId, SkillInfo} from "./SkillInfo";
-import {computed} from "mobx";
-import {Stats, TurnStats} from "./Stats";
-import {StaticState} from "../StaticState";
-import {addArrays, cmp, permutations} from "../../lib/Helpers";
+import {SkillId, SkillInfo} from './SkillInfo';
+import {computed} from 'mobx';
+import {Stats, TurnStats} from './Stats';
+import {StaticState} from '../StaticState';
+import {addArrays, cmp, permutations} from '../../lib/Helpers';
 
 export class Skill {
   @computed get level () {
@@ -22,7 +22,7 @@ export class Skill {
   }
 
   get statsScale () {
-    const maxSkillLevel = StaticState.instance.getUpgradeEffects(["guild"]).level;
+    const maxSkillLevel = StaticState.instance.getUpgradeEffects(['guild']).level;
     return 1 + ((this.level - 1) / maxSkillLevel);
   }
 

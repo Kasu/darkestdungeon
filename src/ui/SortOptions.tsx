@@ -1,12 +1,12 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {observable} from "mobx";
-import {StyleSheet} from "aphrodite";
-import {Row} from "../config/styles";
-import {grid} from "../config/Grid";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {Icon} from "./Icon";
-import {TooltipArea} from "../lib/TooltipArea";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {observable} from 'mobx';
+import {StyleSheet} from 'aphrodite';
+import {Row} from '../config/styles';
+import {grid} from '../config/Grid';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import {Icon} from './Icon';
+import {TooltipArea} from '../lib/TooltipArea';
 
 export type CompareFunction<T> = (a: T, b: T) => number;
 
@@ -37,7 +37,7 @@ export class SortOptions<T> extends React.Component<{
       const isInverted = !!this.isInverted.get(name);
       const isActive = this.activeComparerName === name;
       return (
-        <TooltipArea key={name} tip={"Sort by " + name} classStyle={styles.option}>
+        <TooltipArea key={name} tip={'Sort by ' + name} classStyle={styles.option}>
           <Icon src={this.props.icons[name]} onClick={() => this.changeSort(name)}>
             {isActive && (
               <VerticalOutlineBox above={isInverted} below={!isInverted}/>
@@ -57,7 +57,7 @@ export class SortOptions<T> extends React.Component<{
 
 const styles = StyleSheet.create({
   option: {
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginRight: grid.gutter / 2
     }
   }

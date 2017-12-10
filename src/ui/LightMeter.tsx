@@ -1,10 +1,10 @@
-import * as React from "react";
-import {commonColors, commonStyleFn, commonStyles, Row} from "../config/styles";
-import {css, StyleSheet} from "aphrodite";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {grid} from "../config/Grid";
+import * as React from 'react';
+import {commonColors, commonStyleFn, commonStyles, Row} from '../config/styles';
+import {css, StyleSheet} from 'aphrodite';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import {grid} from '../config/Grid';
 
-export function LightMeter ({fillPercentage, children}: {fillPercentage: number, children: any}) {
+export const LightMeter = ({fillPercentage, children}: {fillPercentage: number, children: any}) =>  {
   return (
     <Row classStyle={styles.lightMeter}>
       <VerticalOutlineBox color={borderColor}/>
@@ -13,9 +13,9 @@ export function LightMeter ({fillPercentage, children}: {fillPercentage: number,
           className={css(styles.fillLeft)}
           style={{width: `${fillPercentage * 100}%`}}
         />
-        <div className={css(styles.dash)} style={{left: "25%"}}/>
-        <div className={css(styles.dash)} style={{left: "50%"}}/>
-        <div className={css(styles.dash)} style={{left: "75%"}}/>
+        <div className={css(styles.dash)} style={{left: '25%'}}/>
+        <div className={css(styles.dash)} style={{left: '50%'}}/>
+        <div className={css(styles.dash)} style={{left: '75%'}}/>
       </Row>
       <div className={css(styles.fillCenter)}>
         {children}
@@ -25,18 +25,18 @@ export function LightMeter ({fillPercentage, children}: {fillPercentage: number,
           className={css(styles.fillRight)}
           style={{width: `${fillPercentage * 100}%`}}
         />
-        <div className={css(styles.dash)} style={{left: "25%"}}/>
-        <div className={css(styles.dash)} style={{left: "50%"}}/>
-        <div className={css(styles.dash)} style={{left: "75%"}}/>
+        <div className={css(styles.dash)} style={{left: '25%'}}/>
+        <div className={css(styles.dash)} style={{left: '50%'}}/>
+        <div className={css(styles.dash)} style={{left: '75%'}}/>
       </Row>
     </Row>
   );
-}
+};
 
 export const lightMeterCenterWidth = grid.xSpan(0.5);
 const borderColor = commonColors.darkGray;
-const fillInnerColor = "rgb(246, 115, 0)";
-const fillOuterColor =  "rgba(193, 34, 0, 0.5)";
+const fillInnerColor = 'rgb(246, 115, 0)';
+const fillOuterColor =  'rgba(193, 34, 0, 0.5)';
 
 const styles = StyleSheet.create({
   lightMeter: {
@@ -47,35 +47,35 @@ const styles = StyleSheet.create({
   },
 
   fillLeft: {
-    height: "100%",
-    background: commonStyleFn.gradient("left", [
+    height: '100%',
+    background: commonStyleFn.gradient('left', [
       [0, fillInnerColor],
       [90, fillOuterColor],
-      [100, "transparent"]
+      [100, 'transparent']
     ])
   },
 
   fillCenter: {
     width: lightMeterCenterWidth,
-    height: "100%",
-    backgroundColor: "black",
-    justifyContent: "center",
-    alignItems: "center"
+    height: '100%',
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   fillRight: {
-    height: "100%",
-    background: commonStyleFn.gradient("right", [
+    height: '100%',
+    background: commonStyleFn.gradient('right', [
       [0, fillInnerColor],
       [90, fillOuterColor],
-      [100, "transparent"]
+      [100, 'transparent']
     ])
   },
 
   dash: {
-    position: "absolute",
+    position: 'absolute',
     width: grid.border,
-    height: "100%",
+    height: '100%',
     backgroundColor: borderColor
   }
 });

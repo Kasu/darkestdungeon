@@ -1,18 +1,18 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {css, StyleSheet} from "aphrodite";
-import {DungeonControlPanel} from "./DungeonControlPanel";
-import {Torch} from "../../ui/Torch";
-import {QuestHeader} from "../../ui/QuestHeader";
-import {DungeonScene} from "./DungeonScene";
-import {AppStateComponent} from "../../AppStateComponent";
-import {QuestStatus} from "../../state/types/Quest";
-import {Alert, Prompt} from "../../ui/Popups";
-import {ModalState, PopupAlign} from "../../state/PopupState";
-import {HeroOverview} from "../../ui/HeroOverview";
-import {Hero} from "../../state/types/Hero";
-import {DungeonSelections} from "./DungeonSelections";
-import {grid} from "../../config/Grid";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {css, StyleSheet} from 'aphrodite';
+import {DungeonControlPanel} from './DungeonControlPanel';
+import {Torch} from '../../ui/Torch';
+import {QuestHeader} from '../../ui/QuestHeader';
+import {DungeonScene} from './DungeonScene';
+import {AppStateComponent} from '../../AppStateComponent';
+import {QuestStatus} from '../../state/types/Quest';
+import {Alert, Prompt} from '../../ui/Popups';
+import {ModalState, PopupAlign} from '../../state/PopupState';
+import {HeroOverview} from '../../ui/HeroOverview';
+import {Hero} from '../../state/types/Hero';
+import {DungeonSelections} from './DungeonSelections';
+import {grid} from '../../config/Grid';
 
 @observer
 export class DungeonOverview extends AppStateComponent {
@@ -46,12 +46,12 @@ export class DungeonOverview extends AppStateComponent {
         break;
       case QuestStatus.Escape:
         promise = this.appState.popups.prompt(
-          <Prompt query={"Escape this dungeon and return to town?"}/>
+          <Prompt query="Escape this dungeon and return to town?"/>
         );
         break;
       case QuestStatus.Victory:
         promise = this.appState.popups.prompt(
-          <Prompt query={"You are victorious! Return to town now?"}/>
+          <Prompt query="You are victorious! Return to town now?"/>
         );
         break;
     }
@@ -64,7 +64,7 @@ export class DungeonOverview extends AppStateComponent {
 
   async battleRetreatPopup () {
     const proceed = await this.appState.popups.prompt(
-      <Prompt query={"Are you sure you want to retreat from this battle?"}/>
+      <Prompt query={'Are you sure you want to retreat from this battle?'}/>
     );
 
     if (proceed) {
@@ -77,7 +77,7 @@ export class DungeonOverview extends AppStateComponent {
       align: PopupAlign.TopLeft,
       position: {x: 0, y: 0},
       modalState: ModalState.Opaque,
-      id: "heroOverview",
+      id: 'heroOverview',
       content: (
         <HeroOverview
           hero={hero}
@@ -118,7 +118,7 @@ export class DungeonOverview extends AppStateComponent {
 
   endQuest (status?: QuestStatus) {
     this.selectedQuest.status = status;
-    this.appState.router.goto("dungeonResult");
+    this.appState.router.goto('dungeonResult');
   }
 }
 
@@ -128,14 +128,14 @@ const styles = StyleSheet.create({
   },
 
   questHeader: {
-    position: "absolute",
+    position: 'absolute',
     top: grid.paddingTop,
     left: grid.paddingLeft
   },
 
   torch: {
-    position: "absolute",
-    alignSelf: "center"
+    position: 'absolute',
+    alignSelf: 'center'
   },
 
   scene: {

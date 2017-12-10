@@ -1,10 +1,10 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {observer} from "mobx-react";
-import {grid} from "./config/Grid";
-import {count} from "./lib/Helpers";
-import {Column, Row} from "./config/styles";
-import {Layer} from "./ui/Layer";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {observer} from 'mobx-react';
+import {grid} from './config/Grid';
+import {count} from './lib/Helpers';
+import {Column, Row} from './config/styles';
+import {Layer} from './ui/Layer';
 
 @observer
 export class GridOverlay extends React.Component {
@@ -27,7 +27,7 @@ export class GridOverlay extends React.Component {
 
 const styles = StyleSheet.create({
   gridOverlay: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
 
     paddingTop: grid.paddingTop,
@@ -36,24 +36,24 @@ const styles = StyleSheet.create({
     paddingLeft: grid.paddingLeft,
 
     opacity: 0.4,
-    background: "red",
+    background: 'red',
     zIndex: Layer.GridOverlay,
-    pointerEvents: "none"
+    pointerEvents: 'none'
   },
 
   clipper: {
-    overflow: "hidden",
+    overflow: 'hidden',
     flex: 1
   },
 
   grid: {
-    background: "blue",
+    background: 'blue',
     width: grid.width,
     height: grid.height
   },
 
   row: {
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginBottom: grid.gutterHeight
     }
   },
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
   cell: {
     width: grid.columnWidth,
     height: grid.rowHeight,
-    background: "green",
-    ":not(:last-child)": {
+    background: 'green',
+    ':not(:last-child)': {
       marginRight: grid.gutterWidth
     }
   }

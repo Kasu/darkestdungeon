@@ -1,4 +1,4 @@
-import {removeItem} from "../lib/Helpers";
+import {removeItem} from '../lib/Helpers';
 
 export class TokenOwner {
   lent: Token[] = [];

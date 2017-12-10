@@ -11,11 +11,11 @@
   let vendors = ['ms', 'moz', 'webkit', 'o'];
 
   // Enables non browser environments
-  if (typeof window === "undefined") {
+  if (typeof window === 'undefined') {
     global.window = global;
   }
 
-  for(let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+  for(let x = 0; x < vendors.length && !window.requestAnimationFrame; x += 1) {
     window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
     window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
       || window[vendors[x]+'CancelRequestAnimationFrame'];

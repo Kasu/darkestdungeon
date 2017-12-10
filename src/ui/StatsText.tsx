@@ -1,8 +1,8 @@
-import * as React from "react";
-import {Column, commonStyles, Row} from "../config/styles";
-import {StatItem} from "../state/types/StatItem";
-import {TooltipArea} from "../lib/TooltipArea";
-import {StatsBreakdown} from "./StatsBreakdown";
+import * as React from 'react';
+import {Column, commonStyles, Row} from '../config/styles';
+import {StatItem} from '../state/types/StatItem';
+import {TooltipArea} from '../lib/TooltipArea';
+import {StatsBreakdown} from './StatsBreakdown';
 
 export class StatsTextList extends React.Component<{stats: StatItem[], long?: boolean}> {
   render () {
@@ -30,7 +30,8 @@ export class StatsText extends React.Component<{stats: StatItem, long?: boolean}
         classStyle={classStyle}
         tip={this.props.stats.mods.length > 0 && (
           <StatsBreakdown stats={this.props.stats}/>
-        )}>
+        )}
+      >
         <Row>
           <Column classStyle={commonStyles.nowrap}>
             {

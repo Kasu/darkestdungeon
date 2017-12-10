@@ -1,9 +1,9 @@
-import * as React from "react";
-import {StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {LineButton} from "./LineButton";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
+import * as React from 'react';
+import {StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {LineButton} from './LineButton';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 
 export enum IconHighlightType {
   Lines,
@@ -26,11 +26,11 @@ export type IconProps = {
 };
 
 export const confirmIconUrl = require(
-  "../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.confirm_button.png"
+  '../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.confirm_button.png'
 );
 
 export const cancelIconUrl = require(
-  "../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.cancel_button.png"
+  '../assets/dd/images/campaign/town/buildings/hero_activity/hero_activity.cancel_button.png'
 );
 
 @observer
@@ -50,12 +50,12 @@ export class Icon extends React.Component<IconProps> {
     const dynamicIconStyle = {
       backgroundImage: this.props.src ? `url(${this.props.src})` : undefined,
       transform: this.props.scale !== 1 ? `scale(${this.props.scale})` : undefined,
-      transformOrigin: "50% 100%",
+      transformOrigin: '50% 100%',
       width: customWidth,
       height: customHeight
     };
 
-    let hoverLineColor = "transparent";
+    let hoverLineColor = 'transparent';
     switch (this.props.highlight) {
       case IconHighlightType.Lines:
         hoverLineColor = LineButton.defaultProps.hoverColor;
@@ -77,7 +77,8 @@ export class Icon extends React.Component<IconProps> {
         onRightClick={this.props.onRightClick}
         clickSound={this.props.clickSound}
         classStyle={[styles.icon, this.props.classStyle]}
-        style={dynamicIconStyle}>
+        style={dynamicIconStyle}
+      >
         {this.props.children}
       </LineButton>
     );
@@ -86,12 +87,12 @@ export class Icon extends React.Component<IconProps> {
 
 const styles = StyleSheet.create({
   icon: {
-    backgroundSize: "contain",
-    backgroundPosition: "50% 50%",
-    backgroundRepeat: "no-repeat",
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 50%',
+    backgroundRepeat: 'no-repeat',
     width: grid.ySpan(0.5),
     height: grid.ySpan(0.5),
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

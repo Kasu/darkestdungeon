@@ -1,9 +1,9 @@
-import {autorun, observable, reaction} from "mobx";
-import {Hero} from "../../state/types/Hero";
-import {contains} from "../../lib/Helpers";
-import {Quest} from "../../state/types/Quest";
-import {Skill} from "../../state/types/Skill";
-import {Character} from "../../state/types/Character";
+import {autorun, observable, reaction} from 'mobx';
+import {Hero} from '../../state/types/Hero';
+import {contains} from '../../lib/Helpers';
+import {Quest} from '../../state/types/Quest';
+import {Skill} from '../../state/types/Skill';
+import {Character} from '../../state/types/Character';
 
 export class DungeonSelections {
   // No need to serialize since it's automated by quest behavior

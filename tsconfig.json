@@ -1,7 +1,6 @@
 {
-  "include": [
-    "src",
-    "dev"
+  "exclude": [
+    "node_modules"
   ],
   "compilerOptions": {
     "baseUrl": ".",

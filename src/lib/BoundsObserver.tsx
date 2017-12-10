@@ -1,6 +1,6 @@
-import * as React from "react";
-import {Bounds} from "../Bounds";
-import {AppState} from "../state/AppState";
+import * as React from 'react';
+import {Bounds} from '../Bounds';
+import {AppState} from '../state/AppState';
 
 export class BoundsObserver {
   private domNode: Element;
@@ -18,7 +18,7 @@ export class BoundsObserver {
 
   observe (domNode: Element, boundsCollector: (bounds: Bounds) => void) {
     if (this.domNode) {
-      throw new Error("Already observing a node");
+      throw new Error('Already observing a node');
     }
 
     this.domNode = domNode;

@@ -1,15 +1,15 @@
-import * as React from "react";
-import {CommonHeader} from "../../ui/CommonHeader";
-import {observer} from "mobx-react";
-import {autorun, computed, IReactionDisposer, observable, transaction} from "mobx";
-import {Item} from "../../state/types/Item";
-import {Profile} from "../../state/types/Profile";
-import {moveItem} from "../../lib/Helpers";
-import {ItemDropbox} from "../../ui/ItemDropbox";
-import {GoldIcon, smallGoldRows} from "../../ui/GoldIcon";
-import {css, StyleSheet} from "aphrodite";
-import {itemSize} from "../../ui/ItemIcon";
-import {grid} from "../../config/Grid";
+import * as React from 'react';
+import {CommonHeader} from '../../ui/CommonHeader';
+import {observer} from 'mobx-react';
+import {autorun, computed, IReactionDisposer, observable, transaction} from 'mobx';
+import {Item} from '../../state/types/Item';
+import {Profile} from '../../state/types/Profile';
+import {moveItem} from '../../lib/Helpers';
+import {ItemDropbox} from '../../ui/ItemDropbox';
+import {GoldIcon, smallGoldRows} from '../../ui/GoldIcon';
+import {css, StyleSheet} from 'aphrodite';
+import {itemSize} from '../../ui/ItemIcon';
+import {grid} from '../../config/Grid';
 
 @observer
 export class Store extends React.Component<{
@@ -88,24 +88,24 @@ export class Store extends React.Component<{
   }
 }
 
-function ItemValue ({value, compareWith}: any) {
+const ItemValue = ({value, compareWith}: any) => {
   return (
     <div className={css(styles.itemValue)}>
       <GoldIcon classStyle={styles.goldIcon} amount={value} compareWith={compareWith}/>
     </div>
   );
-}
+};
 
 const styles = StyleSheet.create({
   itemValue: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     width: itemSize.width,
     height: grid.ySpan(smallGoldRows),
     marginTop: grid.gutter / 2
   },
 
   goldIcon: {
-    position: "absolute"
+    position: 'absolute'
   }
 });

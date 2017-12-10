@@ -1,10 +1,10 @@
-import * as React from "react";
-import {HeirloomType} from "../state/types/ItemInfo";
-import {StaticState} from "../state/StaticState";
-import {commonStyles, Row} from "../config/styles";
-import {StyleSheet} from "aphrodite";
-import {HeirloomIcon} from "./HeirloomIcon";
-import {grid} from "../config/Grid";
+import * as React from 'react';
+import {HeirloomType} from '../state/types/ItemInfo';
+import {StaticState} from '../state/StaticState';
+import {commonStyles, Row} from '../config/styles';
+import {StyleSheet} from 'aphrodite';
+import {HeirloomIcon} from './HeirloomIcon';
+import {grid} from '../config/Grid';
 
 export class Heirlooms extends React.Component<{
   counts: Map<HeirloomType, number>,
@@ -48,7 +48,7 @@ export class Heirlooms extends React.Component<{
 
 const styles = StyleSheet.create({
   heirloom: {
-    ":not(:last-child)": {
+    ':not(:last-child)': {
       marginRight: grid.gutter
     }
   }

@@ -1,8 +1,8 @@
-import * as React from "react";
-import {StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {commonColors, commonStyleFn, Row} from "../config/styles";
-import {Layer} from "../ui/Layer";
+import * as React from 'react';
+import {StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {commonColors, commonStyleFn, Row} from '../config/styles';
+import {Layer} from '../ui/Layer';
 
 export class ScreenFooter extends React.Component<{
   behind?: any,
@@ -28,16 +28,16 @@ export const screenFooterHeight = grid.ySpan(1) + borderSpacing * 2 + borderSize
 
 const styles = StyleSheet.create({
   screenFooter: {
-    position: "absolute",
+    position: 'absolute',
     left: 0, right: 0,
     bottom: grid.paddingBottom - borderSpacing - borderSize,
     height: screenFooterHeight,
     zIndex: Layer.Footer,
 
-    ":after": {
-      ...commonStyleFn.dock("bottom"),
-      content: "' '",
-      background: "black",
+    ':after': {
+      ...commonStyleFn.dock('bottom'),
+      content: '" "',
+      background: 'black',
       height: grid.paddingBottom,
       bottom: -grid.paddingBottom
     }
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   inner1: {
     ...commonStyleFn.dock(),
     backgroundColor: commonColors.gray,
-    boxShadow: commonStyleFn.outerShadow("black", grid.gutter * 2)
+    boxShadow: commonStyleFn.outerShadow('black', grid.gutter * 2)
   },
 
   inner2: {
@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
     paddingTop: borderSpacing,
     paddingBottom: borderSpacing,
 
-    background: "linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(25,25,25,1) 50%,rgba(0,0,0,1) 100%)",
-    boxShadow: commonStyleFn.innerShadow("black", grid.gutter * 3),
-    alignItems: "center"
+    background: 'linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(25,25,25,1) 50%,rgba(0,0,0,1) 100%)',
+    boxShadow: commonStyleFn.innerShadow('black', grid.gutter * 3),
+    alignItems: 'center'
   }
 });

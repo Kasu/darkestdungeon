@@ -1,22 +1,22 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {Path, PathTypes} from "../../state/types/Path";
-import {PauseMenu} from "../../ui/PauseMenu";
-import {EstateRoster} from "./EstateRoster";
-import {observer} from "mobx-react";
-import {AppStateComponent} from "../../AppStateComponent";
-import {InputBindings} from "../../state/InputState";
-import {Input} from "../../config/Input";
-import {EstateFooter} from "./EstateFooter";
-import {ModalState} from "../../state/PopupState";
-import {grid} from "../../config/Grid";
-import {EstateInventory} from "./EstateInventory";
-import {fonts} from "../../assets/fonts";
-import {screenFooterHeight} from "../ScreenFooter";
-import {commonStyleFn, Row} from "../../config/styles";
-import {popupOffset} from "../../ui/Popups";
-import {Icon} from "../../ui/Icon";
-import {FormattedMessage} from "react-intl";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {Path, PathTypes} from '../../state/types/Path';
+import {PauseMenu} from '../../ui/PauseMenu';
+import {EstateRoster} from './EstateRoster';
+import {observer} from 'mobx-react';
+import {AppStateComponent} from '../../AppStateComponent';
+import {InputBindings} from '../../state/InputState';
+import {Input} from '../../config/Input';
+import {EstateFooter} from './EstateFooter';
+import {ModalState} from '../../state/PopupState';
+import {grid} from '../../config/Grid';
+import {EstateInventory} from './EstateInventory';
+import {fonts} from '../../assets/fonts';
+import {screenFooterHeight} from '../ScreenFooter';
+import {commonStyleFn, Row} from '../../config/styles';
+import {popupOffset} from '../../ui/Popups';
+import {Icon} from '../../ui/Icon';
+import {FormattedMessage} from 'react-intl';
 
 @observer
 export class EstateTemplate extends AppStateComponent<{
@@ -52,7 +52,7 @@ export class EstateTemplate extends AppStateComponent<{
 
   showInventory () {
     this.appState.popups.show({
-      id: "inventory",
+      id: 'inventory',
       modalState: ModalState.Opaque,
       content: <EstateInventory/>
     });
@@ -60,11 +60,10 @@ export class EstateTemplate extends AppStateComponent<{
 
   componentWillMount () {
     // HACK preloading sounds should be done centrally
-    const throwAway = new Howl(this.props.continueSound);
+    new Howl(this.props.continueSound);
   }
 
   render () {
-    const isShowingBuilding = this.appState.router.path.parts.length > 1;
     return (
       <div
         className={css(styles.container)}
@@ -101,12 +100,12 @@ export class EstateTemplate extends AppStateComponent<{
             {this.mayGoBack && (
               <Icon
                 classStyle={styles.backButton}
-                src={require("../../assets/dd/images/shared/progression/progression_back.png")}
+                src={require('../../assets/dd/images/shared/progression/progression_back.png')}
                 onClick={() => this.goBack()}
               />
             )}
             <FormattedMessage
-              id={"estate.title"}
+              id="estate.title"
               values={{name: this.activeProfile.name}}
               defaultMessage="{name}"
             />
@@ -136,27 +135,27 @@ const headerOffset = grid.gutter * 2.5;
 const backButtonSize = grid.ySpan(0.66);
 const styles = StyleSheet.create({
   backgroundCover: {
-    ...commonStyleFn.dock("bottom"),
+    ...commonStyleFn.dock('bottom'),
     bottom: grid.paddingBottom + screenFooterHeight - grid.gutter,
     height: grid.ySpan(3),
-    background: commonStyleFn.gradient("bottom", [
-      [0, "transparent"],
-      [25, "black"]
+    background: commonStyleFn.gradient('bottom', [
+      [0, 'transparent'],
+      [25, 'black']
     ])
   },
 
   header: {
-    position: "absolute",
+    position: 'absolute',
     top: -headerOffset, left: 0,
     paddingTop: headerOffset,
-    background: `url(${require("../../assets/dd/images/campaign/town/estate_title/estate_nameplate.png")})`,
-    backgroundSize: "auto 100%",
-    backgroundPosition: "0 50%",
-    backgroundRepeat: "no-repeat",
+    background: `url(${require('../../assets/dd/images/campaign/town/estate_title/estate_nameplate.png')})`,
+    backgroundSize: 'auto 100%',
+    backgroundPosition: '0 50%',
+    backgroundRepeat: 'no-repeat',
     height: grid.ySpan(5),
     width: grid.xSpan(9),
-    flexDirection: "row",
-    pointerEvents: "none"
+    flexDirection: 'row',
+    pointerEvents: 'none'
   },
 
   headerContent: {
@@ -164,14 +163,14 @@ const styles = StyleSheet.create({
     maxWidth: grid.xSpan(5),
     marginTop: grid.paddingTop,
     marginLeft: grid.paddingLeft + grid.xSpan(2) + grid.gutter,
-    alignItems: "center",
+    alignItems: 'center',
     fontSize: grid.fontSize(1),
     fontFamily: fonts.Darkest,
-    pointerEvents: "all"
+    pointerEvents: 'all'
   },
 
   backButton: {
-    position: "absolute",
+    position: 'absolute',
     left: -(backButtonSize + grid.gutter),
     width: backButtonSize,
     height: backButtonSize
@@ -179,14 +178,14 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundSize: "cover",
-    backgroundPosition: "50% 50%"
+    backgroundSize: 'cover',
+    backgroundPosition: '50% 50%'
   },
 
   content: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginTop: grid.paddingTop + grid.ySpan(1) + grid.gutter,
     marginRight: grid.paddingRight + grid.xSpan(3) + grid.gutter,
     marginBottom: grid.paddingBottom + screenFooterHeight,
@@ -194,6 +193,6 @@ const styles = StyleSheet.create({
   },
 
   contentOverlay: {
-    backgroundColor: "rgba(200, 200, 50, 0.5)"
+    backgroundColor: 'rgba(200, 200, 50, 0.5)'
   }
 });

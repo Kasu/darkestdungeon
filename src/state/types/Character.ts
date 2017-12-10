@@ -1,19 +1,19 @@
-import {computed, observable} from "mobx";
-import {StaticState} from "../StaticState";
-import {identifier, list, map, object, primitive, reference, serializable} from "serializr";
-import {Experienced} from "./Experienced";
-import {CharacterClassInfo} from "./CharacterClassInfo";
-import {Item} from "./Item";
-import {QuirkInfo} from "./QuirkInfo";
-import {CharacterStatus} from "./CharacterStatus";
-import {SkillId, SkillTargetObject} from "./SkillInfo";
-import {Stats, TurnStats} from "./Stats";
-import {cap, contains, removeItem, without} from "../../lib/Helpers";
-import uuid = require("uuid");
-import {BuildingInfoId} from "./BuildingInfo";
-import {Skill} from "./Skill";
-import {ItemType} from "./ItemInfo";
-import {randomizeItem} from "../../lib/Helpers";
+import {computed, observable} from 'mobx';
+import {StaticState} from '../StaticState';
+import {identifier, list, map, object, primitive, reference, serializable} from 'serializr';
+import {Experienced} from './Experienced';
+import {CharacterClassInfo} from './CharacterClassInfo';
+import {Item} from './Item';
+import {QuirkInfo} from './QuirkInfo';
+import {CharacterStatus} from './CharacterStatus';
+import {SkillId, SkillTargetObject} from './SkillInfo';
+import {Stats, TurnStats} from './Stats';
+import {cap, contains, removeItem, without} from '../../lib/Helpers';
+import uuid = require('uuid');
+import {BuildingInfoId} from './BuildingInfo';
+import {Skill} from './Skill';
+import {ItemType} from './ItemInfo';
+import {randomizeItem} from '../../lib/Helpers';
 
 export type CharacterId = string;
 
@@ -115,7 +115,7 @@ export class Character extends Experienced {
       sum.add(this.buff, {
         stats: new Stats(),
         name: this.buffSourceName,
-        statsSourceName: this.buff.isPositive ? "Buff" : "Debuff"
+        statsSourceName: this.buff.isPositive ? 'Buff' : 'Debuff'
       });
     }
 
@@ -147,10 +147,13 @@ export class Character extends Experienced {
       }
     }
 
-    const allForcedTreatmentIds = this.quirks.reduce((all, q) => {
-      all.push(...q.forcedTreatmentIds);
-      return all;
-    }, []);
+    const allForcedTreatmentIds = this.quirks.reduce(
+      (all, q) => {
+        all.push(...q.forcedTreatmentIds);
+        return all;
+      },
+      []
+    );
 
     if (allForcedTreatmentIds.length > 0) {
       return contains(allForcedTreatmentIds, treatmentId);
@@ -169,7 +172,7 @@ export class Character extends Experienced {
   resetMutableStats () {
     const reset = new Stats();
     reset.health.value = this.stats.maxHealth.value;
-    reset.stress.value = 100; //cap(reset.stress.value, 0, this.stats.maxStress.value / 2);
+    reset.stress.value = 100; // cap(reset.stress.value, 0, this.stats.maxStress.value / 2);
     this.mutableStats = reset;
     this.dots.clear();
     this.removeBuffs();
@@ -177,7 +180,7 @@ export class Character extends Experienced {
 
   processTurn () {
     if (this.buff) {
-      this.buff.turns--;
+      this.buff.turns -= 1;
       if (this.buff.turns <= 0) {
         this.removeBuffs();
       }
@@ -194,7 +197,7 @@ export class Character extends Experienced {
       // Add status memento
       memento.statuses.get(status).value = 1;
 
-      stats.turns--;
+      stats.turns -= 1;
       if (stats.turns <= 0) {
         this.dots.delete(status);
       }

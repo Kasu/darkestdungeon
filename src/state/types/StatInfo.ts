@@ -1,4 +1,4 @@
-import {identifier, serializable} from "serializr";
+import {identifier, serializable} from 'serializr';
 
 export class StatInfo {
   @serializable(identifier()) id: string;

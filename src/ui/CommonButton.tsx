@@ -1,9 +1,9 @@
-import * as React from "react";
-import {StyleSheet} from "aphrodite";
-import {fonts} from "../assets/fonts";
-import {grid} from "../config/Grid";
-import {commonColors} from "../config/styles";
-import {LineButton} from "./LineButton";
+import * as React from 'react';
+import {StyleSheet} from 'aphrodite';
+import {fonts} from '../assets/fonts';
+import {grid} from '../config/Grid';
+import {commonColors} from '../config/styles';
+import {LineButton} from './LineButton';
 
 export enum CommonButtonSize {
   Medium
@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
     color: commonColors.red,
     paddingLeft: grid.gutter,
     paddingRight: grid.gutter,
-    justifyContent: "center",
-    alignItems: "center",
-    background: "linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%,rgba(0,0,0,1) 80%,rgba(0,0,0,0) 100%)",
+    justifyContent: 'center',
+    alignItems: 'center',
+    background: 'linear-gradient(to right, rgba(0,0,0,0) 0%,rgba(0,0,0,1) 20%,rgba(0,0,0,1) 80%,rgba(0,0,0,0) 100%)',
 
-    ":not(:hover)": {
+    ':not(:hover)': {
       opacity: 0.6
     }
   }

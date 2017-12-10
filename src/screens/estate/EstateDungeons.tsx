@@ -1,17 +1,17 @@
-import * as React from "react";
-import {EstateTemplate} from "./EstateTemplate";
-import {Path} from "../../state/types/Path";
-import {Alert, Prompt} from "../../ui/Popups";
-import {observer} from "mobx-react";
-import {DungeonBreakdown} from "../../ui/DungeonBreakdown";
-import {QuestBreakdown, questBreakdownWidth} from "../../ui/QuestBreakdown";
-import {LineupDropbox} from "../../ui/LineupDropbox";
-import {AppStateComponent} from "../../AppStateComponent";
-import {Quest} from "../../state/types/Quest";
-import {ItemType} from "../../state/types/ItemInfo";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyleFn} from "../../config/styles";
-import {grid} from "../../config/Grid";
+import * as React from 'react';
+import {EstateTemplate} from './EstateTemplate';
+import {Path} from '../../state/types/Path';
+import {Alert, Prompt} from '../../ui/Popups';
+import {observer} from 'mobx-react';
+import {DungeonBreakdown} from '../../ui/DungeonBreakdown';
+import {QuestBreakdown, questBreakdownWidth} from '../../ui/QuestBreakdown';
+import {LineupDropbox} from '../../ui/LineupDropbox';
+import {AppStateComponent} from '../../AppStateComponent';
+import {Quest} from '../../state/types/Quest';
+import {ItemType} from '../../state/types/ItemInfo';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyleFn} from '../../config/styles';
+import {grid} from '../../config/Grid';
 
 @observer
 export class EstateDungeons extends AppStateComponent<{path: Path}> {
@@ -51,7 +51,7 @@ export class EstateDungeons extends AppStateComponent<{path: Path}> {
 
     const maxLineupSize = Math.min(4, availableHeroes.length);
     if (this.activeProfile.lineup.length < maxLineupSize) {
-      warningMessage = "Do you wish to continue without a full contingent?";
+      warningMessage = 'Do you wish to continue without a full contingent?';
     }
 
     const armorAvailable = this.activeProfile.items.find((i) => i.info.type === ItemType.Armor);
@@ -70,7 +70,7 @@ export class EstateDungeons extends AppStateComponent<{path: Path}> {
     if (warningMessage) {
       return this.appState.popups.prompt(
         <Prompt
-          query={"Grave danger awaits the underprepared. " + warningMessage}
+          query={'Grave danger awaits the underprepared. ' + warningMessage}
           yesLabel="Still Embark"
           noLabel="Cancel Embark"
         />
@@ -84,12 +84,12 @@ export class EstateDungeons extends AppStateComponent<{path: Path}> {
     const questLookup = this.groupQuestsByDungeon(this.activeProfile.quests);
     return (
       <EstateTemplate
-        background={require("../../assets/dd/images/campaign/town/quest_select/quest_select.background.png")}
+        background={require('../../assets/dd/images/campaign/town/quest_select/quest_select.background.png')}
         lineupFeaturesInRoster={true}
         path={this.props.path}
         backPath="estateOverview"
         continueCheck={() => this.checkLineupBeforeContinue()}
-        continueSound={{src: require("../../assets/dd/audio/ui_town_button_provision.ogg"), volume: 0.7}}
+        continueSound={{src: require('../../assets/dd/audio/ui_town_button_provision.ogg'), volume: 0.7}}
         continueLabel="Provision"
         continuePath="estateProvision">
         <div className={css(styles.content)}>
@@ -124,13 +124,13 @@ const styles = StyleSheet.create({
   content: {
     ...commonStyleFn.dock(),
     marginLeft: questBreakdownWidth + grid.xSpan(0.5),
-    justifyContent: "center"
+    justifyContent: 'center'
   },
 
   dungeons: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "center"
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center'
   },
 
   dungeon: {

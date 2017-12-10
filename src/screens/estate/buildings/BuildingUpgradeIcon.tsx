@@ -1,19 +1,19 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {BuildingUpgradeInfo} from "../../../state/types/BuildingUpgradeInfo";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {Prompt} from "../../../ui/Popups";
-import {Heirlooms} from "../../../ui/Heirlooms";
-import {TooltipArea} from "../../../lib/TooltipArea";
-import {UpgradeTooltip} from "./UpgradeTooltip";
-import {StyleSheet} from "aphrodite";
-import {commonStyleFn} from "../../../config/styles";
-import {grid} from "../../../config/Grid";
-import {Icon} from "../../../ui/Icon";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {BuildingUpgradeInfo} from '../../../state/types/BuildingUpgradeInfo';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {Prompt} from '../../../ui/Popups';
+import {Heirlooms} from '../../../ui/Heirlooms';
+import {TooltipArea} from '../../../lib/TooltipArea';
+import {UpgradeTooltip} from './UpgradeTooltip';
+import {StyleSheet} from 'aphrodite';
+import {commonStyleFn} from '../../../config/styles';
+import {grid} from '../../../config/Grid';
+import {Icon} from '../../../ui/Icon';
 
 const upgradePurchaseSound: IHowlProperties = {
-  src: require("../../../assets/dd/audio/town_gen_building_upgrade.ogg"),
+  src: require('../../../assets/dd/audio/town_gen_building_upgrade.ogg'),
   volume: 0.5
 };
 
@@ -83,9 +83,9 @@ export class BuildingUpgradeIcon extends AppStateComponent<{
 }
 
 export const upgradeIconUrls = {
-  owned: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchased_icon.png"),
-  locked: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_locked_icon.png"),
-  available: require("../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchasable_icon.png")
+  owned: require('../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchased_icon.png'),
+  locked: require('../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_locked_icon.png'),
+  available: require('../../../assets/dd/images/campaign/town/buildings/upgrade/requirement_purchasable_icon.png')
 };
 
 export const stepSize = grid.ySpan(0.75);
@@ -93,14 +93,14 @@ const styles = StyleSheet.create({
   step: {
     width: stepSize,
     height: stepSize,
-    border: commonStyleFn.outline("black"),
-    backgroundSize: "contain",
-    backgroundPosition: "50% 50%"
+    border: commonStyleFn.outline('black'),
+    backgroundSize: 'contain',
+    backgroundPosition: '50% 50%'
   },
 
   canInteract: {
-    ":hover": {
-      boxShadow: commonStyleFn.outerShadow("white")
+    ':hover': {
+      boxShadow: commonStyleFn.outerShadow('white')
     }
   }
 });

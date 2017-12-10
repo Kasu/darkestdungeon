@@ -1,9 +1,9 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {observer} from "mobx-react";
-import {TransitionGroup} from "react-transition-group";
-import Transition from "react-transition-group/Transition";
-import {RouterState} from "./state/RouterState";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {observer} from 'mobx-react';
+import {TransitionGroup} from 'react-transition-group';
+import Transition from 'react-transition-group/Transition';
+import {RouterState} from './state/RouterState';
 
 const transitionDuration = 500;
 
@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
 
   transitionGroup: {
     flex: 1,
-    position: "relative"
+    position: 'relative'
   },
 
   screen: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
     transition: `opacity ${transitionDuration}ms ease-in-out`
   }

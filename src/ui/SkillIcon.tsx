@@ -1,12 +1,12 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {TooltipArea} from "../lib/TooltipArea";
-import {SkillBreakdown} from "./SkillBreakdown";
-import {Skill} from "../state/types/Skill";
-import {observer} from "mobx-react";
-import {commonColors, commonStyleFn, commonStyles} from "../config/styles";
-import {grid} from "../config/Grid";
-import {Icon} from "./Icon";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {TooltipArea} from '../lib/TooltipArea';
+import {SkillBreakdown} from './SkillBreakdown';
+import {Skill} from '../state/types/Skill';
+import {observer} from 'mobx-react';
+import {commonColors, commonStyleFn, commonStyles} from '../config/styles';
+import {grid} from '../config/Grid';
+import {Icon} from './Icon';
 
 @observer
 export class SkillIcon extends React.Component<{
@@ -23,7 +23,7 @@ export class SkillIcon extends React.Component<{
 
   render () {
     const lockSymbol = this.props.skill.level === 0 && (
-      <Icon size={grid.ySpan(1)} src={require("../assets/dd/images/shared/character/lockedskill.png")}/>
+      <Icon size={grid.ySpan(1)} src={require('../assets/dd/images/shared/character/lockedskill.png')}/>
     );
 
     const isSelected = this.props.isSelected !== undefined ?
@@ -49,10 +49,12 @@ export class SkillIcon extends React.Component<{
         src={this.props.skill.info.iconUrl}
         classStyle={[styles.container, this.props.classStyle]}
         clickSound={this.props.clickSound}
-        onClick={this.props.isEnabled ? this.props.onClick : undefined}>
+        onClick={this.props.isEnabled ? this.props.onClick : undefined}
+      >
         <TooltipArea
           classStyle={commonStyles.dock}
-          tip={<SkillBreakdown skill={this.props.skill}/>}>
+          tip={<SkillBreakdown skill={this.props.skill}/>}
+        >
           {lockSymbol}
           {levelIndicator}
           {selectionIndicator}
@@ -66,39 +68,39 @@ export class SkillIcon extends React.Component<{
 const styles = StyleSheet.create({
   container: {
     ...commonStyleFn.singleBackground(),
-    background: "rgb(0, 0, 60)",
+    background: 'rgb(0, 0, 60)',
     opacity: 0.8,
     width: grid.ySpan(1),
     height: grid.ySpan(1),
 
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
 
-    ":hover": {
+    ':hover': {
       opacity: 1
     }
   },
 
   selectionIndicator: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
     border: commonStyleFn.border(commonColors.gold),
     boxShadow: commonStyleFn.innerShadow()
   },
 
   levelIndicator: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -grid.ySpan(0.4) - grid.gutter,
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: grid.fontSize(0.4),
-    fontWeight: "normal",
-    textShadow: commonStyleFn.textShadow("black", grid.border),
+    fontWeight: 'normal',
+    textShadow: commonStyleFn.textShadow('black', grid.border),
     color: commonColors.gold
   },
 
   disabledIndicator: {
-    position: "absolute",
+    position: 'absolute',
     top: 0, right: 0, bottom: 0, left: 0,
-    background: "rgba(0, 0, 0, 0.5)"
+    background: 'rgba(0, 0, 0, 0.5)'
   }
 });

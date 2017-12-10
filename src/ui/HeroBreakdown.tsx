@@ -1,9 +1,9 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyles, Row} from "../config/styles";
-import {Hero} from "../state/types/Hero";
-import {QuirkText} from "./QuirkText";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyles, Row} from '../config/styles';
+import {Hero} from '../state/types/Hero';
+import {QuirkText} from './QuirkText';
 
 @observer
 export class HeroBreakdown extends React.Component<{hero: Hero}> {
@@ -17,7 +17,7 @@ export class HeroBreakdown extends React.Component<{hero: Hero}> {
       </Row>
     );
 
-    const experience = c.level.isMax ? "MAX" : (
+    const experience = c.level.isMax ? 'MAX' : (
       <span>
         {c.relativeExperience}/{c.level.next.relativeExperience}
       </span>

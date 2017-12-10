@@ -1,19 +1,19 @@
-import * as React from "react";
-import {BuildingInfo, BuildingInfoId} from "../../../../state/types/BuildingInfo";
-import {count, mapMap} from "../../../../lib/Helpers";
-import {CommonHeader} from "../../../../ui/CommonHeader";
-import {Column, Row} from "../../../../config/styles";
-import {StaticState} from "../../../../state/StaticState";
-import {observer} from "mobx-react";
-import {Hero} from "../../../../state/types/Hero";
-import {AppStateComponent} from "../../../../AppStateComponent";
-import {Alert, Prompt} from "../../../../ui/Popups";
-import {BuildingUpgradeEffects} from "../../../../state/types/BuildingUpgradeEffects";
-import {QuirkPicker} from "./QuirkPicker";
-import {TreatmentSlot} from "./TreatmentSlot";
-import {GoldIcon} from "../../../../ui/GoldIcon";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../../../../config/Grid";
+import * as React from 'react';
+import {BuildingInfo, BuildingInfoId} from '../../../../state/types/BuildingInfo';
+import {count, mapMap} from '../../../../lib/Helpers';
+import {CommonHeader} from '../../../../ui/CommonHeader';
+import {Column, Row} from '../../../../config/styles';
+import {StaticState} from '../../../../state/StaticState';
+import {observer} from 'mobx-react';
+import {Hero} from '../../../../state/types/Hero';
+import {AppStateComponent} from '../../../../AppStateComponent';
+import {Alert, Prompt} from '../../../../ui/Popups';
+import {BuildingUpgradeEffects} from '../../../../state/types/BuildingUpgradeEffects';
+import {QuirkPicker} from './QuirkPicker';
+import {TreatmentSlot} from './TreatmentSlot';
+import {GoldIcon} from '../../../../ui/GoldIcon';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../../../../config/Grid';
 
 @observer
 export class TreatmentFacility extends AppStateComponent<{
@@ -31,11 +31,9 @@ export class TreatmentFacility extends AppStateComponent<{
     // Confirm procedure before proceeding
     const cost = this.activeProfile.getResidencyCost(resident.residentInfo);
     const proceed = await this.appState.popups.prompt(
-      <Prompt query={
-        <Row>
-          Do you wish to pay {<GoldIcon amount={cost}/>} for this residency?
-        </Row>
-      }/>
+      <Prompt
+        query={<Row>Do you wish to pay {<GoldIcon amount={cost}/>} for this residency?</Row>}
+      />
     );
 
     if (proceed) {

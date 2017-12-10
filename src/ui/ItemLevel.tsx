@@ -1,13 +1,13 @@
-import * as React from "react";
-import {StyleSheet} from "aphrodite";
-import {ItemType} from "../state/types/ItemInfo";
-import {commonColors, commonStyleFn, Row} from "../config/styles";
-import {grid} from "../config/Grid";
-import {Icon} from "./Icon";
+import * as React from 'react';
+import {StyleSheet} from 'aphrodite';
+import {ItemType} from '../state/types/ItemInfo';
+import {commonColors, commonStyleFn, Row} from '../config/styles';
+import {grid} from '../config/Grid';
+import {Icon} from './Icon';
 
 const itemIcons: {[key: string]: string} = {
-  [ItemType.Weapon]: require("../assets/dd/images/panels/icons_equip/trinket/inv_trinket+swordsmans_crest.png"),
-  [ItemType.Armor]: require("../assets/dd/images/panels/icons_equip/trinket/inv_trinket+cadogans_shield.png")
+  [ItemType.Weapon]: require('../assets/dd/images/panels/icons_equip/trinket/inv_trinket+swordsmans_crest.png'),
+  [ItemType.Armor]: require('../assets/dd/images/panels/icons_equip/trinket/inv_trinket+cadogans_shield.png')
 };
 
 export class ItemLevel extends React.Component<{
@@ -28,11 +28,11 @@ export class ItemLevel extends React.Component<{
 
 const styles = StyleSheet.create({
   itemLevel: {
-    background: "black",
+    background: 'black',
     border: commonStyleFn.border(commonColors.darkGray),
     borderBottom: 0,
     fontSize: grid.fontSize(0.5),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingRight: grid.gutter,
     paddingLeft: grid.gutter
   },

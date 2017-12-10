@@ -1,5 +1,5 @@
 export enum Difficulty {
-  Radiant = "Radiant",
-  Darkest = "Darkest",
-  Stygian = "Stygian"
+  Radiant = 'Radiant',
+  Darkest = 'Darkest',
+  Stygian = 'Stygian'
 }

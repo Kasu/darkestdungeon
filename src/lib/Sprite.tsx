@@ -1,11 +1,11 @@
-import * as React from "react";
-import {observable} from "mobx";
-import {observer} from "mobx-react";
-import {SpriteInfo} from "../assets/SpriteInfo";
-import {Bounds, Size} from "../Bounds";
-import {SizeObserver} from "./SizeObserver";
-import {css} from "aphrodite";
-const {Tween} = require("tween.js");
+import * as React from 'react';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {SpriteInfo} from '../assets/SpriteInfo';
+import {Bounds, Size} from '../Bounds';
+import {SizeObserver} from './SizeObserver';
+import {css} from 'aphrodite';
+const {Tween} = require('tween.js');
 
 @observer
 export class Sprite extends React.Component<
@@ -86,16 +86,16 @@ export class Sprite extends React.Component<
     const columnIndex = this.frame % this.props.columns || 0;
 
     return {
-      ...(this.props.debug && {backgroundColor: "rgba(0, 10, 128, 0.63)"}),
-      position: "absolute",
+      ...(this.props.debug && {backgroundColor: 'rgba(0, 10, 128, 0.63)'}),
+      position: 'absolute',
       top: this.scaledSpriteBounds.y,
       left: this.scaledSpriteBounds.x,
       width: this.scaledSpriteBounds.width,
       height: this.scaledSpriteBounds.height,
-      overflow: "hidden",
-      backgroundImage: "url(" + this.props.url + ")",
-      backgroundRepeat: "no-repeat",
-      backgroundSize: sheetSizeScaled.width + "px " + sheetSizeScaled.height + "px",
+      overflow: 'hidden',
+      backgroundImage: 'url(' + this.props.url + ')',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: sheetSizeScaled.width + 'px ' + sheetSizeScaled.height + 'px',
       backgroundPositionX: -this.scaledSpriteBounds.width * columnIndex,
       backgroundPositionY: -this.scaledSpriteBounds.height * rowIndex
     } as any;
@@ -104,7 +104,7 @@ export class Sprite extends React.Component<
   render () {
     return (
       <div className={css(this.props.classStyle)} style={{
-        ...(this.props.debug && {backgroundColor: "rgba(0, 128, 0, 0.63)"}),
+        ...(this.props.debug && {backgroundColor: 'rgba(0, 128, 0, 0.63)'}),
         ...this.props.style
       }}>
         <div style={this.calculateStyle()}>

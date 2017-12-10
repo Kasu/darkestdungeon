@@ -1,8 +1,8 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonColors, commonStyleFn} from "../config/styles";
-import {grid} from "../config/Grid";
-import {fonts} from "../assets/fonts";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonColors, commonStyleFn} from '../config/styles';
+import {grid} from '../config/Grid';
+import {fonts} from '../assets/fonts';
 
 export class Tooltip extends React.Component <{
   classStyle?: any
@@ -22,9 +22,9 @@ const styles = StyleSheet.create({
     boxShadow: commonStyleFn.boxShadow(),
     borderRadius: grid.border,
     fontFamily: fonts.Default,
-    fontWeight: "normal",
+    fontWeight: 'normal',
     padding: grid.gutter,
-    backgroundColor: "black",
+    backgroundColor: 'black',
     color: commonColors.lightGray
   }
 });

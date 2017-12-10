@@ -1,9 +1,9 @@
-import * as React from "react";
-import {ReactElement} from "react";
-import {computed, observable, reaction, transaction} from "mobx";
-import {Point} from "../Bounds";
-import uuid = require("uuid");
-import {Layer} from "../ui/Layer";
+import * as React from 'react';
+import {ReactElement} from 'react';
+import {computed, observable, reaction, transaction} from 'mobx';
+import {Point} from '../Bounds';
+import uuid = require('uuid');
+import {Layer} from '../ui/Layer';
 
 export type PopupId = string;
 export type PopupContent<P = {}> = ReactElement<P> | string;
@@ -22,7 +22,7 @@ type PopupHandleProps<P> = {
 type PopupHandlePropsOrContent<P> = PopupHandleProps<P> | PopupContent<P>;
 
 function ensureProps<P> (arg: PopupHandlePropsOrContent<P>): PopupHandleProps<P> {
-  if (typeof arg === "string" || React.isValidElement(arg)) {
+  if (typeof arg === 'string' || React.isValidElement(arg)) {
     return {content: arg};
   }
   return arg;

@@ -1,8 +1,8 @@
-import {BuildingUpgradeInfo} from "./BuildingUpgradeInfo";
+import {BuildingUpgradeInfo} from './BuildingUpgradeInfo';
 
 export type BuildingInfoId = string;
 
-const idSeparator = ".";
+const idSeparator = '.';
 
 export class BuildingInfo {
   key: string;

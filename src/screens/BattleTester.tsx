@@ -1,17 +1,17 @@
-import * as React from "react";
-import {observer} from "mobx-react";
-import {AppStateComponent} from "../AppStateComponent";
-import {HeroOverview} from "../ui/HeroOverview";
-import {Row} from "../config/styles";
-import {computed} from "mobx";
-import {CommonHeader} from "../ui/CommonHeader";
-import {randomizeItem} from "../lib/Helpers";
-import {Skill} from "../state/types/Skill";
-import {contains} from "../lib/Helpers";
-import {Hero} from "../state/types/Hero";
-import {StyleSheet} from "aphrodite";
-import {Battler} from "../state/types/Battler";
-import {SkillTargetObject} from "../state/types/SkillInfo";
+import * as React from 'react';
+import {observer} from 'mobx-react';
+import {AppStateComponent} from '../AppStateComponent';
+import {HeroOverview} from '../ui/HeroOverview';
+import {Row} from '../config/styles';
+import {computed} from 'mobx';
+import {CommonHeader} from '../ui/CommonHeader';
+import {randomizeItem} from '../lib/Helpers';
+import {Skill} from '../state/types/Skill';
+import {contains} from '../lib/Helpers';
+import {Hero} from '../state/types/Hero';
+import {StyleSheet} from 'aphrodite';
+import {Battler} from '../state/types/Battler';
+import {SkillTargetObject} from '../state/types/SkillInfo';
 
 @observer
 export class BattleTester extends AppStateComponent {
@@ -98,6 +98,6 @@ export class BattleTester extends AppStateComponent {
 
 const styles = StyleSheet.create({
   actor: {
-    background: "green"
+    background: 'green'
   }
 });

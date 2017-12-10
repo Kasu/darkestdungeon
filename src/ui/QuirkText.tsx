@@ -1,9 +1,9 @@
-import * as React from "react";
-import {commonStyles, Row} from "../config/styles";
-import {QuirkInfo} from "../state/types/QuirkInfo";
-import {TooltipArea} from "../lib/TooltipArea";
-import {StatsTextList} from "./StatsText";
-import {StaticState} from "../state/StaticState";
+import * as React from 'react';
+import {commonStyles, Row} from '../config/styles';
+import {QuirkInfo} from '../state/types/QuirkInfo';
+import {TooltipArea} from '../lib/TooltipArea';
+import {StatsTextList} from './StatsText';
+import {StaticState} from '../state/StaticState';
 
 export class QuirkText extends React.Component<{
   quirk: QuirkInfo,
@@ -31,14 +31,15 @@ export class QuirkText extends React.Component<{
           <div>
             <StatsTextList stats={this.props.quirk.stats.nonNeutral} long/>
             {banned.length > 0 && (
-              <Row>Can't receive treatment from {banned.join(", ")}</Row>
+              <Row>Can't receive treatment from {banned.join(', ')}</Row>
             )}
             {forces.length > 0 && (
-              <Row>Only accepts treatment from {forces.join(", ")}</Row>
+              <Row>Only accepts treatment from {forces.join(', ')}</Row>
             )}
           </div>
         )}
-        classStyle={[classStyle, this.props.classStyle]}>
+        classStyle={[classStyle, this.props.classStyle]}
+      >
         {this.props.quirk.name}
       </TooltipArea>
     );

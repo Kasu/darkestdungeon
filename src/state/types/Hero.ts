@@ -1,9 +1,9 @@
-import {Character} from "./Character";
-import {object, serializable} from "serializr";
-import {observable, transaction} from "mobx";
-import {HeroResidentInfo} from "./HeroResidentInfo";
-import {BuildingInfoId} from "./BuildingInfo";
-import {cmp} from "../../lib/Helpers";
+import {Character} from './Character';
+import {object, serializable} from 'serializr';
+import {observable, transaction} from 'mobx';
+import {HeroResidentInfo} from './HeroResidentInfo';
+import {BuildingInfoId} from './BuildingInfo';
+import {cmp} from '../../lib/Helpers';
 
 export class Hero extends Character {
   @serializable @observable rosterIndex: number = 0;

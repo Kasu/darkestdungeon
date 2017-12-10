@@ -1,12 +1,12 @@
-import {addLocaleData, Locale} from "react-intl";
-import {replaceMap, unique} from "../lib/Helpers";
-import {action, observable, toJS} from "mobx";
+import {addLocaleData, Locale} from 'react-intl';
+import {replaceMap, unique} from '../lib/Helpers';
+import {action, observable, toJS} from 'mobx';
 
 export type LocaleName = string;
 export type Messages = {[key: string]: string};
 
 export class I18nState {
-  @observable locale: LocaleName = "en";
+  @observable locale: LocaleName = 'en';
   @observable messages = new Map<LocaleName, Messages>();
   @observable data = new Map<LocaleName, Locale>();
 

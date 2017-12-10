@@ -1,24 +1,24 @@
-import * as React from "react";
-import {ItemIcon, itemSize} from "./ItemIcon";
-import {observer} from "mobx-react";
-import {DragDropSlot} from "../lib/DragDropSlot";
-import {Item} from "../state/types/Item";
-import {contains, count, removeItem} from "../lib/Helpers";
-import {grid} from "../config/Grid";
-import {css, StyleSheet} from "aphrodite";
-import {commonColors, commonStyleFn, commonStyles, customScrollbarSize} from "../config/styles";
-import {IArraySplice} from "mobx";
-import {AppStateComponent} from "../AppStateComponent";
-import {ItemType} from "../state/types/ItemInfo";
-import {ObservableArray} from "mobx/lib/types/observablearray";
+import * as React from 'react';
+import {ItemIcon, itemSize} from './ItemIcon';
+import {observer} from 'mobx-react';
+import {DragDropSlot} from '../lib/DragDropSlot';
+import {Item} from '../state/types/Item';
+import {contains, count, removeItem} from '../lib/Helpers';
+import {grid} from '../config/Grid';
+import {css, StyleSheet} from 'aphrodite';
+import {commonColors, commonStyleFn, commonStyles, customScrollbarSize} from '../config/styles';
+import {IArraySplice} from 'mobx';
+import {AppStateComponent} from '../AppStateComponent';
+import {ItemType} from '../state/types/ItemInfo';
+import {ObservableArray} from 'mobx/lib/types/observablearray';
 
 const itemSounds: {[key: string]: IHowlProperties} = {
-  [ItemType.Heirloom]: {src: require("../assets/dd/audio/ui_dun_loot_take_heirloom.ogg"), volume: 0.2},
-  [ItemType.Treasure]: {src: require("../assets/dd/audio/ui_dun_loot_take_jewelry.ogg"), volume: 0.2},
-  [ItemType.Consumable]: {src: require("../assets/dd/audio/ui_dun_loot_take_provisions.ogg"), volume: 0.2},
-  [ItemType.Armor]: {src: require("../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
-  [ItemType.Weapon]: {src: require("../assets/dd/audio/ui_dun_loot_take_all.ogg"), volume: 0.4},
-  [ItemType.Trinket]: {src: require("../assets/dd/audio/ui_dun_trink_equip.ogg"), volume: 0.4}
+  [ItemType.Heirloom]: {src: require('../assets/dd/audio/ui_dun_loot_take_heirloom.ogg'), volume: 0.2},
+  [ItemType.Treasure]: {src: require('../assets/dd/audio/ui_dun_loot_take_jewelry.ogg'), volume: 0.2},
+  [ItemType.Consumable]: {src: require('../assets/dd/audio/ui_dun_loot_take_provisions.ogg'), volume: 0.2},
+  [ItemType.Armor]: {src: require('../assets/dd/audio/ui_dun_loot_take_all.ogg'), volume: 0.4},
+  [ItemType.Weapon]: {src: require('../assets/dd/audio/ui_dun_loot_take_all.ogg'), volume: 0.4},
+  [ItemType.Trinket]: {src: require('../assets/dd/audio/ui_dun_trink_equip.ogg'), volume: 0.4}
 };
 
 @observer
@@ -45,7 +45,7 @@ export class ItemDropbox extends AppStateComponent<{
     onItemRightClick: (): null => null
   };
 
-  private reactionDisposers: Array<() => void>;
+  private reactionDisposers: (() => void)[];
 
   componentWillMount () {
     this.reactionDisposers = [
@@ -53,13 +53,16 @@ export class ItemDropbox extends AppStateComponent<{
       (this.props.items as any as ObservableArray<Item>).observe(
         (change: IArraySplice<Item>) => {
           // Determine which items to play (we won't play the same sfx twice)
-          const soundsToPlay = change.added.reduce((dict, item) => {
-            const sound = itemSounds[item.info.type];
-            if (sound) {
-              dict[item.info.type] = sound;
-            }
-            return dict;
-          }, {} as {[key: string]: IHowlProperties});
+          const soundsToPlay = change.added.reduce(
+            (dict, item) => {
+              const sound = itemSounds[item.info.type];
+              if (sound) {
+                dict[item.info.type] = sound;
+              }
+              return dict;
+            },
+            {} as {[key: string]: IHowlProperties}
+          );
 
           for (const sound of Object.values(soundsToPlay)) {
             this.appState.sfx.play(sound);
@@ -93,16 +96,19 @@ export class ItemDropbox extends AppStateComponent<{
 
   stackItems (items: Item[]) {
     const rest: Item[][] = [];
-    const dict = items.reduce((stacks, item) => {
-      if (item.info.isStackable) {
-        const itemList = stacks.get(item.info.id) || [];
-        stacks.set(item.info.id, itemList);
-        itemList.push(item);
-      } else {
-        rest.push([item]);
-      }
-      return stacks;
-    }, new Map<string, Item[]>());
+    const dict = items.reduce(
+      (stacks, item) => {
+        if (item.info.isStackable) {
+          const itemList = stacks.get(item.info.id) || [];
+          stacks.set(item.info.id, itemList);
+          itemList.push(item);
+        } else {
+          rest.push([item]);
+        }
+        return stacks;
+      },
+      new Map<string, Item[]>()
+    );
 
     return Array.from(dict.values()).concat(rest);
   }
@@ -131,7 +137,7 @@ export class ItemDropbox extends AppStateComponent<{
           const item = stack && stack[0];
           return (
             <DragDropSlot
-              key={item ? item.id : ("slot" + index)}
+              key={item ? item.id : ('slot' + index)}
               classStyle={styles.slot}
               type={Item}
               allowDrag={this.props.canInteractWith}
@@ -177,22 +183,22 @@ const itemMargin = grid.gutter / 2;
 const maxItemsInRow = 9;
 const styles = StyleSheet.create({
   dropbox: {
-    flexWrap: "wrap",
-    flexDirection: "row",
+    flexWrap: 'wrap',
+    flexDirection: 'row',
     maxWidth: (itemSize.width + (itemMargin * 2)) * maxItemsInRow + customScrollbarSize,
-    overflowY: "scroll",
-    overflowX: "hidden"
+    overflowY: 'scroll',
+    overflowX: 'hidden'
   },
 
   slot: {
-    flex: "auto",
+    flex: 'auto',
     margin: itemMargin
   },
 
   stackSize: {
-    ...commonStyleFn.dock("topLeft"),
+    ...commonStyleFn.dock('topLeft'),
     color: commonColors.gold,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginTop: grid.gutter / 2,
     marginLeft: grid.gutter / 2
   },

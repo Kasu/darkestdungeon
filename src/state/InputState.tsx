@@ -1,6 +1,6 @@
-import * as React from "react";
-import * as PropTypes from "prop-types";
-import uuid = require("uuid");
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import uuid = require('uuid');
 
 export type InputLayerId = string;
 export type InputBindingId = string;
@@ -19,14 +19,14 @@ export class InputHandler {
   layerId: InputLayerId;
 
   startListening () {
-    if (typeof window !== "undefined") {
-      window.addEventListener("keydown", this.onKeyDown.bind(this));
+    if (typeof window !== 'undefined') {
+      window.addEventListener('keydown', this.onKeyDown.bind(this));
     }
   }
 
   stopListening () {
-    if (typeof window !== "undefined") {
-      window.removeEventListener("keydown", this.onKeyDown.bind(this));
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('keydown', this.onKeyDown.bind(this));
     }
   }
 
@@ -118,9 +118,8 @@ export class InputBindings extends React.Component<{
       .map((props: any, index) => {
         if (Array.isArray(props)) {
           return <InputBinding key={index} match={props[0]} callback={props[1]}/>;
-        } else {
-          return <InputBinding key={index} {...props}/>;
         }
+        return <InputBinding key={index} {...props}/>;
       });
   }
 }

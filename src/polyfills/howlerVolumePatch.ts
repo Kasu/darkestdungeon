@@ -1,4 +1,4 @@
-import {Howl} from "howler";
+import {Howl} from 'howler';
 
 (global as any).Howl = Howl;
 

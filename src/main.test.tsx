@@ -1,14 +1,14 @@
-import * as React from "react";
-import * as TestUtils from "react-dom/test-utils";
-import {StyleSheetTestUtils} from "aphrodite";
-import {AppState} from "./state/AppState";
-import {App} from "./app";
-import {addStaticState} from "./config/general";
-import {routes} from "./config/routes";
-import {StaticState} from "./state/StaticState";
-import {Difficulty} from "./state/types/Difficulty";
-const {DragDropContext} = require("react-dnd");
-const TestBackend = require("react-dnd-test-backend");
+import * as React from 'react';
+import * as TestUtils from 'react-dom/test-utils';
+import {StyleSheetTestUtils} from 'aphrodite';
+import {AppState} from './state/AppState';
+import {App} from './app';
+import {addStaticState} from './config/general';
+import {routes} from './config/routes';
+import {StaticState} from './state/StaticState';
+import {Difficulty} from './state/types/Difficulty';
+const {DragDropContext} = require('react-dnd');
+const TestBackend = require('react-dnd-test-backend');
 
 @DragDropContext(TestBackend)
 class TestApp extends React.Component<{state: AppState}> {
@@ -17,7 +17,7 @@ class TestApp extends React.Component<{state: AppState}> {
   }
 }
 
-describe("main", () => {
+describe('main', () => {
   beforeEach(() => {
     addStaticState();
     StyleSheetTestUtils.suppressStyleInjection();
@@ -30,7 +30,7 @@ describe("main", () => {
   });
 
   for (const path in routes) {
-    it (`renders "${path}" without errors`, () => {
+    it (`renders '${path}' without errors`, () => {
       const state = new AppState();
       state.ensureProfile();
       state.isRunningJest = true;

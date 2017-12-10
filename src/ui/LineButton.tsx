@@ -1,15 +1,15 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {observer} from "mobx-react";
-import {IObservableValue, IReactionDisposer, observable, reaction} from "mobx";
-import {grid} from "../config/Grid";
-import {VerticalOutlineBox} from "./VerticalOutlineBox";
-import {commonColors} from "../config/styles";
-import {AppStateComponent} from "../AppStateComponent";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {observer} from 'mobx-react';
+import {IObservableValue, IReactionDisposer, observable, reaction} from 'mobx';
+import {grid} from '../config/Grid';
+import {VerticalOutlineBox} from './VerticalOutlineBox';
+import {commonColors} from '../config/styles';
+import {AppStateComponent} from '../AppStateComponent';
 
 const sounds = {
-  hover: {src: require("../assets/dd/audio/ui_shr_button_mouse_over.ogg"), volume: 0.7},
-  click: {src: require("../assets/dd/audio/ui_shr_button_click.ogg"), volume: 0.5}
+  hover: {src: require('../assets/dd/audio/ui_shr_button_mouse_over.ogg'), volume: 0.7},
+  click: {src: require('../assets/dd/audio/ui_shr_button_click.ogg'), volume: 0.5}
 };
 
 @observer
@@ -28,7 +28,7 @@ export class LineButton extends AppStateComponent<{
 }> {
   static defaultProps = {
     clickSound: sounds.click,
-    defaultColor: "transparent",
+    defaultColor: 'transparent',
     hoverColor: commonColors.gold,
     textGlow: true
   };
@@ -92,15 +92,15 @@ const styles = StyleSheet.create({
   lineButton: {
     paddingTop: grid.gutter,
     paddingBottom: grid.gutter,
-    fontWeight: "bold",
-    textAlign: "center",
-    alignItems: "center"
+    fontWeight: 'bold',
+    textAlign: 'center',
+    alignItems: 'center'
   },
 
   textGlow: {
-    transition: "text-shadow .1s ease-out",
+    transition: 'text-shadow .1s ease-out',
     textShadow: `0px 0px 0px transparent`,
-    ":hover": {
+    ':hover': {
       textShadow: `0px 0px 35px #ffffff`
     }
   }

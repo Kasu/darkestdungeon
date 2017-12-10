@@ -1,9 +1,9 @@
-import {custom, serializable} from "serializr";
+import {custom, serializable} from 'serializr';
 
 export type PathTypes = Path | string;
 
 export class Path {
-  public static separator: string = "/";
+  public static separator: string = '/';
 
   @serializable public value: string;
 
@@ -19,7 +19,7 @@ export class Path {
   }
 
   constructor (
-    value: string = "",
+    value: string = '',
     args: any = {}
   ) {
     this.value = value;
@@ -38,11 +38,11 @@ export class Path {
 }
 
 export function ensurePath (path: PathTypes): Path {
-  if (typeof path === "string") {
+  if (typeof path === 'string') {
     return new Path(path);
   }
   if (!path) {
-    return new Path("");
+    return new Path('');
   }
   return path as Path;
 }

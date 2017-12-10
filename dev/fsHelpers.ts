@@ -1,16 +1,19 @@
-import * as path from "path";
-import * as fs from "fs";
+import * as path from 'path';
+import * as fs from 'fs';
 
 export function ensureFolderExists (folderPath: string) {
   folderPath.split(path.sep)
-    .reduce((pathBase, folderName) => {
-      const currentPath = path.resolve(pathBase, folderName);
-      if (!fs.existsSync(currentPath)) {
-        fs.mkdirSync(currentPath);
-      }
+    .reduce(
+      (pathBase, folderName) => {
+        const currentPath = path.resolve(pathBase, folderName);
+        if (!fs.existsSync(currentPath)) {
+          fs.mkdirSync(currentPath);
+        }
 
-      return currentPath;
-    }, path.isAbsolute(folderPath) ? path.sep : "");
+        return currentPath;
+      },
+      path.isAbsolute(folderPath) ? path.sep : ''
+    );
 }
 
 export function removeFolder (folderPath: string) {
@@ -34,7 +37,7 @@ export function emptyFolder (folderPath: string, test = (f: string) => true) {
 }
 
 export function copyFiles (sourceList: string[], destList: string[]) {
-  for (let i = 0; i < sourceList.length; i++) {
+  for (let i = 0; i < sourceList.length; i += 1) {
     const source = sourceList[i];
     const dest = destList[i];
     ensureFolderExists(path.dirname(dest));

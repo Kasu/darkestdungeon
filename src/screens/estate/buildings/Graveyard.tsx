@@ -1,18 +1,18 @@
-import * as React from "react";
-import {BuildingOverview} from "./BuildingOverview";
-import {EstateRosterEntry} from "../EstateRosterEntry";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {observer} from "mobx-react";
-import {StaticState} from "../../../state/StaticState";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../../../config/Grid";
-import {HorizontalDivider} from "../../../ui/HorizontalDivider";
-import {BuildingMessage} from "./BuildingMessage";
-import {commonStyles} from "../../../config/styles";
+import * as React from 'react';
+import {BuildingOverview} from './BuildingOverview';
+import {EstateRosterEntry} from '../EstateRosterEntry';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {observer} from 'mobx-react';
+import {StaticState} from '../../../state/StaticState';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../../../config/Grid';
+import {HorizontalDivider} from '../../../ui/HorizontalDivider';
+import {BuildingMessage} from './BuildingMessage';
+import {commonStyles} from '../../../config/styles';
 
 @observer
 export class Graveyard extends AppStateComponent {
-  static id = "graveyard";
+  static id = 'graveyard';
 
   renderMessage () {
     if (this.activeProfile.graveyard.length === 0) {
@@ -41,7 +41,7 @@ export class Graveyard extends AppStateComponent {
 
       if (index !== lastIndex) {
         elements.push(
-          <HorizontalDivider key={"divider" + index}/>
+          <HorizontalDivider key={'divider' + index}/>
         );
       }
     });
@@ -60,9 +60,9 @@ export class Graveyard extends AppStateComponent {
 const styles = StyleSheet.create({
   heroList: {
     flex: 1,
-    alignItems: "flex-end",
-    overflowY: "auto",
-    overflowX: "hidden"
+    alignItems: 'flex-end',
+    overflowY: 'auto',
+    overflowX: 'hidden'
   },
 
   graveyardMessage: {

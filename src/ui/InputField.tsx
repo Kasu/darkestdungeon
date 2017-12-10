@@ -1,7 +1,7 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {commonColors, commonStyleFn} from "../config/styles";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {commonColors, commonStyleFn} from '../config/styles';
 
 export class InputField extends React.Component<{
   defaultValue: string,
@@ -41,15 +41,15 @@ export class InputField extends React.Component<{
 
 const styles = StyleSheet.create({
   container: {
-    background: "black",
+    background: 'black',
     border: commonStyleFn.border(commonColors.darkGray),
-    boxShadow: commonStyleFn.outerShadow("black", grid.gutter * 2),
+    boxShadow: commonStyleFn.outerShadow('black', grid.gutter * 2),
     borderRadius: grid.border
   },
 
   shine: {
     flex: 1,
-    background: "black",
+    background: 'black',
     boxShadow: commonStyleFn.innerShadow(commonColors.gray),
     borderRadius: grid.gutter / 2,
     padding: `${grid.gutter / 2}px ${grid.gutter * 2}px`,
@@ -58,13 +58,13 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
-    background: "transparent",
-    fontFamily: "inherit",
+    background: 'transparent',
+    fontFamily: 'inherit',
     color: commonColors.gold,
-    outline: "none"
+    outline: 'none'
   },
 
   disabled: {
-    pointerEvents: "none"
+    pointerEvents: 'none'
   }
 });

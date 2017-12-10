@@ -1,7 +1,7 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {commonColors, commonStyleFn} from "../config/styles";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {commonColors, commonStyleFn} from '../config/styles';
 
 export class BannerHeader extends React.Component<{
   classStyle?: any,
@@ -18,12 +18,12 @@ export class BannerHeader extends React.Component<{
 
 const styles = StyleSheet.create({
   bannerHeader: {
-    textAlign: "center",
-    fontWeight: "bold",
+    textAlign: 'center',
+    fontWeight: 'bold',
     padding: grid.gutter / 2,
     color: commonColors.gold,
     border: commonStyleFn.border(undefined, grid.border * 2),
-    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
     boxShadow: commonStyleFn.boxShadow()
   }
 });

@@ -1,46 +1,23 @@
 {
-  "extends": ["tslint:latest", "tslint-react"],
+  "extends": ["tslint-config-airbnb"],
   "rules": {
-    "no-submodule-imports": false,
-    "no-var-requires": false,
-    "no-default-export": true,
-    "ordered-imports": false,
-    "no-duplicate-imports": false,
-
-    "no-implicit-dependencies": false,
-    "no-this-assignment": false,
-    "no-object-literal-type-assertion": false,
-    "interface-over-type-literal": false,
-    "max-classes-per-file": false,
-    "no-console": false,
-    "restrict-plus-operands": false,
-    "strict-boolean-expressions": false,
-    "member-access": false,
-    "member-ordering": false,
-    "forin": false,
-
-    "space-before-function-paren": true,
-    "trailing-comma": [true, {
-      "multiline": {
-        "objects": "never",
-        "arrays": "never",
-        "functions": "never",
-        "typeLiterals": "never"
-      },
-      "esSpecCompliant": true
-    }],
-    "no-empty": false,
-    "comment-format": false,
-    "indent": [true, "spaces", 2],
-    "max-line-length": [true, 120],
-    "object-literal-sort-keys": false,
-    "object-literal-key-quotes": false,
-    "no-trailing-whitespace": false,
-
-    "jsx-no-bind": false,
-    "jsx-no-lambda": false,
-    "jsx-alignment": false,
+    "object-curly-spacing": false,
+    "trailing-comma": false,
+    "ter-indent": false,
+    "max-line-length": [true, 140],
     "jsx-no-multiline-js": false,
-    "jsx-boolean-value": false
+    "variable-name": [true, "check-format", "allow-pascal-case"],
+    "no-var-self": false,
+
+    "no-unused-variable": [true, {"ignore-pattern": "React"}],
+    "ter-arrow-parens": [true, "always"],
+    "no-parameter-reassignment": false,
+    "space-before-function-paren": [true, "always"],
+    "object-literal-key-quotes": false,
+
+    "strict-boolean-expressions": false,
+    "jsx-no-lambda": false,
+    "no-duplicate-imports": false,
+    "prefer-array-literal": false
   }
 }

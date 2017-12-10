@@ -1,9 +1,9 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {fonts} from "../assets/fonts";
-import {Sprite} from "../lib/Sprite";
-import {smoke} from "../assets/sprites";
-import {grid} from "../config/Grid";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {fonts} from '../assets/fonts';
+import {Sprite} from '../lib/Sprite';
+import {smoke} from '../assets/sprites';
+import {grid} from '../config/Grid';
 
 export class TitleHeader extends React.Component<{
   classStyle?: any
@@ -21,20 +21,20 @@ export class TitleHeader extends React.Component<{
 
 const styles = StyleSheet.create({
   container: {
-    color: "black",
-    flexDirection: "row",
+    color: 'black',
+    flexDirection: 'row',
     fontFamily: fonts.Darkest,
     fontSize: grid.vw(10)
   },
 
   text: {
-    textShadow: "0px 0px 1vw red",
-    transition: "text-shadow 0.5s"
+    textShadow: '0px 0px 1vw red',
+    transition: 'text-shadow 0.5s'
   },
 
   textLeft: {
     flex: 1,
-    alignItems: "flex-end"
+    alignItems: 'flex-end'
   },
 
   textRight: {

@@ -1,33 +1,33 @@
-import * as React from "react";
-import {ItemType} from "../../state/types/ItemInfo";
-import {Inventory} from "../../ui/Inventory";
-import {StyleSheet} from "aphrodite";
-import {action, observable} from "mobx";
-import {observer} from "mobx-react";
-import {CompareFunction, SortOptions} from "../../ui/SortOptions";
-import {Item} from "../../state/types/Item";
-import {Popup, popupContentPadding, Prompt} from "../../ui/Popups";
-import {AppStateComponent} from "../../AppStateComponent";
-import {commonStyleFn, Row} from "../../config/styles";
-import {grid} from "../../config/Grid";
-import {LargeHeader} from "../../ui/LargeHeader";
-import {TooltipArea} from "../../lib/TooltipArea";
-import {Icon} from "../../ui/Icon";
+import * as React from 'react';
+import {ItemType} from '../../state/types/ItemInfo';
+import {Inventory} from '../../ui/Inventory';
+import {StyleSheet} from 'aphrodite';
+import {action, observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {CompareFunction, SortOptions} from '../../ui/SortOptions';
+import {Item} from '../../state/types/Item';
+import {Popup, popupContentPadding, Prompt} from '../../ui/Popups';
+import {AppStateComponent} from '../../AppStateComponent';
+import {commonStyleFn, Row} from '../../config/styles';
+import {grid} from '../../config/Grid';
+import {LargeHeader} from '../../ui/LargeHeader';
+import {TooltipArea} from '../../lib/TooltipArea';
+import {Icon} from '../../ui/Icon';
 
 export const inventoryIcon = require(
-  "../../assets/dd/images/campaign/town/realm_inventory/realm_inventory.icon.png"
+  '../../assets/dd/images/campaign/town/realm_inventory/realm_inventory.icon.png'
 );
 const unequipIcon = require(
-  "../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_unequip_trinkets.png"
+  '../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_unequip_trinkets.png'
 );
 const itemCompareIcons = {
-  name: require("../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_alphabetical.png"),
-  type: require("../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_class.png")
+  name: require('../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_alphabetical.png'),
+  type: require('../../assets/dd/images/campaign/town/realm_inventory/realm_inventory_sort_class.png')
 };
 
 const sounds = {
-  inventoryOpened: {src: require("../../assets/dd/audio/ui_town_trinket_open.ogg"), volume: 0.7},
-  inventoryClosed: {src: require("../../assets/dd/audio/ui_town_trinket_close.ogg"), volume: 0.7}
+  inventoryOpened: {src: require('../../assets/dd/audio/ui_town_trinket_open.ogg'), volume: 0.7},
+  inventoryClosed: {src: require('../../assets/dd/audio/ui_town_trinket_close.ogg'), volume: 0.7}
 };
 
 @observer
@@ -45,10 +45,13 @@ export class EstateInventory extends AppStateComponent {
 
   @action
   unequipAllItems () {
-    const unequippedItems = this.activeProfile.roster.reduce((unequipped, hero) => {
-      unequipped.push(...hero.items.splice(0, hero.items.length));
-      return unequipped;
-    }, [] as Item[]);
+    const unequippedItems = this.activeProfile.roster.reduce(
+      (unequipped, hero) => {
+        unequipped.push(...hero.items.splice(0, hero.items.length));
+        return unequipped;
+      },
+      [] as Item[]
+    );
 
     this.activeProfile.items.push(...unequippedItems);
   }
@@ -85,7 +88,7 @@ export class EstateInventory extends AppStateComponent {
 
 const styles = StyleSheet.create({
   icons: {
-    ...commonStyleFn.dock("topRight", popupContentPadding),
+    ...commonStyleFn.dock('topRight', popupContentPadding),
     marginRight: grid.gutter * 4 // Adjustment to not cover close button
   },
 

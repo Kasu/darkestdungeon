@@ -1,29 +1,29 @@
-import * as React from "react";
-import {Heirlooms} from "../../ui/Heirlooms";
-import {Row} from "../../config/styles";
-import {ScreenFooter} from "../ScreenFooter";
-import {StyleSheet} from "aphrodite";
-import {HeirloomTrader} from "../../ui/HeirloomTrader";
-import {CommonButton, CommonButtonSize} from "../../ui/CommonButton";
-import {AppStateComponent} from "../../AppStateComponent";
-import {GoldIcon, GoldIconSize} from "../../ui/GoldIcon";
-import {grid} from "../../config/Grid";
-import {inventoryIcon} from "./EstateInventory";
-import {pauseIcon} from "../../ui/PauseMenu";
-import {observer} from "mobx-react";
-import {IReactionDisposer, observable, reaction} from "mobx";
-import {Icon, IconHighlightType} from "../../ui/Icon";
-import {TooltipArea} from "../../lib/TooltipArea";
-import {randomizeItem} from "../../lib/Helpers";
+import * as React from 'react';
+import {Heirlooms} from '../../ui/Heirlooms';
+import {Row} from '../../config/styles';
+import {ScreenFooter} from '../ScreenFooter';
+import {StyleSheet} from 'aphrodite';
+import {HeirloomTrader} from '../../ui/HeirloomTrader';
+import {CommonButton, CommonButtonSize} from '../../ui/CommonButton';
+import {AppStateComponent} from '../../AppStateComponent';
+import {GoldIcon, GoldIconSize} from '../../ui/GoldIcon';
+import {grid} from '../../config/Grid';
+import {inventoryIcon} from './EstateInventory';
+import {pauseIcon} from '../../ui/PauseMenu';
+import {observer} from 'mobx-react';
+import {IReactionDisposer, observable, reaction} from 'mobx';
+import {Icon, IconHighlightType} from '../../ui/Icon';
+import {TooltipArea} from '../../lib/TooltipArea';
+import {randomizeItem} from '../../lib/Helpers';
 
 const sounds = {
-  heirloomsChanged: {src: require("../../assets/dd/audio/ui_dun_loot_take_estsatecurrency.ogg"), volume: 0.5},
+  heirloomsChanged: {src: require('../../assets/dd/audio/ui_dun_loot_take_estsatecurrency.ogg'), volume: 0.5},
   goldChanged: [
-    {src: require("../../assets/dd/audio/ui_town_coins_ring_08.ogg"), volume: 1},
-    {src: require("../../assets/dd/audio/ui_town_coins_ring_04.ogg"), volume: 1},
-    {src: require("../../assets/dd/audio/ui_town_coins_sprk_sml_05.ogg"), volume: 1},
-    {src: require("../../assets/dd/audio/ui_town_coins_sprk_sml_10.ogg"), volume: 1},
-    {src: require("../../assets/dd/audio/ui_town_coins_sprk_sml_08.ogg"), volume: 1}
+    {src: require('../../assets/dd/audio/ui_town_coins_ring_08.ogg'), volume: 1},
+    {src: require('../../assets/dd/audio/ui_town_coins_ring_04.ogg'), volume: 1},
+    {src: require('../../assets/dd/audio/ui_town_coins_sprk_sml_05.ogg'), volume: 1},
+    {src: require('../../assets/dd/audio/ui_town_coins_sprk_sml_10.ogg'), volume: 1},
+    {src: require('../../assets/dd/audio/ui_town_coins_sprk_sml_08.ogg'), volume: 1}
   ]
 };
 
@@ -75,7 +75,7 @@ export class EstateFooter extends AppStateComponent<{
           <Heirlooms counts={this.activeProfile.heirloomCounts} showAll/>
           <TooltipArea tip="Trade heirlooms">
             <Icon
-              src={require("../../assets/dd/images/campaign/town/heirloom_exchange/he_icon_idle.png")}
+              src={require('../../assets/dd/images/campaign/town/heirloom_exchange/he_icon_idle.png')}
               classStyle={styles.swapIcon}
               highlight={IconHighlightType.Lines}
               onClick={() => this.toggleHeirloomTrader()}

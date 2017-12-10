@@ -1,13 +1,13 @@
-import * as React from "react";
-import {PopupAlign, PopupContent, ModalState} from "../state/PopupState";
-import {TooltipArea, TooltipSide} from "../lib/TooltipArea";
-import {css, StyleSheet} from "aphrodite";
-import {computed, observable} from "mobx";
-import {observer} from "mobx-react";
-import {Popup, Prompt} from "../ui/Popups";
-import {AppStateComponent} from "../AppStateComponent";
-import {enumMap, mapMap} from "../lib/Helpers";
-import {commonStyleFn, commonStyles, Row} from "../config/styles";
+import * as React from 'react';
+import {PopupAlign, PopupContent, ModalState} from '../state/PopupState';
+import {TooltipArea, TooltipSide} from '../lib/TooltipArea';
+import {css, StyleSheet} from 'aphrodite';
+import {computed, observable} from 'mobx';
+import {observer} from 'mobx-react';
+import {Popup, Prompt} from '../ui/Popups';
+import {AppStateComponent} from '../AppStateComponent';
+import {enumMap, mapMap} from '../lib/Helpers';
+import {commonStyleFn, commonStyles, Row} from '../config/styles';
 
 @observer
 export class PopupTester extends AppStateComponent {
@@ -116,10 +116,10 @@ class Tip extends React.Component {
 
   @computed get messages () {
     const rows = [];
-    for (let i = 0; i < this.size; i++) {
-      let str = "";
-      for (let n = 0; n < this.size; n++) {
-        str += "W";
+    for (let i = 0; i < this.size; i += 1) {
+      let str = '';
+      for (let n = 0; n < this.size; n += 1) {
+        str += 'W';
       }
       rows.push(str);
     }
@@ -127,7 +127,7 @@ class Tip extends React.Component {
   }
 
   componentWillMount () {
-    this.intervalId = setInterval(() => this.size++, 150);
+    this.intervalId = setInterval(() => this.size += 1, 150);
   }
 
   componentWillUnmount () {
@@ -148,23 +148,23 @@ class Tip extends React.Component {
 const styles = StyleSheet.create({
   fill: {
     flex: 1,
-    backgroundColor: "#999"
+    backgroundColor: '#999'
   },
 
   tip: {
     maxWidth: 300,
     maxHeight: 300,
-    overflow: "hidden"
+    overflow: 'hidden'
   },
 
   anything: {
-    border: commonStyleFn.border("green"),
-    backgroundColor: "black",
-    color: "white",
+    border: commonStyleFn.border('green'),
+    backgroundColor: 'black',
+    color: 'white',
     padding: 10
   },
 
   tooltipAreas: {
-    marginLeft: "20px"
+    marginLeft: '20px'
   }
 });

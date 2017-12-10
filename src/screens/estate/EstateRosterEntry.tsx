@@ -1,31 +1,31 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {observer} from "mobx-react";
-import {LevelIcon} from "../../ui/LevelIcon";
-import {ItemLevel} from "../../ui/ItemLevel";
-import {StressMeter} from "../../ui/StressMeter";
-import {Avatar} from "../../ui/Avatar";
-import {commonColors, commonStyleFn, commonStyles, customScrollbarSize} from "../../config/styles";
-import {TooltipArea, TooltipSide} from "../../lib/TooltipArea";
-import {HeroBreakdown} from "../../ui/HeroBreakdown";
-import {ItemType} from "../../state/types/ItemInfo";
-import {Hero} from "../../state/types/Hero";
-import {DragDropSlot} from "../../lib/DragDropSlot";
-import {AppStateComponent} from "../../AppStateComponent";
-import {ModalState, PopupAlign, PopupHandle} from "../../state/PopupState";
-import {HeroOverview} from "../../ui/HeroOverview";
-import {StaticState} from "../../state/StaticState";
-import {estateContentPosition} from "./EstateTemplate";
-import {grid} from "../../config/Grid";
-import {Icon} from "../../ui/Icon";
-import {Prompt} from "../../ui/Popups";
-import {fonts} from "../../assets/fonts";
-import {BarkTooltipArea} from "../../ui/BarkTooltipArea";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {observer} from 'mobx-react';
+import {LevelIcon} from '../../ui/LevelIcon';
+import {ItemLevel} from '../../ui/ItemLevel';
+import {StressMeter} from '../../ui/StressMeter';
+import {Avatar} from '../../ui/Avatar';
+import {commonColors, commonStyleFn, commonStyles, customScrollbarSize} from '../../config/styles';
+import {TooltipArea, TooltipSide} from '../../lib/TooltipArea';
+import {HeroBreakdown} from '../../ui/HeroBreakdown';
+import {ItemType} from '../../state/types/ItemInfo';
+import {Hero} from '../../state/types/Hero';
+import {DragDropSlot} from '../../lib/DragDropSlot';
+import {AppStateComponent} from '../../AppStateComponent';
+import {ModalState, PopupAlign, PopupHandle} from '../../state/PopupState';
+import {HeroOverview} from '../../ui/HeroOverview';
+import {StaticState} from '../../state/StaticState';
+import {estateContentPosition} from './EstateTemplate';
+import {grid} from '../../config/Grid';
+import {Icon} from '../../ui/Icon';
+import {Prompt} from '../../ui/Popups';
+import {fonts} from '../../assets/fonts';
+import {BarkTooltipArea} from '../../ui/BarkTooltipArea';
 
-const inLineupIconUrl = require("../../assets/dd/images/campaign/town/roster/party.icon_roster.png");
+const inLineupIconUrl = require('../../assets/dd/images/campaign/town/roster/party.icon_roster.png');
 
 const sounds = {
-  dismiss: {src: require("../../assets/dd/audio/ui_town_char_remove.ogg")}
+  dismiss: {src: require('../../assets/dd/audio/ui_town_char_remove.ogg')}
 };
 
 @observer
@@ -71,7 +71,7 @@ export class EstateRosterEntry extends AppStateComponent<{
       align: PopupAlign.TopLeft,
       position: estateContentPosition,
       modalState: ModalState.Opaque,
-      id: "heroOverview",
+      id: 'heroOverview',
       onClose: this.props.onOverviewClosed,
       content: (
         <HeroOverview
@@ -166,11 +166,11 @@ export class EstateRosterEntry extends AppStateComponent<{
 }
 
 const borderColors = [
-  "rgb(33,33,33)",
-  "rgb(68, 72, 79)"
+  'rgb(33,33,33)',
+  'rgb(68, 72, 79)'
 ];
 
-export const rosterEntryHoverOffset = grid.paddingRight; //grid.xSpan(0);
+export const rosterEntryHoverOffset = grid.paddingRight;
 export const rosterEntryWidth = grid.xSpan(3) - customScrollbarSize;
 const entryHeight = grid.ySpan(1.75);
 const entryBorderSize = grid.border;
@@ -178,10 +178,10 @@ const entryPadding = grid.border;
 export const rosterEntryAvatarSize = entryHeight - entryBorderSize * 2 - entryPadding * 2;
 const styles = StyleSheet.create({
   entry: {
-    flex: "none",
-    flexDirection: "row",
+    flex: 'none',
+    flexDirection: 'row',
     border: commonStyleFn.border(undefined, entryBorderSize),
-    backgroundColor: "black",
+    backgroundColor: 'black',
     padding: entryPadding,
     height: entryHeight,
 
@@ -194,13 +194,13 @@ const styles = StyleSheet.create({
   },
 
   entryTransparent: {
-    background: "transparent",
+    background: 'transparent',
     border: 0
   },
 
   entryOffsetable: {
-    transition: "transform 0.2s ease-out",
-    ":hover": {
+    transition: 'transform 0.2s ease-out',
+    ':hover': {
       transform: `translateX(${-rosterEntryHoverOffset}px)`
     }
   },
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
 
   overlayIcon: {
-    ...commonStyleFn.dock("left"),
+    ...commonStyleFn.dock('left'),
     width: rosterEntryAvatarSize,
     height: rosterEntryAvatarSize
   },
@@ -240,13 +240,13 @@ const styles = StyleSheet.create({
   },
 
   equipment: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
 
   levelIconContainer: {
     margin: grid.gutter,
     marginLeft: 0,
     marginRight: grid.gutter,
-    justifyContent: "flex-end"
+    justifyContent: 'flex-end'
   }
 });

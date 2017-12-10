@@ -1,10 +1,10 @@
-import * as React from "react";
-import {AppStateComponent} from "../AppStateComponent";
-import {TooltipArea, TooltipAreaProps, TooltipSide} from "../lib/TooltipArea";
-import {observable, when} from "mobx";
-import {observer} from "mobx-react";
-import {BarkSubscription} from "../state/BarkDistributor";
-import {BarkTooltip} from "./BarkTooltip";
+import * as React from 'react';
+import {AppStateComponent} from '../AppStateComponent';
+import {TooltipArea, TooltipAreaProps, TooltipSide} from '../lib/TooltipArea';
+import {observable, when} from 'mobx';
+import {observer} from 'mobx-react';
+import {BarkSubscription} from '../state/BarkDistributor';
+import {BarkTooltip} from './BarkTooltip';
 
 @observer
 export class BarkTooltipArea extends AppStateComponent<

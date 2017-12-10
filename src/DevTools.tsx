@@ -1,11 +1,11 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {AppStats} from "./ui/AppStats";
-import {AppStateComponent} from "./AppStateComponent";
-import {observer} from "mobx-react";
-import {InputBinding} from "./state/InputState";
-import {observable} from "mobx";
-import {mapMap} from "./lib/Helpers";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {AppStats} from './ui/AppStats';
+import {AppStateComponent} from './AppStateComponent';
+import {observer} from 'mobx-react';
+import {InputBinding} from './state/InputState';
+import {observable} from 'mobx';
+import {mapMap} from './lib/Helpers';
 
 @observer
 export class DevTools extends AppStateComponent {
@@ -50,7 +50,7 @@ export class DevTools extends AppStateComponent {
           Go
         </button>
         <button onClick={() => this.activeProfile.gotoNextWeek()}>
-          Week++
+          Week += 1
         </button>
         <button onClick={() => this.appState.toggleGridOverlay()}>
           Grid
@@ -69,17 +69,17 @@ export class DevTools extends AppStateComponent {
 const styles = StyleSheet.create({
   container: {
     height: 48,
-    flexDirection: "row"
+    flexDirection: 'row'
   },
 
   paths: {
     flex: 1,
-    flexDirection: "row"
+    flexDirection: 'row'
   },
 
   currentPath: {
     padding: 3,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

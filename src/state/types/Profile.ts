@@ -1,23 +1,23 @@
-import {date, identifier, list, object, reference, serializable} from "serializr";
-import {action, computed, observable, transaction} from "mobx";
-import {Path} from "./Path";
-import {EstateEvent} from "./EstateEvent";
-import {Hero} from "./Hero";
-import {Quest, QuestId, QuestStatus} from "./Quest";
-import {countHeirlooms, Item} from "./Item";
-import {Dungeon} from "./Dungeon";
-import {generateHero, generateQuest} from "../Generators";
-import {cap, contains, count, moveItem, removeItem, removeItems} from "../../lib/Helpers";
-import {StaticState} from "../StaticState";
-import {BuildingUpgradeInfo} from "./BuildingUpgradeInfo";
-import {HeirloomType} from "./ItemInfo";
-import {BuildingInfoId} from "./BuildingInfo";
-import {Stats} from "./Stats";
-import {HeroResidentInfo} from "./HeroResidentInfo";
-import {Skill} from "./Skill";
-import {MapSize} from "./QuestMap";
-import {Difficulty} from "./Difficulty";
-import uuid = require("uuid");
+import {date, identifier, list, object, reference, serializable} from 'serializr';
+import {action, computed, observable, transaction} from 'mobx';
+import {Path} from './Path';
+import {EstateEvent} from './EstateEvent';
+import {Hero} from './Hero';
+import {Quest, QuestId, QuestStatus} from './Quest';
+import {countHeirlooms, Item} from './Item';
+import {Dungeon} from './Dungeon';
+import {generateHero, generateQuest} from '../Generators';
+import {cap, contains, count, moveItem, removeItem, removeItems} from '../../lib/Helpers';
+import {StaticState} from '../StaticState';
+import {BuildingUpgradeInfo} from './BuildingUpgradeInfo';
+import {HeirloomType} from './ItemInfo';
+import {BuildingInfoId} from './BuildingInfo';
+import {Stats} from './Stats';
+import {HeroResidentInfo} from './HeroResidentInfo';
+import {Skill} from './Skill';
+import {MapSize} from './QuestMap';
+import {Difficulty} from './Difficulty';
+import uuid = require('uuid');
 
 export type ProfileId = string;
 
@@ -28,7 +28,7 @@ export class Profile {
   @serializable(identifier()) id: ProfileId = uuid();
   @serializable difficulty: Difficulty;
   @serializable @observable isNameFinalized: boolean = false;
-  @serializable @observable name: string = "";
+  @serializable @observable name: string = '';
   @serializable(object(Path)) @observable path: Path;
   @serializable @observable week: number = 0;
   @serializable(date()) @observable dateOfLastSave: Date = new Date();
@@ -122,11 +122,11 @@ export class Profile {
   }
 
   @computed get rosterSize () {
-    return this.getUpgradeEffects("coach", "roster").size;
+    return this.getUpgradeEffects('coach', 'roster').size;
   }
 
   @computed get coachSize () {
-    return this.getUpgradeEffects("coach", "network").size;
+    return this.getUpgradeEffects('coach', 'network').size;
   }
 
   processResidencyEffects () {
@@ -143,7 +143,8 @@ export class Profile {
 
         // Remove treated quirk
         if (resident.residentInfo.treatmentId) {
-          removeItem(resident.quirks,
+          removeItem(
+            resident.quirks,
             resident.quirks.find((q) => q.id === resident.residentInfo.treatmentId)
           );
         }
@@ -189,13 +190,13 @@ export class Profile {
   }
 
   purchaseItemLevelUp (item: Item) {
-    item.level++;
-    this.gold -= this.getUpgradeEffects("blacksmith").cost;
+    item.level += 1;
+    this.gold -= this.getUpgradeEffects('blacksmith').cost;
   }
 
   purchaseSkillLevelUp (skill: Skill) {
-    skill.level++;
-    this.gold -= this.getUpgradeEffects("guild").cost;
+    skill.level += 1;
+    this.gold -= this.getUpgradeEffects('guild').cost;
   }
 
   getUpgradeEffects (...keys: string[]) {
@@ -261,7 +262,7 @@ export class Profile {
     if (slotIndex === -1) {
       slotIndex = this.lineupSlots.findIndex((member) => !member);
       if (slotIndex === -1) {
-        throw new Error("Can't join full party");
+        throw new Error(`Can't join full party`);
       }
     }
 
@@ -360,7 +361,7 @@ export class Profile {
   positionHeroInRoster (hero: Hero, newIndex: number) {
     const currentIndex = this.roster.indexOf(hero);
     if (currentIndex === -1) {
-      throw new Error("Hero does not exist in roster");
+      throw new Error('Hero does not exist in roster');
     }
 
     this.roster.splice(currentIndex, 1); // Remove
@@ -380,23 +381,26 @@ export class Profile {
   getStoreItems () {
     return StaticState.instance.items
       .filter((info) => info.getStoreCount)
-      .reduce((items, info) => {
-        const num = info.getStoreCount(this.selectedQuest);
-        const newItems = count(num).map(() => Item.fromInfo(info));
-        return items.concat(newItems);
-      }, []);
+      .reduce(
+        (items, info) => {
+          const num = info.getStoreCount(this.selectedQuest);
+          const newItems = count(num).map(() => Item.fromInfo(info));
+          return items.concat(newItems);
+        },
+        []
+      );
   }
 
   @action
   gotoNextWeek () {
-    this.week++;
+    this.week += 1;
 
     // Randomize estate event
     // TODO re-enable this when implementing estate events
     /*
     const eventIndex = Math.floor(100 * Math.random());
     const newEvent = new EstateEvent();
-    newEvent.message = "Event " + eventIndex;
+    newEvent.message = 'Event ' + eventIndex;
     this.estateEvent = newEvent;
     */
 
@@ -414,7 +418,7 @@ export class Profile {
   }
 
   newHero () {
-    const startingLevel = this.getUpgradeEffects("coach").level;
+    const startingLevel = this.getUpgradeEffects('coach').level;
     return generateHero([...this.roster, ...this.coach], startingLevel);
   }
 

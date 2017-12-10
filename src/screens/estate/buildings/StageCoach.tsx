@@ -1,19 +1,19 @@
-import * as React from "react";
-import {BuildingOverview} from "./BuildingOverview";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {EstateRosterEntry} from "../EstateRosterEntry";
-import {observer} from "mobx-react";
-import {StaticState} from "../../../state/StaticState";
-import {css, StyleSheet} from "aphrodite";
-import {HorizontalDivider} from "../../../ui/HorizontalDivider";
-import {BuildingMessage} from "./BuildingMessage";
-import {Hero} from "../../../state/types/Hero";
-import {grid} from "../../../config/Grid";
-import {commonStyles} from "../../../config/styles";
+import * as React from 'react';
+import {BuildingOverview} from './BuildingOverview';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {EstateRosterEntry} from '../EstateRosterEntry';
+import {observer} from 'mobx-react';
+import {StaticState} from '../../../state/StaticState';
+import {css, StyleSheet} from 'aphrodite';
+import {HorizontalDivider} from '../../../ui/HorizontalDivider';
+import {BuildingMessage} from './BuildingMessage';
+import {Hero} from '../../../state/types/Hero';
+import {grid} from '../../../config/Grid';
+import {commonStyles} from '../../../config/styles';
 
 @observer
 export class StageCoach extends AppStateComponent {
-  static id = "coach";
+  static id = 'coach';
 
   get buildingInfo () {
     return StaticState.instance.buildings.get(StageCoach.id);
@@ -64,7 +64,7 @@ export class StageCoach extends AppStateComponent {
 
       if (index !== lastIndex) {
         elements.push(
-          <HorizontalDivider key={"divider" + index}/>
+          <HorizontalDivider key={'divider' + index}/>
         );
       }
     });
@@ -82,9 +82,9 @@ export class StageCoach extends AppStateComponent {
 
 const styles = StyleSheet.create({
   coachList: {
-    alignItems: "flex-end",
-    overflowY: "auto",
-    overflowX: "hidden",
+    alignItems: 'flex-end',
+    overflowY: 'auto',
+    overflowX: 'hidden',
     flex: 1
   }
 });

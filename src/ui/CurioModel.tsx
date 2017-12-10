@@ -1,18 +1,18 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {AppStateComponent} from "../AppStateComponent";
-import {Curio} from "../state/types/Curio";
-import {Alert, Prompt} from "./Popups";
-import {ItemDropbox} from "./ItemDropbox";
-import {Item} from "../state/types/Item";
-import {moveItem} from "../lib/Helpers";
-import {DungeonSelections} from "../screens/dungeon/DungeonSelections";
-import {StatsTextList} from "./StatsText";
-import {QuirkText} from "./QuirkText";
-import {commonStyleFn, Row} from "../config/styles";
-import {computed, when} from "mobx";
-import {observer} from "mobx-react";
-import {ModalState} from "../state/PopupState";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {AppStateComponent} from '../AppStateComponent';
+import {Curio} from '../state/types/Curio';
+import {Alert, Prompt} from './Popups';
+import {ItemDropbox} from './ItemDropbox';
+import {Item} from '../state/types/Item';
+import {moveItem} from '../lib/Helpers';
+import {DungeonSelections} from '../screens/dungeon/DungeonSelections';
+import {StatsTextList} from './StatsText';
+import {QuirkText} from './QuirkText';
+import {commonStyleFn, Row} from '../config/styles';
+import {computed, when} from 'mobx';
+import {observer} from 'mobx-react';
+import {ModalState} from '../state/PopupState';
 
 @observer
 export class CurioModel extends AppStateComponent<{
@@ -32,7 +32,7 @@ export class CurioModel extends AppStateComponent<{
       );
 
       const takeAll = await this.appState.popups.prompt({
-        id: "curio" + curio.id,
+        id: 'curio' + curio.id,
         modalState: ModalState.Opaque,
         content: (
           <Prompt query="You've found treasure!" yesLabel="Take all" noLabel="Leave">
@@ -51,11 +51,11 @@ export class CurioModel extends AppStateComponent<{
     }
 
     if (curio.buff) {
-      this.props.selections.hero.applyBuff(curio.buff, "Curio");
+      this.props.selections.hero.applyBuff(curio.buff, 'Curio');
       await this.appState.popups.prompt({
-        id: "curio" + curio.id,
+        id: 'curio' + curio.id,
         content: (
-          <Alert message={hero.name + " received new buff"}>
+          <Alert message={hero.name + ' received new buff'}>
             <StatsTextList stats={curio.buff.nonNeutral}/>
           </Alert>
         )
@@ -66,9 +66,9 @@ export class CurioModel extends AppStateComponent<{
     if (curio.replaceQuirk) {
       const {replacedQuirk, newQuirk} = hero.replaceQuirk();
       await this.appState.popups.prompt({
-        id: "curio" + curio.id,
+        id: 'curio' + curio.id,
         content: (
-          <Alert message={hero.name + " received new quirk"}>
+          <Alert message={hero.name + ' received new quirk'}>
             <Row>
               <QuirkText quirk={newQuirk}/>
               {replacedQuirk && (
@@ -105,7 +105,7 @@ export class CurioModel extends AppStateComponent<{
 
 const styles = StyleSheet.create({
   model: {
-    background: "purple",
+    background: 'purple',
     padding: 3,
     margin: 3,
     border: commonStyleFn.border()

@@ -1,3 +1,3 @@
-require("./rAF");
-require("./howlerVolumePatch");
-require("./localStorage");
+require('./rAF');
+require('./howlerVolumePatch');
+require('./localStorage');

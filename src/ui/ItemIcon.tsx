@@ -1,11 +1,11 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {commonStyleFn, commonStyles} from "../config/styles";
-import {TooltipArea} from "../lib/TooltipArea";
-import {Item} from "../state/types/Item";
-import {grid} from "../config/Grid";
-import {ItemBreakdown} from "./ItemBreakdown";
-import {Icon} from "./Icon";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {commonStyleFn, commonStyles} from '../config/styles';
+import {TooltipArea} from '../lib/TooltipArea';
+import {Item} from '../state/types/Item';
+import {grid} from '../config/Grid';
+import {ItemBreakdown} from './ItemBreakdown';
+import {Icon} from './Icon';
 
 export class ItemIcon extends React.Component<{
   item?: Item,
@@ -34,11 +34,13 @@ export class ItemIcon extends React.Component<{
         src={item.info.itemUrl}
         classStyle={containerStyle}
         onClick={this.props.onClick.bind(this)}
-        onRightClick={this.props.onRightClick}>
+        onRightClick={this.props.onRightClick}
+      >
         <TooltipArea
           tip={<ItemBreakdown item={item}/>}
           classStyle={commonStyles.dock}
-          style={this.props.style}>
+          style={this.props.style}
+        >
           {this.props.children}
         </TooltipArea>
       </Icon>
@@ -55,9 +57,9 @@ const styles = StyleSheet.create({
   icon: {
     ...itemSize,
     border: commonStyleFn.border(),
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    backgroundSize: "auto 120%", // Scale up to remove borders embedded in dd assets
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundSize: 'auto 120%', // Scale up to remove borders embedded in dd assets
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });

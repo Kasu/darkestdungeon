@@ -1,29 +1,29 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {AppState} from "./state/AppState";
-import {Router} from "./Router";
-import {PopupList} from "./PopupList";
-import {observer} from "mobx-react";
-import {DevTools} from "./DevTools";
-import {SizeObserver} from "./lib/SizeObserver";
-import {computed, IReactionDisposer, reaction} from "mobx";
-import {appStateContext} from "./AppStateComponent";
-import {fonts} from "./assets/fonts";
-import {grid} from "./config/Grid";
-import {InputRoot} from "./state/InputState";
-import {GridOverlay} from "./GridOverlay";
-import {commonColors, commonStyleFn} from "./config/styles";
-import {Path} from "./state/types/Path";
-import {Route} from "./state/types/Route";
-import {PopupAlign, PopupHandle} from "./state/PopupState";
-import {Popup} from "./ui/Popups";
-import {estateContentPosition} from "./screens/estate/EstateTemplate";
-import {Layer} from "./ui/Layer";
-import {IntlProvider} from "react-intl";
-const deepForceUpdate = require("react-deep-force-update")(React);
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {AppState} from './state/AppState';
+import {Router} from './Router';
+import {PopupList} from './PopupList';
+import {observer} from 'mobx-react';
+import {DevTools} from './DevTools';
+import {SizeObserver} from './lib/SizeObserver';
+import {computed, IReactionDisposer, reaction} from 'mobx';
+import {appStateContext} from './AppStateComponent';
+import {fonts} from './assets/fonts';
+import {grid} from './config/Grid';
+import {InputRoot} from './state/InputState';
+import {GridOverlay} from './GridOverlay';
+import {commonColors, commonStyleFn} from './config/styles';
+import {Path} from './state/types/Path';
+import {Route} from './state/types/Route';
+import {PopupAlign, PopupHandle} from './state/PopupState';
+import {Popup} from './ui/Popups';
+import {estateContentPosition} from './screens/estate/EstateTemplate';
+import {Layer} from './ui/Layer';
+import {IntlProvider} from 'react-intl';
+const deepForceUpdate = require('react-deep-force-update')(React);
 
 const sounds = {
-  closeRoutePopup: {src: require("./assets/dd/audio/ui_town_building_zoomout.ogg")}
+  closeRoutePopup: {src: require('./assets/dd/audio/ui_town_building_zoomout.ogg')}
 };
 
 @observer
@@ -55,7 +55,7 @@ export class App extends React.Component<{state: AppState}> {
 
   @computed get gameStyle () {
     return {
-      transformOrigin: "0 0",
+      transformOrigin: '0 0',
       transform: `scale(${this.props.state.bounds.scale})`
     };
   }
@@ -109,7 +109,7 @@ export class App extends React.Component<{state: AppState}> {
 
   private showRoutePopup (route: Route) {
     this.routePopup = this.props.state.popups.show({
-      id: "routePopup",
+      id: 'routePopup',
       align: PopupAlign.TopLeft,
       layer: Layer.Buildings,
       position: estateContentPosition,
@@ -139,7 +139,7 @@ export class App extends React.Component<{state: AppState}> {
               onSizeChanged={(size) => this.props.state.bounds.realSize = size}
             />
           </div>
-          {process.env.NODE_ENV !== "production" && (
+          {process.env.NODE_ENV !== 'production' && (
             <DevTools />
           )}
         </InputRoot>
@@ -151,29 +151,29 @@ export class App extends React.Component<{state: AppState}> {
 const styles = StyleSheet.create({
   app: {
     fontFamily: fonts.Default,
-    width: "100%",
-    height: "100%",
-    overflow: "hidden"
+    width: '100%',
+    height: '100%',
+    overflow: 'hidden'
   },
 
   arc: {
     flex: 1,
-    overflow: "hidden",
-    background: "black"
+    overflow: 'hidden',
+    background: 'black'
   },
 
   game: {
     width: grid.outerWidth,
     height: grid.outerHeight,
-    overflow: "hidden",
-    background: "black",
+    overflow: 'hidden',
+    background: 'black',
     color: commonColors.lightGray,
     fontSize: grid.fontSize(0.5),
-    cursor: `url(${require("./assets/dd/images/cursors/arrow.png")}), auto`
+    cursor: `url(${require('./assets/dd/images/cursors/arrow.png')}), auto`
   },
 
   portal: {
     ...commonStyleFn.dock(),
-    pointerEvents: "none"
+    pointerEvents: 'none'
   }
 });

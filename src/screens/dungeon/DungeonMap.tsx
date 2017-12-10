@@ -1,10 +1,10 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {QuestRoom} from "../../state/types/QuestRoom";
-import {grid} from "../../config/Grid";
-import {Quest} from "../../state/types/Quest";
-import {observer} from "mobx-react";
-import {commonStyleFn} from "../../config/styles";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {QuestRoom} from '../../state/types/QuestRoom';
+import {grid} from '../../config/Grid';
+import {Quest} from '../../state/types/Quest';
+import {observer} from 'mobx-react';
+import {commonStyleFn} from '../../config/styles';
 
 @observer
 export class DungeonMap extends React.Component<{
@@ -15,7 +15,7 @@ export class DungeonMap extends React.Component<{
     const bounds = map.bounds.scale(cellSize, cellSize);
     return (
       <div style={{width: bounds.width, height: bounds.height}}>
-        <div style={{position: "absolute", left: -bounds.left, top: -bounds.top}}>
+        <div style={{position: 'absolute', left: -bounds.left, top: -bounds.top}}>
           {map.rooms.map((room) =>
             <RoomOnMap
               key={room.coordinates.id}
@@ -58,27 +58,27 @@ class RoomOnMap extends React.Component<{
 const cellSize = grid.gutter * 2;
 const styles = StyleSheet.create({
   room: {
-    position: "absolute",
+    position: 'absolute',
     width: cellSize,
     height: cellSize,
-    background: "gray",
+    background: 'gray',
     border: commonStyleFn.outline(),
     opacity: 0.5
   },
 
   current: {
-    background: "blue"
+    background: 'blue'
   },
 
   scouted: {
-    background: "green"
+    background: 'green'
   },
 
   accessible: {
     opacity: 1,
 
-    ":hover": {
-      borderColor: "gold"
+    ':hover': {
+      borderColor: 'gold'
     }
   }
 });

@@ -23,7 +23,7 @@ export class BuildingUpgradeEffects {
 
   get treatmentArea () {
     if (this.hasTreatments) {
-      return this.treatDisease ? "Disease" : "Quirk";
+      return this.treatDisease ? 'Disease' : 'Quirk';
     }
   }
 }

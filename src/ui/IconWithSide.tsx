@@ -1,9 +1,9 @@
-import * as React from "react";
-import {css, StyleSheet} from "aphrodite";
-import {grid} from "../config/Grid";
-import {Row} from "../config/styles";
-import {observer} from "mobx-react";
-import {Icon, IconProps} from "./Icon";
+import * as React from 'react';
+import {css, StyleSheet} from 'aphrodite';
+import {grid} from '../config/Grid';
+import {Row} from '../config/styles';
+import {observer} from 'mobx-react';
+import {Icon, IconProps} from './Icon';
 
 @observer
 export class IconWithSide extends React.Component<
@@ -35,11 +35,11 @@ export class IconWithSide extends React.Component<
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center"
+    justifyContent: 'center'
   },
 
   side: {
     marginLeft: grid.gutter / 2,
-    justifyContent: "center"
+    justifyContent: 'center'
   }
 });

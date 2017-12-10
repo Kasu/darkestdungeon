@@ -1,6 +1,6 @@
-import * as React from "react";
-import {commonStyles, Row} from "../../../config/styles";
-import {css} from "aphrodite";
+import * as React from 'react';
+import {commonStyles, Row} from '../../../config/styles';
+import {css} from 'aphrodite';
 
 export class UpgradeTooltip extends React.Component<{
   cost: any,

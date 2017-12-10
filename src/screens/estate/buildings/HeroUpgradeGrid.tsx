@@ -1,27 +1,27 @@
-import * as React from "react";
-import {Hero} from "../../../state/types/Hero";
-import {Column, commonStyleFn, Row} from "../../../config/styles";
-import {HeroUpgradeType} from "./HeroUpgradeShop";
-import {css, StyleSheet} from "aphrodite";
-import {AppStateComponent} from "../../../AppStateComponent";
-import {StaticState} from "../../../state/StaticState";
-import {BuildingInfo} from "../../../state/types/BuildingInfo";
-import {compact, count} from "../../../lib/Helpers";
-import {computed} from "mobx";
-import {observer} from "mobx-react";
-import {Skill} from "../../../state/types/Skill";
-import {Item} from "../../../state/types/Item";
-import {ItemIcon} from "../../../ui/ItemIcon";
-import {SkillIcon} from "../../../ui/SkillIcon";
-import {BuildingUpgradeEffects} from "../../../state/types/BuildingUpgradeEffects";
-import {TooltipArea, TooltipSide} from "../../../lib/TooltipArea";
-import {UpgradeTooltip} from "./UpgradeTooltip";
-import {Prompt} from "../../../ui/Popups";
-import {GoldIcon} from "../../../ui/GoldIcon";
-import {upgradeIconUrls} from "./BuildingUpgradeIcon";
-import {grid} from "../../../config/Grid";
-import {BuildingMessage} from "./BuildingMessage";
-import {CommonHeader} from "../../../ui/CommonHeader";
+import * as React from 'react';
+import {Hero} from '../../../state/types/Hero';
+import {Column, commonStyleFn, Row} from '../../../config/styles';
+import {HeroUpgradeType} from './HeroUpgradeShop';
+import {css, StyleSheet} from 'aphrodite';
+import {AppStateComponent} from '../../../AppStateComponent';
+import {StaticState} from '../../../state/StaticState';
+import {BuildingInfo} from '../../../state/types/BuildingInfo';
+import {compact, count} from '../../../lib/Helpers';
+import {computed} from 'mobx';
+import {observer} from 'mobx-react';
+import {Skill} from '../../../state/types/Skill';
+import {Item} from '../../../state/types/Item';
+import {ItemIcon} from '../../../ui/ItemIcon';
+import {SkillIcon} from '../../../ui/SkillIcon';
+import {BuildingUpgradeEffects} from '../../../state/types/BuildingUpgradeEffects';
+import {TooltipArea, TooltipSide} from '../../../lib/TooltipArea';
+import {UpgradeTooltip} from './UpgradeTooltip';
+import {Prompt} from '../../../ui/Popups';
+import {GoldIcon} from '../../../ui/GoldIcon';
+import {upgradeIconUrls} from './BuildingUpgradeIcon';
+import {grid} from '../../../config/Grid';
+import {BuildingMessage} from './BuildingMessage';
+import {CommonHeader} from '../../../ui/CommonHeader';
 
 @observer
 export class HeroUpgradeGrid extends AppStateComponent<{
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
   },
 
   grid: {
-    flex: "none"
+    flex: 'none'
   },
 
   row: {
@@ -198,8 +198,8 @@ const styles = StyleSheet.create({
     height: upgradeSize,
     marginRight: grid.gutter,
 
-    ":hover": {
-      boxShadow: commonStyleFn.outerShadow("white")
+    ':hover': {
+      boxShadow: commonStyleFn.outerShadow('white')
     }
   },
 
@@ -215,14 +215,14 @@ const styles = StyleSheet.create({
   // Hidden behind upgrade icons to provide tooltip information
   hiddenSkillOrItem: {
     flex: 1,
-    width: "auto",
-    height: "auto"
+    width: 'auto',
+    height: 'auto'
   },
 
   upgradeOverlay: {
     ...commonStyleFn.dock(),
     ...commonStyleFn.singleBackground(),
-    pointerEvents: "none"
+    pointerEvents: 'none'
   },
 
   available: {

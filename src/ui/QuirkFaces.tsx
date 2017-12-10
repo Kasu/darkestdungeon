@@ -1,5 +1,5 @@
-import * as React from "react";
-import {todo} from "../config/general";
+import * as React from 'react';
+import {todo} from '../config/general';
 
 export class QuirkFaces extends React.Component {
   render () {
