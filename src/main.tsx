@@ -9,6 +9,7 @@ import {App} from "./App";
 import {addStaticState} from "./config/general";
 import {StaticState} from "./state/StaticState";
 import {barks} from "./config/barks";
+import {Route} from "./state/types/Route";
 const HTML5Backend = require("react-dnd-html5-backend");
 const {DragDropContext} = require("react-dnd");
 const TWEEN = require("tween.js");
@@ -18,7 +19,20 @@ const queryString = require("query-string");
 const state = new AppState();
 state.barker.barks = barks;
 addStaticState();
+addRoutesAndI18n();
 state.load();
+
+function addRoutesAndI18n () {
+  state.router.addRoutes(
+    require<{routes: {[key: string]: Route}}>("./config/routes").routes
+  );
+
+  state.i18n.update(
+    require("./assets/i18n/reference.yml"),
+    require("./assets/i18n/generated/data").data,
+    require("./assets/i18n/generated/messages").messages
+  );
+}
 
 let startPath = "start";
 
@@ -41,6 +55,15 @@ if (process.env.NODE_ENV !== "production") {
       const NextApp = require<{App: typeof App}>("./App").App;
       render(NextApp);
     });
+    module.hot.accept(
+      [
+        "./config/routes",
+        "./assets/i18n/reference.yml",
+        "./assets/i18n/generated/data",
+        "./assets/i18n/generated/messages"
+      ],
+      () => addRoutesAndI18n()
+    );
   }
 }
 
@@ -73,7 +96,7 @@ document.body.appendChild(rootEl);
 class AppContainer extends React.Component<{appComponent: typeof App}> {
   render () {
     const AppComponent = this.props.appComponent;
-    let composedApp = <AppComponent state={state} setupHMRSensitiveState/>;
+    let composedApp = <AppComponent state={state}/>;
 
     if (process.env.HMR) {
       const HotLoaderContainer = require("react-hot-loader").AppContainer;

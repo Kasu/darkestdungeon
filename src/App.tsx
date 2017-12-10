@@ -5,7 +5,6 @@ import {Router} from "./Router";
 import {PopupList} from "./PopupList";
 import {observer} from "mobx-react";
 import {DevTools} from "./DevTools";
-import {routes} from "./config/routes";
 import {SizeObserver} from "./lib/SizeObserver";
 import {computed, IReactionDisposer, reaction} from "mobx";
 import {appStateContext} from "./AppStateComponent";
@@ -28,10 +27,7 @@ const sounds = {
 };
 
 @observer
-export class App extends React.Component<{
-  state: AppState,
-  setupHMRSensitiveState?: boolean
-}> {
+export class App extends React.Component<{state: AppState}> {
   static childContextTypes = appStateContext;
   getChildContext () {
     return {
@@ -65,22 +61,6 @@ export class App extends React.Component<{
   }
 
   componentWillMount () {
-    this.tryUpdateHMRSensitiveState();
-
-    if (module.hot) {
-      module.hot.accept(
-        [
-          "./assets/i18n/reference.yml",
-          "./assets/i18n/generated/data",
-          "./assets/i18n/generated/messages"
-        ],
-        () => {
-          console.log("HMR updated i18n");
-          this.tryUpdateHMRSensitiveState();
-        }
-      );
-    }
-
     this.reactionDisposers = [
       // Display child routes as popups
       reaction(
@@ -125,27 +105,6 @@ export class App extends React.Component<{
     while (this.reactionDisposers.length) {
       this.reactionDisposers.pop()();
     }
-  }
-
-  /**
-   * HACK I'd like this to reside in main.tsx,
-   * but due to imports that makes HMR do a full page reload
-   * NOTE it's optional so tests don't get their state polluted
-   */
-  private tryUpdateHMRSensitiveState () {
-    if (!this.props.setupHMRSensitiveState) {
-      return;
-    }
-
-    console.log("Updating HMR sensitive state");
-
-    this.props.state.router.addRoutes(routes);
-
-    this.props.state.i18n.update(
-      require("./assets/i18n/reference.yml"),
-      require("./assets/i18n/generated/data").data,
-      require("./assets/i18n/generated/messages").messages
-    );
   }
 
   private showRoutePopup (route: Route) {
