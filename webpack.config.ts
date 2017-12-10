@@ -92,6 +92,9 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
     // Determine which extensions to lazy-load and how to look for sources
     resolve: {
       extensions,
+      alias: {
+        aphrodite: 'aphrodite/no-important'
+      },
       modules: [
         sourceFolder,
         'node_modules'
