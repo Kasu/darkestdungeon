@@ -3,6 +3,7 @@ import * as webpack from "webpack";
 import {HotModuleReplacementPlugin, LoaderOptionsPlugin, NamedModulesPlugin, NewModule} from "webpack";
 import CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 import {cpus} from "os";
+import {downloadI18n} from "./dev/i18nSync";
 const {BundleAnalyzerPlugin} = require("webpack-bundle-analyzer");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require("webpack-html-plugin");
@@ -35,6 +36,7 @@ class BuildOptions {
   constructor (
     public outputFolder: string = "dist",
     public environment: string = "development",
+    public i18nVersion: string = "latest",
 
     // Optional features. All default to false
     public sourceMaps = false,
@@ -50,13 +52,16 @@ class BuildOptions {
 }
 
 // NOTE webpack requires a default export
-export default function webpackConfig (additionalOptions?: BuildOptions)  { // tslint:disable-line
+export default async function webpackConfig (additionalOptions?: BuildOptions)  { // tslint:disable-line
   const options = {
     ...new BuildOptions(),
     ...additionalOptions
   };
 
   console.log("BuildOptions", JSON.stringify(options, null, 2));
+
+  // Make sure we have i18n up to date before continuing
+  await downloadI18n(options.i18nVersion);
 
   const sourceFolder = path.join(__dirname, "src");
   const babelOptions = {
@@ -115,6 +120,7 @@ export default function webpackConfig (additionalOptions?: BuildOptions)  { // t
             use: "css-loader"
           })
         },
+        {test: /\.yml$/, use: ["json-loader", "yaml-loader"]},
         {test: /\.json$/, use: "json-loader"},
         {test: /\.(ttf|ogg|eot|woff|woff2|svg)$/, use: fileLoader}
       ]

@@ -73,7 +73,7 @@ document.body.appendChild(rootEl);
 class AppContainer extends React.Component<{appComponent: typeof App}> {
   render () {
     const AppComponent = this.props.appComponent;
-    let composedApp = <AppComponent state={state} setupRoutes/>;
+    let composedApp = <AppComponent state={state} setupHMRSensitiveState/>;
 
     if (process.env.HMR) {
       const HotLoaderContainer = require("react-hot-loader").AppContainer;

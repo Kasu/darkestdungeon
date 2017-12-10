@@ -31,6 +31,16 @@ export function without <T> (all: T[], remove: T[]) {
   return slice;
 }
 
+export function unique <T> (list: T[]) {
+  const uniqueList: T[] = [];
+  list.forEach((item) => {
+    if (!contains(uniqueList, item)) {
+      uniqueList.push(item);
+    }
+  });
+  return uniqueList;
+}
+
 export function contains <T> (haystack: T[], needle: T) {
   return haystack.indexOf(needle) !== -1;
 }
@@ -51,6 +61,14 @@ export function mapMap<K, V, T> (map: Map<K, V>, getItem: (v: V, k: K) => T) {
   const items: T[] = [];
   map.forEach((v, k) => items.push(getItem(v, k)));
   return items;
+}
+
+export function replaceMap<V> (map: Map<string, V>, dict: {[key: string]: V}) {
+  map.clear();
+  for (const key in dict) {
+    map.set(key, dict[key]);
+  }
+  return map;
 }
 
 export function enumMap<T> (e: any): Map<string, T> {

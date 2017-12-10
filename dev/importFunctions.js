@@ -4,6 +4,7 @@ const glob = require("glob");
 const sox = require("sox");
 const os = require("os");
 const {split_fsb, extract_fsb, clean_audio_names} = require("darkest_dungeon_tools");
+const {removeFolder, ensureFolderExists, copyFiles} = require("./fsHelpers");
 
 // Paths
 
@@ -172,41 +173,6 @@ function getImagePaths (queries) {
 
 // Generic
 
-function ensureFolderExists (folderPath) {
-  const pathBase = path.isAbsolute(folderPath) ? path.sep : '';
-  folderPath.split(path.sep)
-    .reduce((pathBase, folderName) => {
-      const currentPath = path.resolve(pathBase, folderName);
-      if (!fs.existsSync(currentPath)) {
-        fs.mkdirSync(currentPath);
-      }
-
-      return currentPath;
-    }, pathBase);
-}
-
-function removeFolder (folderPath) {
-  if (fs.existsSync(folderPath)) {
-    fs.readdirSync(folderPath).forEach(function(file){
-      const curPath = path.join(folderPath, file);
-      if (fs.lstatSync(curPath).isDirectory()) { // recurse
-        removeFolder(curPath);
-      } else { // delete file
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(folderPath);
-  }
-}
-
-function copyFiles (sourceList, destList) {
-  for (let i = 0; i < sourceList.length; i++) {
-    const source = sourceList[i];
-    const dest = destList[i];
-    ensureFolderExists(path.dirname(dest));
-    fs.createReadStream(source).pipe(fs.createWriteStream(dest));
-  }
-}
 
 module.exports = {
   folders: folders,

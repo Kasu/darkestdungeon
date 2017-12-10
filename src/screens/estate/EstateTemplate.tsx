@@ -16,6 +16,7 @@ import {screenFooterHeight} from "../ScreenFooter";
 import {commonStyleFn, Row} from "../../config/styles";
 import {popupOffset} from "../../ui/Popups";
 import {Icon} from "../../ui/Icon";
+import {FormattedMessage} from "react-intl";
 
 @observer
 export class EstateTemplate extends AppStateComponent<{
@@ -104,7 +105,11 @@ export class EstateTemplate extends AppStateComponent<{
                 onClick={() => this.goBack()}
               />
             )}
-            {this.activeProfile.name} Estate
+            <FormattedMessage
+              id={"estate.title"}
+              values={{name: this.activeProfile.name}}
+              defaultMessage="{name}"
+            />
           </Row>
         </div>
       </div>

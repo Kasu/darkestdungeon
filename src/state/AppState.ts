@@ -13,6 +13,7 @@ import {Path} from "./types/Path";
 import {SFXPlayer} from "./SFXPlayer";
 import {BarkDistributor} from "./BarkDistributor";
 import {Difficulty} from "./types/Difficulty";
+import {I18nState} from "./I18nState";
 
 export class AppState {
   private reactionDisposers: Array<() => void>;
@@ -26,6 +27,7 @@ export class AppState {
   public sfx: SFXPlayer = new SFXPlayer();
   public barker: BarkDistributor = new BarkDistributor();
   public profiles: ProfileState = new ProfileState();
+  public i18n: I18nState = new I18nState();
 
   public isRunningJest: boolean; // HACK ugly workaround
   @observable showGridOverlay: boolean = false;

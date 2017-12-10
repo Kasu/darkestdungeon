@@ -20,6 +20,8 @@ import {PopupAlign, PopupHandle} from "./state/PopupState";
 import {Popup} from "./ui/Popups";
 import {estateContentPosition} from "./screens/estate/EstateTemplate";
 import {Layer} from "./ui/Layer";
+import {IntlProvider} from "react-intl";
+const deepForceUpdate = require("react-deep-force-update")(React);
 
 const sounds = {
   closeRoutePopup: {src: require("./assets/dd/audio/ui_town_building_zoomout.ogg")}
@@ -28,7 +30,7 @@ const sounds = {
 @observer
 export class App extends React.Component<{
   state: AppState,
-  setupRoutes?: boolean
+  setupHMRSensitiveState?: boolean
 }> {
   static childContextTypes = appStateContext;
   getChildContext () {
@@ -63,17 +65,24 @@ export class App extends React.Component<{
   }
 
   componentWillMount () {
-    // HACK I'd like this to reside in main.tsx,
-    // but due to route imports that makes HMR do a full page reload
-    // as soon as any route changes, so this will do for now until
-    // I figure out a better way to do it.
-    // NOTE it's optional so tests don't get their state polluted
-    if (this.props.setupRoutes) {
-      this.props.state.router.addRoutes(routes);
+    this.tryUpdateHMRSensitiveState();
+
+    if (module.hot) {
+      module.hot.accept(
+        [
+          "./assets/i18n/reference.yml",
+          "./assets/i18n/generated/data",
+          "./assets/i18n/generated/messages"
+        ],
+        () => {
+          console.log("HMR updated i18n");
+          this.tryUpdateHMRSensitiveState();
+        }
+      );
     }
 
-    // Display child routes as popups
-    this.reactionDisposers.push(
+    this.reactionDisposers = [
+      // Display child routes as popups
       reaction(
         () => [
           this.props.state.router.path,
@@ -87,8 +96,18 @@ export class App extends React.Component<{
             delete this.routePopup;
           }
         }
+      ),
+
+      // Force re-render when locale changes. This ensures FormattedMessage receives new data.
+      // This is a side effect of using @observer, which prevents re-rendering (which is mostly good, except for this).
+      reaction(
+        () => JSON.stringify([
+          this.props.state.i18n.locale,
+          this.props.state.i18n.messages
+        ]),
+        () => deepForceUpdate(this)
       )
-    );
+    ];
   }
 
   componentDidMount () {
@@ -108,6 +127,27 @@ export class App extends React.Component<{
     }
   }
 
+  /**
+   * HACK I'd like this to reside in main.tsx,
+   * but due to imports that makes HMR do a full page reload
+   * NOTE it's optional so tests don't get their state polluted
+   */
+  private tryUpdateHMRSensitiveState () {
+    if (!this.props.setupHMRSensitiveState) {
+      return;
+    }
+
+    console.log("Updating HMR sensitive state");
+
+    this.props.state.router.addRoutes(routes);
+
+    this.props.state.i18n.update(
+      require("./assets/i18n/reference.yml"),
+      require("./assets/i18n/generated/data").data,
+      require("./assets/i18n/generated/messages").messages
+    );
+  }
+
   private showRoutePopup (route: Route) {
     this.routePopup = this.props.state.popups.show({
       id: "routePopup",
@@ -125,26 +165,26 @@ export class App extends React.Component<{
 
   render () {
     return (
-      <InputRoot
-        ref={(ir) => this.inputRoot = ir}
-        className={css(styles.app)}>
-        <div className={css(styles.arc)} style={this.arcStyle}>
-          <div
-            className={css(styles.game)} style={this.gameStyle}
-            onContextMenu={(e) => e.preventDefault()}>
-            <Router router={this.props.state.router}/>
-            <PopupList popups={this.props.state.popups}/>
-            <div className={css(styles.portal)} ref={(node) => this.props.state.portalNode = node}/>
-            {this.props.state.showGridOverlay && <GridOverlay/>}
+      <IntlProvider locale={this.props.state.i18n.locale} messages={this.props.state.i18n.localeMessages}>
+        <InputRoot ref={(ir) => this.inputRoot = ir} className={css(styles.app)}>
+          <div className={css(styles.arc)} style={this.arcStyle}>
+            <div
+              className={css(styles.game)} style={this.gameStyle}
+              onContextMenu={(e) => e.preventDefault()}>
+              <Router router={this.props.state.router}/>
+              <PopupList popups={this.props.state.popups}/>
+              <div className={css(styles.portal)} ref={(node) => this.props.state.portalNode = node}/>
+              {this.props.state.showGridOverlay && <GridOverlay/>}
+            </div>
+            <SizeObserver
+              onSizeChanged={(size) => this.props.state.bounds.realSize = size}
+            />
           </div>
-          <SizeObserver
-            onSizeChanged={(size) => this.props.state.bounds.realSize = size}
-          />
-        </div>
-        {process.env.NODE_ENV !== "production" && (
-          <DevTools />
-        )}
-      </InputRoot>
+          {process.env.NODE_ENV !== "production" && (
+            <DevTools />
+          )}
+        </InputRoot>
+      </IntlProvider>
     );
   }
 }
