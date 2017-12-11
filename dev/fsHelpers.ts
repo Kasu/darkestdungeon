@@ -17,13 +17,14 @@ export function ensureFolderExists (folderPath: string) {
 }
 
 export function removeFolder (folderPath: string) {
-  emptyFolder(folderPath);
-  fs.rmdirSync(folderPath);
+  if (emptyFolder(folderPath)) {
+    fs.rmdirSync(folderPath);
+  }
 }
 
 export function emptyFolder (folderPath: string, test = (f: string) => true) {
   if (!fs.existsSync(folderPath)) {
-    return;
+    return false;
   }
 
   fs.readdirSync(folderPath).forEach((file) => {
@@ -34,6 +35,7 @@ export function emptyFolder (folderPath: string, test = (f: string) => true) {
       fs.unlinkSync(curPath);
     }
   });
+  return true;
 }
 
 export function copyFiles (sourceList: string[], destList: string[]) {
