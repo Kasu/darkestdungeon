@@ -6,6 +6,7 @@ export type LocaleName = string;
 export type Messages = {[key: string]: string};
 
 export class I18nState {
+  @observable referenceLocale: LocaleName = 'en';
   @observable locale: LocaleName = 'en';
   @observable messages = new Map<LocaleName, Messages>();
   @observable data = new Map<LocaleName, Locale>();
@@ -14,7 +15,9 @@ export class I18nState {
   update (reference: Locale, data: {[key: string]: Locale}, messages: {[key: string]: Messages}) {
     replaceMap(this.data, data);
     replaceMap(this.messages, messages);
+
     this.messages.set(reference.locale, reference as any);
+    this.referenceLocale = reference.locale;
 
     if (!this.locale) {
       this.locale = reference.locale;
@@ -26,6 +29,14 @@ export class I18nState {
   }
 
   get localeMessages () {
+    if (process.env.NODE_ENV === 'production') {
+      // Provide graceful fallback of messages in production
+      return {
+        ...this.messages.get(this.referenceLocale),
+        ...this.messages.get(this.locale)
+      };
+    }
+
     return this.messages.get(this.locale);
   }
 
