@@ -1,4 +1,4 @@
-import path = require('path');
+import * as path from 'path';
 import * as webpack from 'webpack';
 import {HotModuleReplacementPlugin, LoaderOptionsPlugin, NamedModulesPlugin, NewModule} from 'webpack';
 import CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
@@ -29,8 +29,6 @@ const imageCompressionLoader = {
     webp: {quality: 75}
   }
 };
-
-export const extensions = ['.ts', '.tsx', '.js', '.jsx'];
 
 class BuildOptions {
   constructor (
@@ -91,14 +89,10 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
 
     // Determine which extensions to lazy-load and how to look for sources
     resolve: {
-      extensions,
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
       alias: {
         aphrodite: 'aphrodite/no-important'
-      },
-      modules: [
-        sourceFolder,
-        'node_modules'
-      ]
+      }
     },
 
     // Teach webpack how to load various modules
@@ -149,8 +143,6 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       // new webpack.NormalModuleReplacementPlugin(/^react?$/, require.resolve('react')),
       new ForkTsCheckerWebpackPlugin({
         checkSyntacticErrors: true,
-        tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-        tslint: path.resolve(__dirname, 'tslint.json'),
         workers: threadDistributionCount,
         watch: [sourceFolder]
       }),
