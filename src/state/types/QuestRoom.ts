@@ -1,6 +1,6 @@
 import {Vector} from './Vector';
 import {identifier, list, object, serializable} from 'serializr';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {Character} from './Character';
 import {generateCurio, generateMonster} from '../Generators';
 import {observable} from 'mobx';

@@ -1,5 +1,5 @@
 import {identifier, list, object, serializable} from 'serializr';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {Item} from './Item';
 import {TurnStats} from './Stats';
 import {observable} from 'mobx';

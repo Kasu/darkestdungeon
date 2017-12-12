@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ReactElement} from 'react';
 import {computed, observable, reaction, transaction} from 'mobx';
 import {Point} from '../Bounds';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {Layer} from '../ui/Layer';
 
 export type PopupId = string;

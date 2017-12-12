@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 
 export type InputLayerId = string;
 export type InputBindingId = string;

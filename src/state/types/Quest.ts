@@ -1,5 +1,5 @@
 import {identifier, list, object, serializable} from 'serializr';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {QuestMap} from './QuestMap';
 import {QuestObjective} from './QuestObjective';
 import {Item} from './Item';

@@ -1,6 +1,6 @@
 import {Experienced} from './Experienced';
 import {identifier, reference, serializable} from 'serializr';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {StaticState} from '../StaticState';
 import {DungeonInfo} from './DungeonInfo';
 

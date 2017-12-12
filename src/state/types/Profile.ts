@@ -17,7 +17,7 @@ import {HeroResidentInfo} from './HeroResidentInfo';
 import {Skill} from './Skill';
 import {MapSize} from './QuestMap';
 import {Difficulty} from './Difficulty';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 
 export type ProfileId = string;
 

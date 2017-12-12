@@ -9,7 +9,7 @@ import {CharacterStatus} from './CharacterStatus';
 import {SkillId, SkillTargetObject} from './SkillInfo';
 import {Stats, TurnStats} from './Stats';
 import {cap, contains, removeItem, without} from '../../lib/Helpers';
-import uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
 import {BuildingInfoId} from './BuildingInfo';
 import {Skill} from './Skill';
 import {ItemType} from './ItemInfo';
