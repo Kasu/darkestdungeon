@@ -4,7 +4,7 @@ const audio = '\\.(mp4|webm|wav|ogg|mp3|m4a|aac|oga)$';
 module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   setupFiles: [
-    '<rootDir>/src/polyfills/index.js'
+    '<rootDir>/src/polyfills/index.ts'
   ],
   transform: {
     '^.+\\.tsx?$': '<rootDir>/dev/jest/tsPreprocessor.js',

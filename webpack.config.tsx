@@ -52,13 +52,13 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
     presets: ['flow', 'react', 'stage-0']
   };
 
-  // (numberOfCpus - 1x current cpu) / 3x plugins needing threads
-  const threadDistributionCount = Math.max(1, Math.floor((cpus().length - 1) / 3));
+  // (numberOfCpus - 1x current cpu) / 2x plugins needing threads
+  const threadDistributionCount = Math.max(1, Math.floor((cpus().length - 1) / 2));
 
   const config: webpack.Configuration = {
     // What code to build and where to put it
     entry: compact([
-      path.join(sourceFolder, 'polyfills', 'index.js'),
+      path.join(sourceFolder, 'polyfills', 'index.ts'),
       options.hmr && 'react-hot-loader/patch',
       path.join(sourceFolder, 'main.tsx')
     ]),
@@ -74,7 +74,7 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
 
     // Determine which extensions to lazy-load and how to look for sources
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      extensions: ['.ts', '.tsx', '.js'],
       alias: {
         aphrodite: 'aphrodite/no-important'
       }
@@ -85,7 +85,6 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       rules: [
         // Code (More config on HappyPack plugins below)
         {test: /\.tsx?$/, loader: 'happypack/loader?id=ts'},
-        {test: /\.jsx?$/, loader: 'happypack/loader?id=js'},
 
         // Assets
         {
@@ -140,22 +139,14 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
         threads: threadDistributionCount,
         loaders: compact([
           options.hmr && 'react-hot-loader/webpack',
-          {path: 'babel-loader', query: babelOptions},
           {path: 'ts-loader', query: {
             happyPackMode: true,
             transpileOnly: true, // Disable type checker (ForksTsChecker is doing it in a separate thread)
             compilerOptions: {
-              sourceMap: options.sourceMaps
+              sourceMap: options.sourceMaps,
+              module: 'esnext'
             }
           }}
-        ])
-      }),
-      new HappyPack({
-        id: 'js',
-        threads: threadDistributionCount,
-        loaders: compact([
-          options.hmr && 'react-hot-loader/webpack',
-          {path: 'babel-loader', query: babelOptions}
         ])
       }),
 
@@ -164,7 +155,7 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       options.hmr && new HotModuleReplacementPlugin(),
       options.debug && new LoaderOptionsPlugin({debug: true}),
       options.analyzeBundles && new BundleAnalyzerPlugin({analyzerMode: 'static'}),
-      options.minify && new UglifyJsPlugin({test: /\.js$/})
+      options.minify && new UglifyJsPlugin()
     ]),
     devServer: {
       hot: options.hmr
