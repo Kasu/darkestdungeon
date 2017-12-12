@@ -1,12 +1,16 @@
+import * as React from 'react';
 import * as path from 'path';
 import * as webpack from 'webpack';
 import {HotModuleReplacementPlugin, LoaderOptionsPlugin, NamedModulesPlugin, NewModule} from 'webpack';
 import CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 import {cpus} from 'os';
 import {downloadI18n} from './dev/i18nSync';
+import {Index} from './shared';
+import {ReactIndexPlugin} from './dev/ReactIndexPlugin';
+import {BuildOptions} from './shared/BuildOptions';
+import {removeItem} from './src/lib/Helpers';
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlWebpackPlugin = require('webpack-html-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const WebpackManifestPlugin = require('webpack-manifest-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -29,25 +33,6 @@ const imageCompressionLoader = {
     webp: {quality: 75}
   }
 };
-
-class BuildOptions {
-  constructor (
-    public outputFolder: string = 'dist',
-    public environment: string = 'development',
-    public i18nVersion: string = 'latest',
-
-    // Optional features. All default to false
-    public sourceMaps = false,
-    public debug: boolean = false,
-    public cache: boolean = false,
-    public hmr: boolean = false,
-    public compress: boolean = false,
-    public minify: boolean = false,
-    public analyzeBundles: boolean = false,
-    public stats: boolean = false,
-    public manifest: boolean = false
-  ) {}
-}
 
 // NOTE webpack requires a default export
 export default async function webpackConfig (additionalOptions?: BuildOptions)  { // tslint:disable-line
@@ -123,13 +108,18 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       ]
     },
     plugins: compact([
-      // Generate html entry point that automatically loads our bundles
-      new HtmlWebpackPlugin({title: 'Dankest Dungeon', filename: 'index.html'}),
+      // DevServer needs an index.html generated
+      options.index && new ReactIndexPlugin('index.html', <Index options={options}/>),
 
+      // DistServer will render Index.tsx manually to pass in dynamic props, so it needs a manifest
+      options.manifest && new WebpackManifestPlugin({generate: generateOrderedManifest}),
+
+      // TODO generate buildOptions.json
+
+      // Define the environment
       new webpack.DefinePlugin({
         'process.env': {
-          NODE_ENV: JSON.stringify(options.environment),
-          HMR: options.hmr
+          NODE_ENV: JSON.stringify(options.environment)
         }
       }),
 
@@ -138,9 +128,8 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       new CommonsChunkPlugin({
         name: 'vendor',
         filename: 'vendor.js',
-        minChunks: (module) => module.context && module.context.indexOf('node_modules') >= 0
+        minChunks: (module: any) => module.context && module.context.indexOf('node_modules') >= 0
       }),
-      // new webpack.NormalModuleReplacementPlugin(/^react?$/, require.resolve('react')),
       new ForkTsCheckerWebpackPlugin({
         checkSyntacticErrors: true,
         workers: threadDistributionCount,
@@ -171,7 +160,6 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       }),
 
       // Optional features
-      options.manifest && new WebpackManifestPlugin(),
       options.hmr && new NamedModulesPlugin(),
       options.hmr && new HotModuleReplacementPlugin(),
       options.debug && new LoaderOptionsPlugin({debug: true}),
@@ -191,6 +179,20 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
   return config;
 }
 
-function compact<T> (array: T[]) {
+function compact <T> (array: T[]) {
   return array.filter((item) => item);
+}
+
+function generateOrderedManifest (seed: any, files: any[]) {
+  const orderedFiles = files.slice();
+  ReactIndexPlugin.sortChunks(files.map((f) => f.chunk))
+    .forEach((sortedChunk: any) => {
+      const sortedFile = files.find((f) => f.chunk === sortedChunk);
+      if (sortedFile) {
+        removeItem(orderedFiles, sortedFile);
+        orderedFiles.push(sortedFile);
+      }
+    });
+
+  return orderedFiles.map((file) => file.path);
 }

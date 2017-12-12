@@ -40,6 +40,7 @@ let startPath = 'start';
 // - Automates default profile if none exist
 // - Expose application state in global scope
 // - Allow custom start path
+let isHMREnabled = false;
 if (process.env.NODE_ENV !== 'production') {
   state.ensureProfile();
   (global as any).appState = state;
@@ -50,7 +51,8 @@ if (process.env.NODE_ENV !== 'production') {
       startPath = customStartPath;
     }
   }
-  if (process.env.HMR) {
+  if (module.hot) {
+    isHMREnabled = true;
     module.hot.accept('./App', () => {
       const NextApp = require<{App: typeof App}>('./App').App;
       render(NextApp);
@@ -98,7 +100,7 @@ class AppContainer extends React.Component<{appComponent: typeof App}> {
     const AppComponent = this.props.appComponent;
     let composedApp = <AppComponent state={state}/>;
 
-    if (process.env.HMR) {
+    if (isHMREnabled) {
       const HotLoaderContainer = require('react-hot-loader').AppContainer;
       composedApp = (
         <HotLoaderContainer>
