@@ -36,7 +36,6 @@
     "@types/express": "4.0.39",
     "@types/howler": "2.0.5",
     "@types/jest": "21.1.5",
-    "@types/js-yaml": "3.10.1",
     "@types/prop-types": "15.5.2",
     "@types/react": "16.0.28",
     "@types/react-dom": "16.0.3",
@@ -58,7 +57,6 @@
     "image-size-loader": "0.7.0",
     "image-webpack-loader": "3.4.2",
     "jest": "21.2.1",
-    "js-yaml": "3.10.0",
     "pre-commit": "1.2.2",
     "sox": "0.1.0",
     "style-loader": "0.19.0",
@@ -74,7 +72,7 @@
     "webpack-dev-server": "2.9.7",
     "webpack-html-plugin": "0.1.1",
     "webpack-manifest-plugin": "^2.0.0-rc.1",
-    "yaml-loader": "0.5.0"
+    "fuse-box": "^3.0.0-next.36"
   },
   "scripts": {
     "pre-commit": [

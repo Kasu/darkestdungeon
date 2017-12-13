@@ -2,7 +2,6 @@ import axios from 'axios';
 import * as fs from 'fs';
 import * as path from 'path';
 import {ensureFolderExists, emptyFolder} from './fsHelpers';
-import * as yaml from 'js-yaml';
 
 const locizeApiKey = '0065f3ba-87f4-4685-99ea-c90c22a89275';
 const locizeProjectId = 'c9aeef33-f4c0-4e27-9d5a-63148b617dae';
@@ -32,7 +31,7 @@ export async function downloadI18n (version: string) {
 
   // Empty generation folders and/or make sure folders exist
   emptyFolder(dataFolder, (filename) => /\.js$/.test(filename));
-  emptyFolder(messagesFolder, (filename) => /\.yml$/.test(filename));
+  emptyFolder(messagesFolder, (filename) => /\.json$/.test(filename));
   ensureFolderExists(dataFolder);
   ensureFolderExists(messagesFolder);
 
@@ -55,25 +54,25 @@ export async function uploadI18n (version: string) {
 }
 
 function readReference () {
-  return yaml.safeLoad(fs.readFileSync(path.resolve(i18nFolder, 'reference.yml'), 'utf8'));
+  return JSON.parse(fs.readFileSync(path.resolve(i18nFolder, 'reference.json'), 'utf8'));
 }
 
 function generateI18n (locale: string, messages: Messages, isReference: boolean) {
   const flattenedMessages = flattenMessages(messages);
 
-  // Generate localeData import and messages yaml
+  // Generate localeData import and messages json
   const dataRequireJs = `export default require('react-intl/locale-data/${locale}');\n`;
-  const messagesYaml = yaml.safeDump(flattenedMessages);
+  const messagesYaml = JSON.stringify(flattenedMessages, null, 2);
 
   // Generate messages
   const writes = [
     {filename: path.join(dataFolder, `${locale}.js`), data: dataRequireJs}
   ];
 
-  // The reference language messages are already defined in assets/i18n/reference.yml
+  // The reference language messages are already defined in assets/i18n/reference.json
   if (!isReference) {
     writes.push(
-      {filename: path.join(messagesFolder, `${locale}.yml`), data: messagesYaml}
+      {filename: path.join(messagesFolder, `${locale}.json`), data: messagesYaml}
     );
   }
 

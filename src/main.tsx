@@ -28,7 +28,7 @@ function addRoutesAndI18n () {
   );
 
   state.i18n.update(
-    require('./assets/i18n/reference.yml'),
+    require('./assets/i18n/reference.json'),
     require('./assets/i18n/generated/data').data,
     require('./assets/i18n/generated/messages').messages
   );
@@ -60,7 +60,7 @@ if (process.env.NODE_ENV !== 'production') {
     module.hot.accept(
       [
         './config/routes',
-        './assets/i18n/reference.yml',
+        './assets/i18n/reference.json',
         './assets/i18n/generated/data',
         './assets/i18n/generated/messages'
       ],

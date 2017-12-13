@@ -101,7 +101,6 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
             use: 'css-loader'
           })
         },
-        {test: /\.yml$/, use: ['json-loader', 'yaml-loader']},
         {test: /\.json$/, use: 'json-loader'},
         {test: /\.(ttf|ogg|eot|woff|woff2|svg)$/, use: fileLoader}
       ]

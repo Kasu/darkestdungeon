@@ -6,4 +6,4 @@ dist
 node_modules
 src/assets/dd
 src/assets/i18n/generated/data/*.js
-src/assets/i18n/generated/messages/*.yml
+src/assets/i18n/generated/messages/*.json
