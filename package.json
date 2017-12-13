@@ -72,7 +72,8 @@
     "webpack-dev-server": "2.9.7",
     "webpack-html-plugin": "0.1.1",
     "webpack-manifest-plugin": "^2.0.0-rc.1",
-    "fuse-box": "^3.0.0-next.36"
+    "fuse-box": "^3.0.0-next.36",
+    "autodll-webpack-plugin": "0.3.8"
   },
   "scripts": {
     "pre-commit": [

@@ -19,6 +19,7 @@ export const Index = ({assets, options}: IndexProps) => {
         {assets.css.map((css) => <link key={css} rel="stylesheet" type="text/css" href={css}/>)}
       </head>
       <body>
+        <script type="text/javascript" src="/vendor.dll.js"/>
         {assets.js.map((js) => <script key={js} type="text/javascript" src={js}/>)}
       </body>
     </html>

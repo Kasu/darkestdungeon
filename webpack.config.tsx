@@ -9,6 +9,8 @@ import {Index} from './shared';
 import {ReactIndexPlugin} from './dev/ReactIndexPlugin';
 import {BuildOptions} from './shared/BuildOptions';
 import {removeItem} from './src/lib/Helpers';
+const AutoDllPlugin = require('autodll-webpack-plugin');
+const WebpackHtmlPlugin = require('webpack-html-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
@@ -33,6 +35,34 @@ const imageCompressionLoader = {
     webp: {quality: 75}
   }
 };
+
+const vendorModules = [
+  'react',
+  'react-dom',
+  'url',
+  'sockjs',
+  'sockjs-client',
+  'sockjs-client/dist/sockjs.js',
+  'mobx',
+  'mobx-react',
+  'aphrodite',
+  'html-entities',
+  'serializr',
+  'howler',
+  'react-dnd',
+  'react-dnd-html5-backend',
+  'react-intl',
+  'react-transition-group',
+  'resize-observer-polyfill',
+  'webfontloader',
+  'color',
+  'lodash',
+  'tween.js',
+  'uuid',
+  'query-string',
+  'loglevel',
+  'ansi-html'
+];
 
 // NOTE webpack requires a default export
 export default async function webpackConfig (additionalOptions?: BuildOptions)  { // tslint:disable-line
@@ -63,8 +93,9 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       path.join(sourceFolder, 'main.tsx')
     ]),
     output: {
+      filename: '[name].bundle.js',
       path: path.join(__dirname, options.outputFolder),
-      filename: 'app.js'
+      publicPath: '/'
     },
 
     // Most webpack configs are controlled by our options
@@ -124,9 +155,17 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
       // Add optimizations
       new ExtractTextPlugin('styles.css'),
       new CommonsChunkPlugin({
-        name: 'vendor',
-        filename: 'vendor.js',
+        name: 'common',
+        filename: 'common.js',
         minChunks: (module: any) => module.context && module.context.indexOf('node_modules') >= 0
+      }),
+      new AutoDllPlugin({
+        inject: true,
+        debug: true,
+        filename: '[name].dll.js',
+        entry: {
+          vendor: vendorModules
+        }
       }),
       new ForkTsCheckerWebpackPlugin({
         checkSyntacticErrors: true,
