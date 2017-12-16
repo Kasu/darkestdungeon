@@ -14,6 +14,13 @@ export class BuildOptions {
     public minify: boolean = false,
     public analyzeBundles: boolean = false,
     public stats: boolean = false,
-    public manifest: boolean = false
+    public manifest: boolean = false,
+    public vendor: boolean = false
+  ) {}
+}
+
+export class BuildInjects {
+  constructor (
+    public apiServerBaseUrl: string = ''
   ) {}
 }

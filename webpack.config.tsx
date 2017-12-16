@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as React from 'react';
 import * as path from 'path';
 import * as webpack from 'webpack';
@@ -7,8 +8,9 @@ import {cpus} from 'os';
 import {downloadI18n} from './dev/i18nSync';
 import {Index} from './shared';
 import {ReactIndexPlugin} from './dev/ReactIndexPlugin';
-import {BuildOptions} from './shared/BuildOptions';
+import {BuildInjects, BuildOptions} from './shared/BuildOptions';
 import {removeItem} from './src/lib/Helpers';
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const AutoDllPlugin = require('autodll-webpack-plugin');
 const WebpackHtmlPlugin = require('webpack-html-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
@@ -36,36 +38,8 @@ const imageCompressionLoader = {
   }
 };
 
-const vendorModules = [
-  'react',
-  'react-dom',
-  'url',
-  'sockjs',
-  'sockjs-client',
-  'sockjs-client/dist/sockjs.js',
-  'mobx',
-  'mobx-react',
-  'aphrodite',
-  'html-entities',
-  'serializr',
-  'howler',
-  'react-dnd',
-  'react-dnd-html5-backend',
-  'react-intl',
-  'react-transition-group',
-  'resize-observer-polyfill',
-  'webfontloader',
-  'color',
-  'lodash',
-  'tween.js',
-  'uuid',
-  'query-string',
-  'loglevel',
-  'ansi-html'
-];
-
 // NOTE webpack requires a default export
-export default async function webpackConfig (additionalOptions?: BuildOptions)  { // tslint:disable-line
+export default async function webpackConfig (additionalOptions?: BuildOptions & BuildInjects)  { // tslint:disable-line
   const options = {
     ...new BuildOptions(),
     ...additionalOptions
@@ -77,10 +51,6 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
   await downloadI18n(options.i18nVersion);
 
   const sourceFolder = path.join(__dirname, 'src');
-  const babelOptions = {
-    cacheDirectory: options.cache ? '.babel-cache' : undefined,
-    presets: ['flow', 'react', 'stage-0']
-  };
 
   // (numberOfCpus - 1x current cpu) / 2x plugins needing threads
   const threadDistributionCount = Math.max(1, Math.floor((cpus().length - 1) / 2));
@@ -138,12 +108,23 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
     },
     plugins: compact([
       // DevServer needs an index.html generated
-      options.index && new ReactIndexPlugin('index.html', <Index options={options}/>),
+      options.index && new ReactIndexPlugin(
+        'index.html',
+        <Index options={options} injects={additionalOptions} />
+      ),
 
       // DistServer will render Index.tsx manually to pass in dynamic props, so it needs a manifest
-      options.manifest && new WebpackManifestPlugin({generate: generateOrderedManifest}),
+      options.manifest && new WebpackManifestPlugin({
+        generate: (seed: any, files: any[]) => {
+          // Generate buildOptions.json along with the manifest
+          const json = JSON.stringify(options, null, 2);
+          const outputFile = path.resolve(config.output.path, 'buildOptions.json');
+          fs.writeFileSync(outputFile, json);
 
-      // TODO generate buildOptions.json
+          // Generate manifest
+          return generateOrderedManifest(seed, files);
+        }
+      }),
 
       // Define the environment
       new webpack.DefinePlugin({
@@ -159,12 +140,12 @@ export default async function webpackConfig (additionalOptions?: BuildOptions)  
         filename: 'common.js',
         minChunks: (module: any) => module.context && module.context.indexOf('node_modules') >= 0
       }),
-      new AutoDllPlugin({
+      options.vendor && new AutoDllPlugin({
         inject: true,
         debug: true,
         filename: '[name].dll.js',
         entry: {
-          vendor: vendorModules
+          vendor: Object.keys(JSON.parse(fs.readFileSync('./package.json', 'utf8')).dependencies)
         }
       }),
       new ForkTsCheckerWebpackPlugin({

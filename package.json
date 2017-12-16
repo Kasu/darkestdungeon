@@ -13,7 +13,7 @@
     "mobx-react": "4.3.4",
     "prop-types": "15.6.0",
     "query-string": "5.0.1",
-    "raf": "^3.4.0",
+    "raf": "3.4.0",
     "react": "16.2.0",
     "react-deep-force-update": "1.1.1",
     "react-dnd": "2.5.4",
@@ -28,11 +28,16 @@
     "stats.js": "0.17.0",
     "tween.js": "16.6.0",
     "uuid": "3.1.0",
-    "webfontloader": "1.6.28"
+    "webfontloader": "1.6.28",
+    "fluxible": "1.4.0",
+    "fluxible-plugin-fetchr": "0.3.11"
   },
   "devDependencies": {
     "@types/aphrodite": "0.5.6",
+    "@types/args": "3.0.0",
     "@types/color": "2.0.0",
+    "@types/cors": "2.8.3",
+    "@types/csurf": "1.9.35",
     "@types/express": "4.0.39",
     "@types/howler": "2.0.5",
     "@types/jest": "21.1.5",
@@ -46,11 +51,15 @@
     "@types/webfontloader": "1.6.29",
     "@types/webpack": "3.8.1",
     "@types/webpack-env": "1.13.3",
+    "args": "^3.0.8",
+    "autodll-webpack-plugin": "0.3.8",
+    "cors": "^2.8.4",
     "css-loader": "0.28.7",
     "darkest_dungeon_tools": "0.1.3",
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fork-ts-checker-webpack-plugin": "0.2.9",
+    "fuse-box": "3.0.0-next.36",
     "glob": "7.1.2",
     "happypack": "4.0.0",
     "html-webpack-plugin": "2.30.1",
@@ -71,9 +80,7 @@
     "webpack-bundle-analyzer": "2.9.1",
     "webpack-dev-server": "2.9.7",
     "webpack-html-plugin": "0.1.1",
-    "webpack-manifest-plugin": "^2.0.0-rc.1",
-    "fuse-box": "^3.0.0-next.36",
-    "autodll-webpack-plugin": "0.3.8"
+    "webpack-manifest-plugin": "2.0.0-rc.1"
   },
   "scripts": {
     "pre-commit": [
@@ -82,8 +89,9 @@
     ],
     "i18n-download": "ts-node ./dev/i18nSync.ts download latest",
     "i18n-upload": "ts-node ./dev/i18nSync.ts upload latest",
-    "dev-server": "webpack-dev-server --host 0.0.0.0 --env.index --env.cache --env.stats --env.debug --env.hmr --env.sourceMaps",
-    "prod-server": "webpack-dev-server --host 0.0.0.0 --env.index --env.cache --env.stats --env.debug --env.environment production --env.compress --env.minify",
+    "api-server": "ts-node --inspect ./dev/apiServer.ts --host 0.0.0.0 --port 5555",
+    "dist-server": "ts-node ./dev/distServer.tsx --host 0.0.0.0 --port 4444 --apiServerBaseUrl http://localhost:5555",
+    "web-server": "webpack-dev-server --host 0.0.0.0 --port 3333 --env.apiServerBaseUrl http://localhost:5555 --env.index --env.vendor --env.cache --env.stats --env.debug --env.hmr --env.sourceMaps",
     "test": "jest",
     "lint": "tslint --project tsconfig.json --config tslint.json"
   }

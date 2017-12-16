@@ -10,6 +10,7 @@ import {addStaticState} from './config/general';
 import {StaticState} from './state/StaticState';
 import {barks} from './config/barks';
 import {Route} from './state/types/Route';
+import {connectFluxible} from './connectFluxible';
 const HTML5Backend = require('react-dnd-html5-backend');
 const {DragDropContext} = require('react-dnd');
 const TWEEN = require('tween.js');
@@ -21,6 +22,7 @@ state.barker.barks = barks;
 addStaticState();
 addRoutesAndI18n();
 state.load();
+connectFluxible();
 
 function addRoutesAndI18n () {
   state.router.addRoutes(
